@@ -17,7 +17,7 @@ const model = {
             fleetChoice: '',
             packageChoice: '',
             comfortChoice: [],
-            selectedDate: [],
+            selectedDate: '',
             selectedHour: [],
 
         },
@@ -32,33 +32,50 @@ const model = {
     data: {
         packageOptions: [
             {
+                fleetId: null,
                 name: '',
                 price: 0,
+
             },
         ],
-        comfort: [
+        comforts: [
             {
                 Id: 1,
                 name: 'produkt1',
                 price: 0,
             },
         ],
-        
         bookings: [
             {
                 orderId: 1,
                 fleetId: [],
                 chosenComforts: [],
-                chosenDates:[],
-                chosenHours:[],
+                chosenDates: [],
+                chosenHours: [],
                 customer: '',
-        },
-    ],
-        shownPicture: [],
+            },
+        ],
+        fleets: [
+            {
+                id: 0,
+                name: 'Båt0',
+            },
+            {
+                id: 1,
+                name: 'Båt1',
+            },
+        ],
+        frontPagePictures: [],
         blogPosts: [],
-        packages: ['pakke1'],
-        fleets: ['båt1'],
+        
+        
+
     },
 
 
 }
+// Hvordan går man frem for og lage en kalender og data modell for det?
+// Datafunksjoner for priser i kalender
+//
+//Hvordan lagre datoer med priser? controller-funksjon som regner ut pris og ser om dag valgt er helg eller ikke?
+//
