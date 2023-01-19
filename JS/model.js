@@ -2,16 +2,13 @@ const model = {
 
     app: {
         currentPage: 'frontside',
-        currentUser: '',
+        currentUser: 'admin',
+        currentPicture: 'badebilde.jpg',  // src="/badebilde.jpg"
     },
 
     inputs: {
         frontPage: {
-
-            currentPicture: '',
-
         },
-
         bookingPage: {
 
             fleetChoice: '',
@@ -23,36 +20,38 @@ const model = {
         },
         blogPage: {
 
+            titlePost: '',
             currentPost: '',
 
         },
 
     },
 
-    data: {
+    data: { // Husk og fylle ut alle verdier
         packageOptions: [
             {
-                fleetId: null,
-                name: '',
-                price: 0,
+                fleetId: 0,
+                name: 'Jentekveld',
+                price: 1000,
 
             },
         ],
         comforts: [
             {
                 Id: 1,
-                name: 'produkt1',
-                price: 0,
+                name: 'Vin',
+                price: 100,
             },
         ],
         bookings: [
             {
                 orderId: 1,
-                fleetId: [],
-                chosenComforts: [],
-                chosenDates: [],
-                chosenHours: [],
-                customer: '',
+                fleetId: [0],
+                chosenComforts: [1],
+                chosenDates: ['01.01.2023'],
+                chosenHours: ['13:00'],
+                customer: 'Joakim',
+                totalPrice: 100,
             },
         ],
         fleets: [
@@ -65,10 +64,18 @@ const model = {
                 name: 'Båt1',
             },
         ],
-        frontPagePictures: [],
-        blogPosts: [],
-        
-        
+        blogPosts: [
+            {
+                postId: 1,
+                postTitle: 'Blogg1',
+                postText: 'Velkommen til mentalhelseblogg',
+            }
+        ],
+        frontPagePictures: ['bilde1.jpg', 'bilde2.jpg', 'bilde3.jpg',],
+
+
+
+
 
     },
 
