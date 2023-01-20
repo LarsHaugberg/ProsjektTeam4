@@ -3,7 +3,7 @@ const model = {
     app: {
         currentPage: 'frontPage',
         currentUser: 'admin',
-        currentPicture: 'badebilde.jpg',  // src="/badebilde.jpg"
+        currentPicture: 'img/picture1.jpg',  // src="/badebilde.jpg"
     },
 
     inputs: {
@@ -71,7 +71,7 @@ const model = {
                 postText: 'Velkommen til mentalhelseblogg',
             }
         ],
-        frontPagePictures: ['bilde1.jpg', 'bilde2.jpg', 'bilde3.jpg',],
+        frontPagePictures: ['img/picture1.jpg', 'img/picture2.jpg', 'img/picture3.jpg',],
 
 
 

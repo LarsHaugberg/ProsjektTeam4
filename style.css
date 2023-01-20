@@ -3,6 +3,13 @@
     width: 300px;
     background-color: rgb(48, 50, 42);
 
-
 }
+.frontPageImages {
+    
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    
+}
+
 
