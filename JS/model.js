@@ -1,7 +1,7 @@
 const model = {
 
     app: {
-        currentPage: 'frontside',
+        currentPage: 'frontPage',
         currentUser: 'admin',
         currentPicture: 'badebilde.jpg',  // src="/badebilde.jpg"
     },
