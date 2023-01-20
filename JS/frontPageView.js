@@ -6,18 +6,25 @@ function updateFrontPageView() {
     <button onclick="switchPage('blogPage')">Bloggside</button>
     <hr/>
     
-    <div class="frontPagePictureBox"><img class="frontPageImages fill" src="${pictureSelector()}"></div>
+    <div class="frontPagePictureBox"><img class="frontPageImages fill" src="${pictureSelectorShow()}"></div>
+    <button onclick="changeFrontPagePicture('<')"><</button>
+    <button onclick="changeFrontPagePicture('>')">></button>
 
         `;
     document.getElementById("app").innerHTML = HTML;
 
 }
 
-function pictureSelector(){
-    console.log(model.app.currentPicture)
+function pictureSelectorShow() {
+   
 
-    return model.app.currentPicture;
+    return model.data.frontPagePictures[model.app.currentPicture] ;
 }
+
+
+
+
+
 
 
 

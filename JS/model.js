@@ -3,7 +3,7 @@ const model = {
     app: {
         currentPage: 'frontPage',
         currentUser: 'admin',
-        currentPicture: 'img/picture1.jpg',  // src="/badebilde.jpg"
+        currentPicture: 0, // 'img/picture1.jpg',  // src="/badebilde.jpg"
     },
 
     inputs: {
