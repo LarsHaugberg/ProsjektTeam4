@@ -7,13 +7,6 @@ function updateBookingPageView() {
     document.getElementById("app").innerHTML = HTML;
 }    
 
-
-
-
-
-
-
-
 function getBookingPage(){
     let html = '';
    
@@ -47,7 +40,7 @@ function isSelected(fleetId){
 function showCalendar(){
     let selectedDate = model.inputs.bookingPage.selectedDate;
     let html = getMonthAsTable();
-    //html += /*html*/`<br /> dato valgt: ${(selectedDate || selectedDate === 0)? selectedDate+1 : ''} <br />`;
+    html += /*html*/`<br /> dato valgt: ${(selectedDate || selectedDate === 0)? selectedDate : ''} <br />`;
     //html += getTimePicker();
     return html;
 
@@ -65,7 +58,7 @@ function getMonthAsTable(){
     for(let r=0; r < rows; r++){
         html += "<tr>";
         for(let i=0; i < columns; i++){     
-            if(date <= daysInSelectedMonth){                        //onclick="selectDate(${date})">
+            if(date <= daysInSelectedMonth){ //onclick="selectDate(${date})">
                 html += /*html*/`<td>                           
                     <button class="date-button" onclick=""> 
                          ${date} <br /> 
@@ -79,9 +72,9 @@ function getMonthAsTable(){
             date++;
 
         }
-        html+= "</tr>";
+        html+= `</tr>`;
     }
-    html+= "</table>";
+    html+= `</table>`;
     return html;
 
 

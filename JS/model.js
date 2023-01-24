@@ -17,8 +17,6 @@ const model = {
             fleetChoice: null,
             packageChoice: '',
             comfortChoice: [],
-            selectedYear: null, 
-            selectedMonth: null, 
             selectedDate: null,
             selectedHours: [],
 

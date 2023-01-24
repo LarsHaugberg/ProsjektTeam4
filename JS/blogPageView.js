@@ -14,7 +14,6 @@ function updateBlogPageView() {
         <!-- Modal content -->
         <div class="modal-content">
             <span onclick="closeEditorPage()" class="close">&times;</span>
-            
             <p>
             <input 
             onchange="model.inputs.blogPage.titlePost = this.value" 
@@ -42,19 +41,17 @@ function updateBlogPageView() {
 
 }
 
-function listBlogPosts(){
+function listBlogPosts() { // Snu loopen så nyest kommer først
     let HTML = ``;
     for (let index = 0; index < model.data.blogPosts.length; index++) {
         HTML += `
         <h1>${model.data.blogPosts[index].postTitle}</h1>
-        <div>${model.data.blogPosts[index].postPicture}<div>
+        <div class="frontPagePictureBox" ><img class="frontPageImages fill" src="${model.data.blogPosts[index].postPicture}"><div>
         <div>${model.data.blogPosts[index].postText}<div>
         
         `;
     }
     return HTML;
-} 
+}
 
-
-
-    // Gjør vurdering på window onclick
+// Gjør vurdering på window onclick
