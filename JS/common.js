@@ -1,5 +1,13 @@
-function switchPage(location){      
+function switchPage(location) {
     model.app.currentPage = location;
+    updateView()
+}
+function openModal() {
+    model.modal = 'block'
+    updateView()
+}
+function closeModal() {
+    model.modal = 'none';
     updateView()
 }
 function sendToWebPage(webPage) {
@@ -17,16 +25,28 @@ function sendToWebPage(webPage) {
     }
 }
 
-function navBar(){
-    let HTML = `
-    <div class="navbar">
-    <hr/>
-    <button onclick="sendToWebPage('instagram')"><img class="img" src="img/instagram.png"></button> 
-    <button onclick="sendToWebPage('facebook')"><img class="img" src="img/facebook.png"></button> 
-    <button onclick="sendToWebPage('twitter')"><img class="img" src="img/twitter.png"></button> 
-    <button onclick="sendToWebPage('youtube')"><img class="img" src="img/youtube.png"></button> 
-     <hr/>
-    </div>
+function checkIfPostHasImg(index){
+    let temp;
+    if(model.data.blogPosts[index ].postPicture == '' ){
+        return ''
+    }else {
+       temp =
     `
+    <div class="frontPagePictureBox">
+    <img class="frontPageImages fill" src="${model.data.blogPosts[index ].postPicture}">
+    <div></div>`;
+    return temp
+    }
+}
+
+function navBar() {
+    let HTML = /*HTML*/`
+        <div class="navbar">
+            <button onclick="sendToWebPage('instagram')"><img class="img" src="img/instagram.png"></button> 
+            <button onclick="sendToWebPage('facebook')"><img class="img" src="img/facebook.png"></button> 
+            <button onclick="sendToWebPage('twitter')"><img class="img" src="img/twitter.png"></button> 
+            <button onclick="sendToWebPage('youtube')"><img class="img" src="img/youtube.png"></button> 
+        </div>
+    `;
     return HTML
 }

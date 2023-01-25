@@ -5,7 +5,7 @@ function selectFleet(fleetId){
     model.inputs.bookingPage.fleetChoice = fleetId;
     console.log('fleet Id:' + fleetId);
     //model.data.selectedMonth = getCurrentMonth();
-    setTimeAsSelected();
+    //setTimeAsSelected();
     updateView();
 }
 
@@ -22,54 +22,75 @@ function setTimeAsSelected(){
 
 
 function goToNextMonth(){
-    model.inputs.bookingPage.selectedMonth++;
-    if(model.inputs.bookingPage.selectedMonth > 11){
-        model.inputs.bookingPage.selectedMonth = 0;
-        goToNextYear();
+    if(model.inputs.bookingPage.selectedDate.getMonth() > 10){    
+        //goToNextYear();
     }
-    console.log('Month: ' + model.inputs.bookingPage.selectedMonth);
+    model.inputs.bookingPage.selectedDate.setMonth(model.inputs.bookingPage.selectedDate.getMonth() + 1);
+    
+    //console.log('Month: ' + model.inputs.bookingPage.selectedDate.getMonth());
     updateView();
 }
 
 function goToPrevMonth(){
-    model.inputs.bookingPage.selectedMonth--;
-    if(model.inputs.bookingPage.selectedMonth < 0){
-        model.inputs.bookingPage.selectedMonth = 11;
-        goToPrevYear();
+    if(model.inputs.bookingPage.selectedDate.getMonth() < 1){
+        //goToPrevYear();
     }
-    console.log('Month: ' + model.inputs.bookingPage.selectedMonth);
-    updateView();
-}
-
-function goToNextYear(){
-    model.inputs.bookingPage.selectedYear++;
-   
-    updateView();
-}
-
-function goToPrevYear(){
-    model.inputs.bookingPage.selectedYear--;
+    model.inputs.bookingPage.selectedDate.setMonth(model.inputs.bookingPage.selectedDate.getMonth() - 1);
     
+    console.log('Month: ' + model.inputs.bookingPage.selectedDate.getMonth());
     updateView();
 }
-
-
-
 
 
 
 function getSelectedMonthName(){
-    if(model.inputs.bookingPage.selectedMonth == 0) return 'Januar';
-    if(model.inputs.bookingPage.selectedMonth == 1) return 'Februar';
-    if(model.inputs.bookingPage.selectedMonth == 2) return 'Mars';
-    if(model.inputs.bookingPage.selectedMonth == 3) return 'April';
-    if(model.inputs.bookingPage.selectedMonth == 4) return 'Mai';
-    if(model.inputs.bookingPage.selectedMonth == 5) return 'Juni';
-    if(model.inputs.bookingPage.selectedMonth == 6) return 'Juli';
-    if(model.inputs.bookingPage.selectedMonth == 7) return 'August';
-    if(model.inputs.bookingPage.selectedMonth == 8) return 'September';
-    if(model.inputs.bookingPage.selectedMonth == 9) return 'Oktober';
-    if(model.inputs.bookingPage.selectedMonth == 10) return 'November';
-    if(model.inputs.bookingPage.selectedMonth == 11) return 'Desember';
+    let selectedMonth = model.inputs.bookingPage.selectedDate.getMonth();
+    if(selectedMonth == 0) return 'Januar';
+    if(selectedMonth == 1) return 'Februar';
+    if(selectedMonth == 2) return 'Mars';
+    if(selectedMonth == 3) return 'April';
+    if(selectedMonth == 4) return 'Mai';
+    if(selectedMonth == 5) return 'Juni';
+    if(selectedMonth == 6) return 'Juli';
+    if(selectedMonth == 7) return 'August';
+    if(selectedMonth == 8) return 'September';
+    if(selectedMonth == 9) return 'Oktober';
+    if(selectedMonth == 10) return 'November';
+    if(selectedMonth == 11) return 'Desember';
 
 }
+
+
+function getDayName(dayIndex){ 
+    if(dayIndex == 0) return 'Man';
+    if(dayIndex == 1) return 'Tirs';
+    if(dayIndex == 2) return 'Ons';
+    if(dayIndex == 3) return 'Tors';
+    if(dayIndex == 4) return 'Fre';
+    if(dayIndex == 5) return 'Lør';
+    if(dayIndex == 6) return 'Søn';
+    else return 'error day' + dayIndex;
+
+
+}
+
+function selectDate(date){
+    model.inputs.bookingPage.isDateSelected = true;
+    model.inputs.bookingPage.selectedDate.setDate(date);
+
+    updateView();
+}
+
+
+function getPriceDay(day){
+    if(day < 6 && day > 0) return model.data.prices.weekdayPriceDay;
+    else return model.data.prices.weekendPriceDay;
+    
+}
+
+function getPriceHour(day){
+    if(day < 6 && day > 0) return model.data.prices.weekdayPriceHour;
+    else return model.data.prices.weekendPriceHour;
+}
+
+

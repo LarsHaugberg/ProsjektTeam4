@@ -1,7 +1,5 @@
 function changeFrontPagePicture(selector){
-
-    
-    let frontPagePictures = model.data.frontPagePictures;
+	let frontPagePictures = model.data.frontPagePictures;
 
 	if(selector === '>'){
 		model.app.currentPicture ++;
@@ -16,5 +14,3 @@ function changeFrontPagePicture(selector){
 	}
 	updateView()
 }
-
-

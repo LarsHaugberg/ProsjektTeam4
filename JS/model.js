@@ -4,6 +4,7 @@ const model = {
         currentPage: 'frontPage',
         currentUser: 'admin',
         currentPicture: 0, // 'img/picture1.jpg',  // src="/badebilde.jpg"
+        editorPicture: 0,
         
     },
     modal: 'none',
@@ -17,14 +18,16 @@ const model = {
             fleetChoice: null,
             packageChoice: '',
             comfortChoice: [],
-            selectedDate: null,
+            selectedDate: new Date(),
             selectedHours: [],
+            isDateSelected: false,
 
         },
         blogPage: {
 
             titlePost: '',
             currentPost: '',
+            pictureIsChecked: '',
 
         },
 
@@ -53,6 +56,7 @@ const model = {
                 time: 2,
 
             },
+       
 
         ],
 
@@ -130,9 +134,16 @@ const model = {
         frontPagePictures: ['img/picture1.jpg', 'img/picture2.jpg', 'img/picture3.jpg',],
 
         daysInMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], //funker det å ha denne her?
+        hoursInDay: 24,
+
+        prices: {
+            weekdayPriceHour: 500,
+            weekdayPriceDay: 3000,
+            weekendPriceHour: 1000,
+            weekendPriceDay: 5000,
 
 
-
+        },
 
 
     },
