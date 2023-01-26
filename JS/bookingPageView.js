@@ -84,7 +84,8 @@ function getMonthAsTable() {
                     <button class="date-button" onclick="selectDate(${day.getDate()})">
                       <!--  ${getDayName(day.getDay() -1 )}  <br />  -->
                          ${day.getDate()} <br />
-                         ${getPriceDay(day.getDay())} 
+                        <!-- Heldagspris: ${getPriceDay(day.getDay())} 
+                        <br> Timespris: ${getPriceHour()} -->
                     </button>
                     </td>`;
                     date++;
@@ -100,8 +101,9 @@ function getMonthAsTable() {
         html += "</tr>";
     }
     html += `</table>`;
+    html += `<p> Døgnpris: ${getPriceDay(model.inputs.bookingPage.selectedDate.getDay())} 
+    <br> Timespris: ${getPriceHour()} </p>`
     return html;
-
 }
 
 function getTimePicker() {
@@ -109,7 +111,7 @@ function getTimePicker() {
     let rows = 4;
     let columns = 6;
     let html = `<table>`;
-    let hour;
+    let hour = 0;
      
 
     for (let h = 0; h < rows; h++) {
@@ -118,10 +120,11 @@ function getTimePicker() {
         for (let n = 0; n < columns; n++) {
             html += /*html*/`<td>
             <button class="hour-button" onclick="">
-
+                ${hour} <br> ${getPriceHour()}
+                
             </button>                               
             </td>`;
-
+            hour++;
         }
         html += "</tr>";
     }

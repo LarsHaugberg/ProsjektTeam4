@@ -5,6 +5,7 @@ const model = {
         currentUser: 'admin',
         currentPicture: 0, // 'img/picture1.jpg',  // src="/badebilde.jpg"
         editorPicture: 0,
+        modalContent: '',
         
     },
     modal: 'none',
@@ -21,13 +22,14 @@ const model = {
             selectedDate: new Date(),
             selectedHours: [],
             isDateSelected: false,
+            tmpPrices: [],
 
         },
         blogPage: {
 
             titlePost: '',
             currentPost: '',
-            pictureIsChecked: '',
+            pictureIsChecked: false,
 
         },
 

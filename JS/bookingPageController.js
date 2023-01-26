@@ -88,9 +88,35 @@ function getPriceDay(day){
     
 }
 
-function getPriceHour(day){
+function getPriceHour(){
+    let day = model.inputs.bookingPage.selectedDate.getDay();
     if(day < 6 && day > 0) return model.data.prices.weekdayPriceHour;
     else return model.data.prices.weekendPriceHour;
 }
 
 
+function selectHour(hour){
+    model.inputs.bookingPage.selectedHours.push(hour);
+    
+    /* model.inputs.bookingPage.tmpPrices = []; */
+    //model.inputs.bookingPage.tmpPrices.push( sumHoursSelected() );
+    //model.inputs.bookingPage.tmpPrices.push( sumComfortChoices() );
+
+
+    updateView();
+}
+
+function sumHoursSelected(){
+    let day = model.inputs.bookingPage.selectedDate.getDay();
+    let priceSum = 0;
+    
+	for(let hour of  model.inputs.bookingPage.selectedHours){
+		priceSum += getPriceHour();
+	}
+    if(priceSum >= getPriceDay(day)){
+        return  getPriceDay(day);
+    }
+    else return priceSum;
+        
+     
+}

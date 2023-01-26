@@ -27,7 +27,7 @@ function sendToWebPage(webPage) {
 
 function checkIfPostHasImg(index){
     let temp;
-    if(model.data.blogPosts[index ].postPicture == '' ){
+    if(model.data.blogPosts[index].postPicture == undefined ){
         return ''
     }else {
        temp =
