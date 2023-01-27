@@ -131,7 +131,7 @@ function sumComfortsSelected(){
 
 function getComfortById(id){
 	for(let comfort of model.data.comforts){
-		if (id == comfort.Id)
+		if (id == comfort.id)
 			return comfort;
 	}
 	return null;
@@ -139,4 +139,17 @@ function getComfortById(id){
 
 function totalSum(){
     return sumHoursSelected() + sumComfortsSelected();
+}
+
+
+function getPackageById(id){
+    for(let package of model.data.packageOptions){
+        if (id == package.id)
+            return package;
+    }
+    return null;
+}
+
+function addBooking(){
+    
 }

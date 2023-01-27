@@ -17,7 +17,7 @@ const model = {
         bookingPage: {
 
             fleetChoice: null,
-            packageChoice: '',
+            packageChoice: null,
             comfortChoices: [],
             selectedDate: new Date(),
             selectedHours: [],
@@ -37,58 +37,122 @@ const model = {
     data: { // Husk og fylle ut alle verdier
         packageOptions: [
             {
-                fleetIds: [0,1],
-                name: 'Jentekveld',
-                price: 2000,
-                time: 4,
+                id: 0,
+                name: 'Jentekveld (6 stk)',
+                price: {
+                    weekdayPrice: 5264, 
+                    weekendPrice: 7664,
+                },
+                hours: 4,
+                comforts: [
+                    {id: 0, quantity: 4,}, 
+                    {id: 1, quantity: 6,},
+                    {id: 2, quantity: 6,}, 
+                    {id: 3, quantity: 6,},
+                    {id: 4, quantity: 1,},
+                    {id: 5, quantity: 6,},
+                ],
 
             },
             {
-                fleetIds: [0],
-                name: 'Familie pakke',
-                price: 500,
-                time: 1,
+                id: 1,
+                name: 'Jentekveld (4 stk)',
+                price: {
+                    weekdayPrice: 3454, 
+                    weekendPrice: 5184,
+                },
+                hours: 4,
+                comforts: [
+                    {id: 0, quantity: 3,}, 
+                    {id: 1, quantity: 4,},
+                    {id: 2, quantity: 4,}, 
+                    {id: 3, quantity: 4,},
+                    {id: 4, quantity: 1,},
+                    {id: 5, quantity: 4,},
+                ],
 
             },
             {
-                fleetIds: [],
-                name: 'Standard pakke',
-                price: 1000,
-                time: 2,
+                id: 2,
+                name: 'Familie pakke (4 stk)',
+                price: {
+                    weekdayPrice: 1904, 
+                    weekendPrice: 2304,
+                },
+                hours: 1,
+                comforts: [
+                    {id: 1, quantity: 4,},
+                    {id: 2, quantity: 4,}, 
+                    {id: 3, quantity: 4,},
+                    {id: 4, quantity: 1,},
+                    {id: 5, quantity: 4,},
+                ],
+            },
+            {
+                id: 3,
+                name: 'Familie pakke (5 stk)',
+                price: {
+                    weekdayPrice: 2464, 
+                    weekendPrice: 2864,
+                },
+                hours: 1,
+                comforts: [
+                    {id: 1, quantity: 5,},
+                    {id: 2, quantity: 5,}, 
+                    {id: 3, quantity: 5,},
+                    {id: 4, quantity: 1,},
+                    {id: 5, quantity: 5,},
+                ],
 
             },
-       
+            {
+                id: 4,
+                name: 'Standard pakke (2 stk)',
+                price: {
+                    weekdayPrice: 1504, 
+                    weekendPrice: 2304,
+                },
+                hours: 2,
+                comforts: [
+                    {id: 0, quantity: 1,}, 
+                    {id: 1, quantity: 2,},
+                    {id: 2, quantity: 2,}, 
+                    {id: 3, quantity: 2,},
+                    {id: 4, quantity: 1,},
+                    {id: 5, quantity: 2,},
+                ],
 
+            },
         ],
 
         comforts: [
             {
-                Id: 0,
+                id: 0,
                 name: 'Vin',
-                price: 100,
+                price: 200,
             },
             {
-                Id: 1,
+                id: 1,
                 name: 'shampo og balsam',
                 price: 100,
             },
             {
-                Id: 2,
+                id: 2,
                 name: 'håndkler',
                 price: 100,
             },
             {
-                Id: 3,
+                id: 3,
                 name: 'mineralvann',
                 price: 50,
             },
             {
-                Id: 4,
+                id: 4,
                 name: 'aroma',
                 price: 80,
             },
             {
-                Id: 5,
+                id: 5,
                 name: 'Badekåpe',
                 price: 200,
             },
@@ -97,12 +161,13 @@ const model = {
         bookings: [
             {
                 orderId: 1,
-                fleetId: [0],
+                fleetId: null,
+                chosenPackage: null,
                 chosenComforts: [1],
-                chosenDate: ['01.01.2023'],
-                chosenHours: ['13:00'],
-                customer: 'Joakim',
-                totalPrice: 100,
+                chosenDate: new Date(),
+                chosenHours: [],
+                customer: '',
+                totalPrice: 0,
             },
         ],
         fleets: [
@@ -142,11 +207,7 @@ const model = {
             weekdayPriceDay: 3000,
             weekendPriceHour: 1000,
             weekendPriceDay: 5000,
-
-
         },
-
-
     },
 
 
