@@ -105,7 +105,7 @@ function selectHour(hour){
 
     updateView();
 }
-
+//returnerer samlet pris på timer valgt
 function sumHoursSelected(){
     let day = model.inputs.bookingPage.selectedDate.getDay();
     let priceSum = 0;
@@ -119,4 +119,24 @@ function sumHoursSelected(){
     else return priceSum;
         
      
+}
+
+function sumComfortsSelected(){
+    let priceSum = 0;
+    for(let comfortId of model.inputs.bookingPage.comfortChoices){
+        priceSum += getComfortById(comfortId).price;
+    }
+    return priceSum;
+}
+
+function getComfortById(id){
+	for(let comfort of model.data.comforts){
+		if (id == comfort.Id)
+			return comfort;
+	}
+	return null;
+}
+
+function totalSum(){
+    return sumHoursSelected() + sumComfortsSelected();
 }

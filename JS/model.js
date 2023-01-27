@@ -18,11 +18,10 @@ const model = {
 
             fleetChoice: null,
             packageChoice: '',
-            comfortChoice: [],
+            comfortChoices: [],
             selectedDate: new Date(),
             selectedHours: [],
             isDateSelected: false,
-            tmpPrices: [],
 
         },
         blogPage: {
