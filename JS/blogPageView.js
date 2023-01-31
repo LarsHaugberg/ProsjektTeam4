@@ -56,6 +56,13 @@ function checkedValue() {
         return 'checked'
     }
 }
+function listblogPostPictures() {
+    let html = ``
+    for (let i = 0; i < model.data.blogPictures.length; i++) {
+        html += `<img onclick="choseEditorPicture(${i})" style="border-color:${model.data.blogPictures[i].editorBorder}" class="imgSelectorBox" src="${model.data.blogPictures[i].imageLink}">`
+    }
+    return html
+}
 
 function currentSelectedEditorPicture() {
 

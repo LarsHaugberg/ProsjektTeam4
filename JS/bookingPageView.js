@@ -81,7 +81,7 @@ function getMonthAsTable() {
                 if (started && date <= daysInSelectedMonth) {   // ----
                     day.setDate(day.getDate() + 1);
                     html += /*html*/`<td>                           
-                    <button class="date-button" onclick="selectDate(${day.getDate()})">
+                    <button ${getClassesForDateButton(date)}   onclick="selectDate(${day.getDate()})">
                       <!--  ${getDayName(day.getDay() -1 )}  <br />  -->
                          ${day.getDate()} <br />
                         <!-- Heldagspris: ${getPriceDay(day.getDay())} 
@@ -119,9 +119,8 @@ function getTimePicker() {
 
         for (let n = 0; n < columns; n++) {
             html += /*html*/`<td>
-            <button class="hour-button" onclick="">
+            <button class="hour-button" onclick="selectHour(${hour})">
                 ${hour} <br> ${getPriceHour()}
-                
             </button>                               
             </td>`;
             hour++;
@@ -138,7 +137,42 @@ function getTimePicker() {
 
 }
 
+function getClassesForDateButton(date){
+    const bookings = model.data.bookings;
+    let fleet = model.inputs.bookingPage.fleetChoice;
+    let fullYear = model.inputs.bookingPage.selectedDate.getFullYear();
+    let month = model.inputs.bookingPage.selectedDate.getMonth();
+    let countHours = 0;
+    for (const booking of bookings) {
+       if (booking.fleetId == fleet && 
+        booking.chosenDate.getFullYear() == fullYear &&
+        booking.chosenDate.getMonth() == month &&
+        booking.chosenDate.getDate() == date){   
+            countHours += booking.chosenHours.length;
+       } 
+    }
+    if(countHours > 18) {return 'class="date-button red-button"';}
+    if(countHours > 12) {return 'class="date-button light-red-button"';}
+    if(countHours > 1) {return 'class="date-button yellow-button"';}
 
+    return 'class="date-button"';
+}
+
+
+//alternativt:
+//return "date-button red-button"    på knapp:  class="${getClassesForDateBtton(date)}"
+
+
+
+
+/*
+for(let i = 0; i < bookings.length;i++){
+    booking = bookings[i];
+
+}
+for(let booking of bookings){
+    
+}*/
 
 
 

@@ -8,7 +8,7 @@ function selectFleet(fleetId){
     //setTimeAsSelected();
     updateView();
 }
-
+//ikke i bruk??
 function setTimeAsSelected(){
     let date = new Date();
     model.inputs.bookingPage.selectedDate = date.getDate();
@@ -95,16 +95,6 @@ function getPriceHour(){
 }
 
 
-function selectHour(hour){
-    model.inputs.bookingPage.selectedHours.push(hour);
-    
-    /* model.inputs.bookingPage.tmpPrices = []; */
-    //model.inputs.bookingPage.tmpPrices.push( sumHoursSelected() );
-    //model.inputs.bookingPage.tmpPrices.push( sumComfortChoices() );
-
-
-    updateView();
-}
 //returnerer samlet pris på timer valgt
 function sumHoursSelected(){
     let day = model.inputs.bookingPage.selectedDate.getDay();
@@ -117,8 +107,6 @@ function sumHoursSelected(){
         return  getPriceDay(day);
     }
     else return priceSum;
-        
-     
 }
 
 function sumComfortsSelected(){
@@ -150,6 +138,49 @@ function getPackageById(id){
     return null;
 }
 
+// velg timer til bestiling
+
+function selectHour(hour){
+    if (!checkIfHourIsSelected(hour)){
+        model.inputs.bookingPage.selectedHours.push(hour);
+    } else {unselectHour(hour);}
+    updateView();
+}
+
+function unselectHour(hour){
+    let indexToDelete = findHourIndexInSelected(hour);
+    model.inputs.bookingPage.selectedHours.splice(indexToDelete,1);
+    updateView();
+}
+
+function findHourIndexInSelected(hour){
+    for(let i = 0; i < model.inputs.bookingPage.selectedHours.length; i++){
+        if(hour == model.inputs.bookingPage.selectedHours[i]){
+            return i;
+        }
+    }
+    return null;
+}
+
+function checkIfHourIsSelected(hour){
+    for(let selectedHour of model.inputs.bookingPage.selectedHours){
+        if(hour === selectedHour){            
+            return true;
+        }
+
+    }
+    return false;
+}
+
+
+
+
+
+
+
+
+
+// sender av gåre bestiling
 function addBooking(){
     
 }

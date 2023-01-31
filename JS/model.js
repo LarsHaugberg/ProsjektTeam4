@@ -161,11 +161,11 @@ const model = {
         bookings: [
             {
                 orderId: 1,
-                fleetId: null,
+                fleetId: 0,
                 chosenPackage: null,
                 chosenComforts: [1],
                 chosenDate: new Date(),
-                chosenHours: [],
+                chosenHours: [9, 10, 11, 12, 13, 14, 15, 16],
                 customer: '',
                 totalPrice: 0,
             },
@@ -196,7 +196,16 @@ const model = {
             },
         ],
         
-        blogPictures: ['img/blogPicture1.jpg','img/blogPicture2.jpg'],
+        blogPictures: [
+            {
+                imageLink:'img/blogPicture1.jpg',
+                editorBorder: 'white',
+            },
+            {
+                imageLink:'img/blogPicture2.jpg',
+                editorBorder: 'white',
+            },
+        ],
         frontPagePictures: ['img/picture1.jpg', 'img/picture2.jpg', 'img/picture3.jpg',],
 
         daysInMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], //funker det å ha denne her?
