@@ -26,17 +26,12 @@
     <script>
         updateView()
         function updateView() {
+            let HTML = "";
             let currentPage = model.app.currentPage
-            if (currentPage == 'frontPage') {
-                updateFrontPageView()
-            }
-            if (currentPage == "bookingPage") {
-                updateBookingPageView()
-            }
-            if(currentPage == "blogPage") {
-                updateBlogPageView()
-            }
-            
+            if (currentPage == 'frontPage') { HTML = updateFrontPageView();}
+            if (currentPage == "bookingPage") { HTML = updateBookingPageView();}
+            if(currentPage == "blogPage") { HTML = updateBlogPageView();}
+            document.getElementById('app').innerHTML = HTML;
         }
     </script>
 </body>

@@ -73,11 +73,16 @@ function getDayName(dayIndex){
 
 
 }
-
+// let boolskVariabel = model.inputs.bookingPage.selectedDate.getDate() == date;
+/* if(!boolskVariabel){
+        emptySelection();
+    } */
 function selectDate(date){
+    if (model.inputs.bookingPage.selectedDate.getDate() != date) {
+        emptySelection();
+    }
     model.inputs.bookingPage.isDateSelected = true;
     model.inputs.bookingPage.selectedDate.setDate(date);
-
     updateView();
 }
 
@@ -172,7 +177,13 @@ function checkIfHourIsSelected(hour){
     return false;
 }
 
-
+function emptySelection(){
+    model.inputs.bookingPage.selectedHours = [];
+    model.inputs.bookingPage.packageChoice = null;
+    model.inputs.bookingPage.comfortChoices = [];
+    
+    updateView();
+}
 
 
 

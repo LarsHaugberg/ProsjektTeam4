@@ -1,34 +1,34 @@
 function updateBookingPageView() {
-    let HTML = /*html*/`
+    let HTML = /*HTML*/`
+    ${upperNavBar()}
     <h1>Booking Side</h1>
-        <button onclick="switchPage('frontPage')">Forside</button>
-        <button onclick="switchPage('blogPage')">Bloggside</button>
+    <hr/>
         ${getBookingPage()}`;
-    document.getElementById("app").innerHTML = HTML;
+    return HTML;
 }
 
 function getBookingPage() {
-    let html = '';
+    let HTML = '';
 
 
-    html += /*html*/`<div><b> Velg flåte: </b></div>`;
-    html += /*html*/`<div> <select id="fleetSelector" onchange="selectFleet(this.value)">
+    HTML += /*HTML*/`<div><b> Velg flåte: </b></div>`;
+    HTML += /*HTML*/`<div> <select id="fleetSelector" onchange="selectFleet(this.value)">
         <option value=""><i>- Flåte -</i></option>
     `;
 
     for (let fleet of model.data.fleets) {
-        html += /*html*/`<option ${isSelected(fleet.id)} value="${fleet.id}">${fleet.id} : ${fleet.name}</option>`;
+        HTML += /*HTML*/`<option ${isSelected(fleet.id)} value="${fleet.id}">${fleet.id} : ${fleet.name}</option>`;
     }
 
 
-    html += /*html*/`</select></div>`;
-    html += /*html*/`<div> Flåte valgt er: ${(model.inputs.bookingPage.fleetChoice || model.inputs.bookingPage.fleetChoice === 0) ? model.inputs.bookingPage.fleetChoice : ''} </div>`;
-    html += /*html*/`<button onclick="goToPrevMonth()">Forrige måned</button>`;
-    html += /*html*/`<button onclick="goToNextMonth()">Neste måned</button>`;
-    html += /*html*/`<br /><h3>${model.inputs.bookingPage.selectedDate.getFullYear()}<h3>`;
-    html += /*html*/`<br /><h3>${getSelectedMonthName()}<h3>`;
-    html += `${showCalendar()}`;
-    return html;
+    HTML += /*HTML*/`</select></div>`;
+    HTML += /*HTML*/`<div> Flåte valgt er: ${(model.inputs.bookingPage.fleetChoice || model.inputs.bookingPage.fleetChoice === 0) ? model.inputs.bookingPage.fleetChoice : ''} </div>`;
+    HTML += /*HTML*/`<button onclick="goToPrevMonth()">Forrige måned</button>`;
+    HTML += /*HTML*/`<button onclick="goToNextMonth()">Neste måned</button>`;
+    HTML += /*HTML*/`<br /><h3>${model.inputs.bookingPage.selectedDate.getFullYear()}<h3>`;
+    HTML += /*HTML*/`<br /><h3>${getSelectedMonthName()}<h3>`;
+    HTML += `${showCalendar()}`;
+    return HTML;
 }
 
 //kan denne ligge i viewet??
@@ -40,11 +40,11 @@ function isSelected(fleetId) {
 
 function showCalendar() {
     let selectedDate = model.inputs.bookingPage.selectedDate.getDate();
-    let html = getMonthAsTable();
-    //html += /*html*/`<br /> dato valgt: ${(selectedDate || selectedDate === 0)? selectedDate : ''} <br />`;
-    html += /*html*/`<br /> dato valgt: ${(model.inputs.bookingPage.fleetChoice || model.inputs.bookingPage.fleetChoice === 0) ? selectedDate : ''} <br />`;
-    html += getTimePicker();
-    return html;
+    let HTML = getMonthAsTable();
+    //HTML += /*HTML*/`<br /> dato valgt: ${(selectedDate || selectedDate === 0)? selectedDate : ''} <br />`;
+    HTML += /*HTML*/`<br /> dato valgt: ${(model.inputs.bookingPage.fleetChoice || model.inputs.bookingPage.fleetChoice === 0) ? selectedDate : ''} <br />`;
+    HTML += getTimePicker();
+    return HTML;
 
 
 }
@@ -55,7 +55,7 @@ function getMonthAsTable() {
     let day = new Date();
     let currentMonth = model.inputs.bookingPage.selectedDate.getMonth();
     let currentYear = model.inputs.bookingPage.selectedDate.getFullYear();
-    let html = `<table>`;
+    let HTML = `<table>`;
     let rows = 7;
     let columns = 7;
     let date = 1;
@@ -63,14 +63,14 @@ function getMonthAsTable() {
     let started = false;
 
     day.setFullYear(currentYear, currentMonth, 0);
-   // console.log('date0 sin ukedag: ' + day.getDay());
+    // console.log('date0 sin ukedag: ' + day.getDay());
     for (let a = 0; a < rows; a++) {//  ukene eks uke numer
         let startPostition = day.getDay();
-       // console.log('startposisjon: ' + startPostition);
-        html += "<tr>";
+        // console.log('startposisjon: ' + startPostition);
+        HTML += "<tr>";
         for (let b = 0; b < columns; b++) { // uke dager eks mandag tirsdag
             if (a == 0) { // øverste linje
-                html += /*html*/`<th>                           
+                HTML += /*HTML*/`<th>                           
                     ${getDayName(b)} 
                 </th>`;
             }
@@ -80,9 +80,9 @@ function getMonthAsTable() {
                 }
                 if (started && date <= daysInSelectedMonth) {   // ----
                     day.setDate(day.getDate() + 1);
-                    html += /*html*/`<td>                           
-                    <button ${getClassesForDateButton(date)}   onclick="selectDate(${day.getDate()})">
-                      <!--  ${getDayName(day.getDay() -1 )}  <br />  -->
+                    HTML += /*HTML*/`<td>                           
+                    <button class="${getClassesForDateButton(date)}" onclick="selectDate(${day.getDate()})">
+                      <!--  ${getDayName(day.getDay() - 1)}  <br />  -->
                          ${day.getDate()} <br />
                         <!-- Heldagspris: ${getPriceDay(day.getDay())} 
                         <br> Timespris: ${getPriceHour()} -->
@@ -91,88 +91,112 @@ function getMonthAsTable() {
                     date++;
                 }
                 else {
-                    html += '<td></td>';
+                    HTML += '<td></td>';
                     //console.log('tom plass');
                 }
 
             }
 
         }
-        html += "</tr>";
+        HTML += "</tr>";
     }
-    html += `</table>`;
-    html += `<p> Døgnpris: ${getPriceDay(model.inputs.bookingPage.selectedDate.getDay())} 
+    HTML += `</table>`;
+    HTML += `<p> Døgnpris: ${getPriceDay(model.inputs.bookingPage.selectedDate.getDay())} 
     <br> Timespris: ${getPriceHour()} </p>`
-    return html;
+    return HTML;
 }
 
 function getTimePicker() {
     //let hoursInDay = 24;
     let rows = 4;
     let columns = 6;
-    let html = `<table>`;
+    let HTML = `<table>`;
     let hour = 0;
-     
+
 
     for (let h = 0; h < rows; h++) {
-        html += `<tr>`;
+        HTML += `<tr>`;
 
         for (let n = 0; n < columns; n++) {
-            html += /*html*/`<td>
-            <button class="hour-button" onclick="selectHour(${hour})">
-                ${hour} <br> ${getPriceHour()}
+            HTML += /*HTML*/`<td>
+            <button class="${getClassesForHourButton(hour)}" onclick="selectHour(${hour})">
+                ${(hour < 10? "0" + hour: hour) + ':00'} <br> ${hour < 7 ? "" : getPriceHour()}
             </button>                               
             </td>`;
             hour++;
         }
-        html += "</tr>";
+        HTML += "</tr>";
     }
 
-    html += `</table>`;
-    if (model.inputs.bookingPage.isDateSelected){
-        return html;
-    } else{
+    HTML += `</table>`;
+    if (model.inputs.bookingPage.isDateSelected) {
+        return HTML;
+    } else {
         return "";
     }
 
 }
 
-function getClassesForDateButton(date){
+function getClassesForDateButton(date) {
     const bookings = model.data.bookings;
     let fleet = model.inputs.bookingPage.fleetChoice;
     let fullYear = model.inputs.bookingPage.selectedDate.getFullYear();
     let month = model.inputs.bookingPage.selectedDate.getMonth();
     let countHours = 0;
-    for (const booking of bookings) {
-       if (booking.fleetId == fleet && 
-        booking.chosenDate.getFullYear() == fullYear &&
-        booking.chosenDate.getMonth() == month &&
-        booking.chosenDate.getDate() == date){   
-            countHours += booking.chosenHours.length;
-       } 
+    if (date == model.inputs.bookingPage.selectedDate.getDate()) {
+        return "date-button blue-button";
     }
-    if(countHours > 18) {return 'class="date-button red-button"';}
-    if(countHours > 12) {return 'class="date-button light-red-button"';}
-    if(countHours > 1) {return 'class="date-button yellow-button"';}
+    for (const booking of bookings) {
+        if (booking.fleetId == fleet &&
+            booking.chosenDate.getFullYear() == fullYear &&
+            booking.chosenDate.getMonth() == month &&
+            booking.chosenDate.getDate() == date) {
+            countHours += booking.chosenHours.length;
+        }
+    }
+    if (countHours > 18) { return "date-button red-button"; }
+    if (countHours > 12) { return "date-button light-red-button"; }
+    if (countHours > 1) { return "date-button yellow-button"; }
 
-    return 'class="date-button"';
+    return "date-button";
 }
+
+function getClassesForHourButton(hour) {
+    const bookings = model.data.bookings;
+    let fleet = model.inputs.bookingPage.fleetChoice;
+    let fullYear = model.inputs.bookingPage.selectedDate.getFullYear();
+    let month = model.inputs.bookingPage.selectedDate.getMonth();
+    let date = model.inputs.bookingPage.selectedDate.getDate();
+
+    if (hour < 7) {return "hour-button un-selectable";}
+    for (let b = 0; b < bookings.length; b++) {
+        let booking = bookings[b];
+        if (booking.fleetId == fleet &&
+            booking.chosenDate.getFullYear() == fullYear &&
+            booking.chosenDate.getMonth() == month &&
+            booking.chosenDate.getDate() == date) {
+            for (let i = 0; i < booking.chosenHours.length; i++) {
+                let bookedHour = booking.chosenHours[i];
+                if (bookedHour == hour) {
+                    return "hour-button red-button";
+                }
+            }
+        }
+    }
+    if (checkIfHourIsSelected(hour) == true) {
+        return "hour-button blue-button";
+    }
+    return "hour-button";
+}
+
+
 
 
 //alternativt:
-//return "date-button red-button"    på knapp:  class="${getClassesForDateBtton(date)}"
+//return "date-button"    på knapp:  class="${getClassesForDateButton(date)}"
 
 
 
-
-/*
-for(let i = 0; i < bookings.length;i++){
-    booking = bookings[i];
-
-}
-for(let booking of bookings){
-    
-}*/
 
 
 

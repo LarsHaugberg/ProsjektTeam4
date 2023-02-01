@@ -1,3 +1,4 @@
+
 const model = {
 
     app: {
@@ -28,8 +29,7 @@ const model = {
 
             titlePost: '',
             currentPost: '',
-            pictureIsChecked: false,
-
+        
         },
 
     },

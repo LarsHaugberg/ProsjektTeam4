@@ -1,78 +1,58 @@
 function updateBlogPageView() {
     let HTML = /*HTML*/`
-    <h1>Bloggen</h1>
+            ${upperNavBar()}
+        <h1>Ida's Mental Helse Blogg</h1>
+        <button onclick="openEditorModal()">NyBloggPost</button>
         <hr/>
-        ${navBar()}
-            <button onclick="switchPage('frontPage')">Forside</button>
-            <button onclick="switchPage('bookingPage')">BookingSide</button>
-            <button onclick="openNewPostModal()">Ny Post</button>
-        <hr/>
+            ${bottomNavBar()}
+            
         <div class="blogWrapper">
-            ${listBlogPosts()} 
+            ${listAllBlogPosts()} 
         </div>
             ${getModal()}
         </div>
         
         `;
-    document.getElementById("app").innerHTML = HTML;
+        return HTML;
 }
 
-function getModal() {
+function getModal() { // Legger modal i HTML så den blir åpnet når vi endrer modal modellen til 'block'
     let HTML = /*HTML*/`
-    <div id="myModal" class="modal" style="display:${model.modal}">
+    <div class="modal" style="display:${model.modal}">
     <div class="modal-content">
         <span onclick="closeModal()" class="close">&times;</span>
         <p>
-           ${getModalContent()} 
+           ${model.app.modalContent} 
         </p> 
             </div>`;
     return HTML
 }
-function listBlogPosts() {
+
+function listAllBlogPosts() { // Looper igjennom alle blogpost arrayet og viser dem på blogsiden
     let HTML = ``;
     for (let index = model.data.blogPosts.length - 1; index > -1; index--) {
         HTML += /*HTML*/`
-            <h1 onclick="openBlogPostModaX(${index})">${model.data.blogPosts[index].postTitle}</h1>
+            <h1 onclick="openSelectedBlogPostModal(${index})">${model.data.blogPosts[index].postTitle}</h1>
             ${checkIfPostHasImg(index)}
             <div>${model.data.blogPosts[index].postText}<div>
-        
             `;
     }
     return HTML;
 }
 
-function editorPictureIsChecked() {
-    if (model.inputs.blogPage.pictureIsChecked == false) {
-        return true
-    } else {
-        return false
-    }
-}
-
-function checkedValue() {
-    if (model.inputs.blogPage.pictureIsChecked == false) {
-        return ''
-    } else {
-        return 'checked'
-    }
-}
-function listblogPostPictures() {
-    let html = ``
+function listEditorPictures() { // Looper igjennom blogpost bilde arrayet og viser dem på editor modalen
+    let HTML = ``
     for (let i = 0; i < model.data.blogPictures.length; i++) {
-        html += `<img onclick="choseEditorPicture(${i})" style="border-color:${model.data.blogPictures[i].editorBorder}" class="imgSelectorBox" src="${model.data.blogPictures[i].imageLink}">`
+        HTML += `<img onclick="choseEditorPicture(${i})" 
+        style="border-color:${model.data.blogPictures[i].editorBorder}" 
+        class="imgSelectorBox" src="${model.data.blogPictures[i].imageLink}">`;
     }
-    return html
+    return HTML;
 }
 
-function currentSelectedEditorPicture() {
 
-    return model.data.blogPictures[model.app.editorPicture];
-}
 
-function getModalContent() {
 
-    return model.app.modalContent
-}
 
 
 
