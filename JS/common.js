@@ -13,6 +13,12 @@ function closeModal() { // Endrer modal modellen så den blir lukket
     updateView()
 }
 
+function outsideModalClickClose(event){ // lukker modalen når du klikker på utsiden
+    if (!event.target.closest(".modal-content")) {
+      closeModal();
+    } 
+}
+
 function sendToWebPage(webPage) { // Linker ikonene på navBarBottom til SoMe sidene
     if (webPage == 'instagram') {
         window.open('https://www.instagram.com')
@@ -59,6 +65,7 @@ function upperNavBar() { // Tegner opp navBar øverst på siden
             <a onclick="switchPage('frontPage')">Forside</a>
             <a onclick="switchPage('bookingPage')">BookingSide</a>
             <a onclick="switchPage('blogPage')">Bloggside</a>
+            
             <div class="dropdown">
                 <button class="dropbtn">AdminSide
                 <i class="fa fa-caret-down"></i>
@@ -69,7 +76,16 @@ function upperNavBar() { // Tegner opp navBar øverst på siden
                     <a href="#">Admin 3</a>
                 </div>
             </div> 
+            <a onclick="switchPage('loginPage')">${showCurrentLoggedInUser()}</a>
         </div>
     `;
     return HTML;
+}
+
+function showCurrentLoggedInUser(){
+    let HTML = ``
+    if(model.app.currentUser == ''){
+        HTML = 'LoginSide'
+    } else { HTML = 'Logget inn som ' + model.app.currentUser}
+    return HTML
 }

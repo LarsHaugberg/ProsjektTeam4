@@ -1,33 +1,28 @@
 function updateFrontPageView() {
-    let HTML = /*HTML*/`
-        ${upperNavBar()}
-    <h1>Ida's Badestue Utleie</h1>
-        <hr/>
+    let HTML = /*HTML*/
+    `   
+         ${upperNavBar()}
+        <h1>Ida's Badestue Utleie</h1>
+            <hr/>
             ${bottomNavBar()}
-    <div class="frontPagePictureBox">
-        <img class="frontPageImages fill" 
-        src="${model.data.frontPagePictures[model.app.currentPicture]}">
-    </div>
-        <button onclick="changeFrontPagePicture('<')"><</button>
-        <button onclick="changeFrontPagePicture('>')">></button>
-        ${listLatestBlogPosts()}
-    <div>
-        ${getBlogPostModal()}
-    </div>
+        <div class="frontPagePictureBox">
+            <img class="frontPageImages fill" 
+            src="${model.data.frontPagePictures[model.app.currentPicture]}">
+        </div>
+            <button onclick="changeFrontPagePicture('<')"><</button>
+            <button onclick="changeFrontPagePicture('>')">></button>
+            ${listLatestBlogPosts()}
+        <div>
+            ${getBlogPostModal()}
+        </div>
     `;
-
     return HTML;
-}
-
-function outsideModalClickClose(event){ // lukker modalen når du klikker på utsiden
-        if (!event.target.closest(".modal-content")) {
-          closeModal();
-        } 
 }
 
 function listLatestBlogPosts() { // Oppdaterer forsiden med den siste blogposten i arrayet
     let index = model.data.blogPosts.length - 1
-    let HTML = /*HTML*/ `
+    let HTML = /*HTML*/ 
+    `
         <div>
             <a href="#" onclick="openModal()">
                 <h1 >${model.data.blogPosts[index].postTitle}</h1>
@@ -41,8 +36,8 @@ function listLatestBlogPosts() { // Oppdaterer forsiden med den siste blogposten
 
 function getBlogPostModal() { // Legger modal i HTML så den blir åpnet når vi endrer modal modellen til 'block'
     let index = model.data.blogPosts.length - 1
-    let HTML = /*HTML*/ `
-    
+    let HTML = /*HTML*/ 
+    `
         <div onclick="outsideModalClickClose(event)" class="modal" style="display:${model.modal}">
             <div class="modal-content">
                 <button onclick="closeModal()" class="close">&times;</button>

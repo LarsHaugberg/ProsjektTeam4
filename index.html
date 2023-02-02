@@ -15,6 +15,10 @@
     <script src="JS/bookingPageController.js"></script>
     <script src="JS/blogPageController.js"></script>
     <script src="JS/common.js"></script>
+    <script src="JS/loginPageView.js"></script>
+    <script src="JS/loginPageController.js"></script>
+    <script src="JS/newUserPageController.js"></script>
+    <script src="JS/newUserPageView.js"></script>
     <title>Ida's badstueutleie</title>
 
 </head>
@@ -30,7 +34,9 @@
             let currentPage = model.app.currentPage
             if (currentPage == 'frontPage') { HTML = updateFrontPageView();}
             if (currentPage == "bookingPage") { HTML = updateBookingPageView();}
-            if(currentPage == "blogPage") { HTML = updateBlogPageView();}
+            if (currentPage == "blogPage") { HTML = updateBlogPageView();}
+            if (currentPage == 'loginPage') { HTML = updateLoginPageView();}
+            if (currentPage == 'newUserPage') { HTML = updateUserPageView();}
             document.getElementById('app').innerHTML = HTML;
         }
     </script>

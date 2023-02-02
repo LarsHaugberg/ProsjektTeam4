@@ -3,16 +3,20 @@ const model = {
 
     app: {
         currentPage: 'frontPage',
-        currentUser: 'admin',
+        currentUser: '',
         currentPicture: 0, // 'img/picture1.jpg',  // src="/badebilde.jpg"
         editorPicture: 0,
         modalContent: '',
-        
+
     },
     modal: 'none',
-    
+
 
     inputs: {
+        loginPage: {
+            userName:'',
+            password:'',
+        },
         frontPage: {
         },
         bookingPage: {
@@ -29,28 +33,44 @@ const model = {
 
             titlePost: '',
             currentPost: '',
-        
+
         },
 
     },
 
     data: { // Husk og fylle ut alle verdier
+        users: [
+            {
+                name: 'admin',
+                adress: 'admin adresse',
+                phoneNumber: 'admin tlf',
+                email: 'admin@mail',
+                password: '1234',
+            },
+            {
+                name: 'ola norman',
+                adress: 'hytti heiti 3',
+                phoneNumber: '12341234',
+                email: 'ola.norman@gmail.com',
+                password: 'Sommer2020',
+            },
+        ],
         packageOptions: [
             {
                 id: 0,
                 name: 'Jentekveld (6 stk)',
                 price: {
-                    weekdayPrice: 5264, 
+                    weekdayPrice: 5264,
                     weekendPrice: 7664,
                 },
                 hours: 4,
                 comforts: [
-                    {id: 0, quantity: 4,}, 
-                    {id: 1, quantity: 6,},
-                    {id: 2, quantity: 6,}, 
-                    {id: 3, quantity: 6,},
-                    {id: 4, quantity: 1,},
-                    {id: 5, quantity: 6,},
+                    { id: 0, quantity: 4, },
+                    { id: 1, quantity: 6, },
+                    { id: 2, quantity: 6, },
+                    { id: 3, quantity: 6, },
+                    { id: 4, quantity: 1, },
+                    { id: 5, quantity: 6, },
                 ],
 
             },
@@ -58,17 +78,17 @@ const model = {
                 id: 1,
                 name: 'Jentekveld (4 stk)',
                 price: {
-                    weekdayPrice: 3454, 
+                    weekdayPrice: 3454,
                     weekendPrice: 5184,
                 },
                 hours: 4,
                 comforts: [
-                    {id: 0, quantity: 3,}, 
-                    {id: 1, quantity: 4,},
-                    {id: 2, quantity: 4,}, 
-                    {id: 3, quantity: 4,},
-                    {id: 4, quantity: 1,},
-                    {id: 5, quantity: 4,},
+                    { id: 0, quantity: 3, },
+                    { id: 1, quantity: 4, },
+                    { id: 2, quantity: 4, },
+                    { id: 3, quantity: 4, },
+                    { id: 4, quantity: 1, },
+                    { id: 5, quantity: 4, },
                 ],
 
             },
@@ -76,32 +96,32 @@ const model = {
                 id: 2,
                 name: 'Familie pakke (4 stk)',
                 price: {
-                    weekdayPrice: 1904, 
+                    weekdayPrice: 1904,
                     weekendPrice: 2304,
                 },
                 hours: 1,
                 comforts: [
-                    {id: 1, quantity: 4,},
-                    {id: 2, quantity: 4,}, 
-                    {id: 3, quantity: 4,},
-                    {id: 4, quantity: 1,},
-                    {id: 5, quantity: 4,},
+                    { id: 1, quantity: 4, },
+                    { id: 2, quantity: 4, },
+                    { id: 3, quantity: 4, },
+                    { id: 4, quantity: 1, },
+                    { id: 5, quantity: 4, },
                 ],
             },
             {
                 id: 3,
                 name: 'Familie pakke (5 stk)',
                 price: {
-                    weekdayPrice: 2464, 
+                    weekdayPrice: 2464,
                     weekendPrice: 2864,
                 },
                 hours: 1,
                 comforts: [
-                    {id: 1, quantity: 5,},
-                    {id: 2, quantity: 5,}, 
-                    {id: 3, quantity: 5,},
-                    {id: 4, quantity: 1,},
-                    {id: 5, quantity: 5,},
+                    { id: 1, quantity: 5, },
+                    { id: 2, quantity: 5, },
+                    { id: 3, quantity: 5, },
+                    { id: 4, quantity: 1, },
+                    { id: 5, quantity: 5, },
                 ],
 
             },
@@ -109,17 +129,17 @@ const model = {
                 id: 4,
                 name: 'Standard pakke (2 stk)',
                 price: {
-                    weekdayPrice: 1504, 
+                    weekdayPrice: 1504,
                     weekendPrice: 2304,
                 },
                 hours: 2,
                 comforts: [
-                    {id: 0, quantity: 1,}, 
-                    {id: 1, quantity: 2,},
-                    {id: 2, quantity: 2,}, 
-                    {id: 3, quantity: 2,},
-                    {id: 4, quantity: 1,},
-                    {id: 5, quantity: 2,},
+                    { id: 0, quantity: 1, },
+                    { id: 1, quantity: 2, },
+                    { id: 2, quantity: 2, },
+                    { id: 3, quantity: 2, },
+                    { id: 4, quantity: 1, },
+                    { id: 5, quantity: 2, },
                 ],
 
             },
@@ -195,14 +215,14 @@ const model = {
                 postPicture: 'img/blogPicture2.jpg',
             },
         ],
-        
+
         blogPictures: [
             {
-                imageLink:'img/blogPicture1.jpg',
+                imageLink: 'img/blogPicture1.jpg',
                 editorBorder: 'white',
             },
             {
-                imageLink:'img/blogPicture2.jpg',
+                imageLink: 'img/blogPicture2.jpg',
                 editorBorder: 'white',
             },
         ],
@@ -225,4 +245,18 @@ const model = {
 // Datafunksjoner for priser i kalender
 //
 //Hvordan lagre datoer med priser? controller-funksjon som regner ut pris og ser om dag valgt er helg eller ikke?
-//
+// 
+/*  forslag til sumeringen inputs for booking siden
+vare    antal   sum
+pakke4:    1   1504       
+arstn
+iaersnt
+ernis
+Timer     4    2000
+vin       2     400
+shogbalsm 1     100  
+minevann  2     100
+-------------------
+total sum      4104
+
+*/

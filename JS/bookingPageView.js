@@ -3,7 +3,7 @@ function updateBookingPageView() {
     ${upperNavBar()}
     <h1>Booking Side</h1>
     <hr/>
-    ${bottomNavBar()}
+    
         ${getBookingPage()}`;
        
     return HTML;
@@ -30,7 +30,8 @@ function getBookingPage() {
     HTML += /*HTML*/`<button onclick="goToNextMonth()">Neste måned</button>`;
     HTML += /*HTML*/`<br /><h3>${model.inputs.bookingPage.selectedDate.getFullYear()}<h3>`;
     HTML += /*HTML*/`<br /><h3>${getSelectedMonthName()}<h3>`;
-    HTML += `${showCalendar()}`;
+    HTML += `${showCalendar()} ${getBookingInput()}
+    `;
     return HTML;
 }
 
@@ -195,21 +196,66 @@ function getClassesForHourButton(hour) {
 
 function getBookingInput(){
     let HTML = `
-    <div>
+    <div> 
+    ${getComfortDropdown()}
+    ${getInputComfortChoices()}
     
-    
-    
-    
-    
-    `;
+    </div>    
+    ` 
+    return HTML;
 }
 
 function getComfortDropdown(){
+    let HTML =/* HTML */`
+    <div><select onchange="selectComfort(this.value)"> 
+    <option value=""><i>- comforts -</i></option>
+    `;
 
+    for (let i = 0; i < model.data.comforts.length; i++) {
+        const comfort = model.data.comforts[i];
+        HTML += `<option value="${comfort.id}">${comfort.id} : ${comfort.name}</option>`;
+    }
+    
+    HTML += `</select></div>    
+    
+    `
+    return HTML;
+    
 }
-function getInputComfortChoices(){ 
 
+function getInputComfortChoices(){
+	let comfortList = [];
+	for(let dataComfort of model.data.comforts){
+		let comfortCount = 0;
+		for(let comfortId of model.inputs.bookingPage.comfortChoices){
+			if(dataComfort.id == comfortId){
+				comfortCount++;
+			}
+		}
+        if(comfortCount > 0){
+		    comfortList.push({id: dataComfort.id, count: comfortCount});
+        }
+	}
+			
+	let html = '<div>';
+	html += `<ul>`;
+	
+	for(let comfort of comfortList){
+		html += /*html*/`<li>${getComfortById(comfort.id).name} antall: ${comfort.count} sum: ${getComfortById(comfort.id).price * comfort.count}</li>`;
+	}
+	
+	html += '</ul></div>';
+	return html;
+	
 }
+
+
+
+
+
+
+
+
 
 
 /*  
