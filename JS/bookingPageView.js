@@ -3,9 +3,12 @@ function updateBookingPageView() {
     ${upperNavBar()}
     <h1>Booking Side</h1>
     <hr/>
+    ${bottomNavBar()}
         ${getBookingPage()}`;
+       
     return HTML;
 }
+
 
 function getBookingPage() {
     let HTML = '';
@@ -190,6 +193,35 @@ function getClassesForHourButton(hour) {
 }
 
 
+function getBookingInput(){
+    let HTML = `
+    <div>
+    
+    
+    
+    
+    
+    `;
+}
+
+function getComfortDropdown(){
+
+}
+function getInputComfortChoices(){ 
+
+}
+
+
+/*  
+
+
+getBookingInput() inneholder alt inkludert nedenforstående funksjoners returverdi samt total pris og bestillingsknapp
+
+getComfortsInput()
+getComfortDropdown()
+
+getSelectedComfortList()
+getInputComfortChoices()
 
 
 //alternativt:
@@ -198,7 +230,7 @@ function getClassesForHourButton(hour) {
 
 
 
-
+*/
 
 
 

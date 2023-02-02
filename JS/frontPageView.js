@@ -15,7 +15,14 @@ function updateFrontPageView() {
         ${getBlogPostModal()}
     </div>
     `;
+
     return HTML;
+}
+
+function outsideModalClickClose(event){ // lukker modalen når du klikker på utsiden
+        if (!event.target.closest(".modal-content")) {
+          closeModal();
+        } 
 }
 
 function listLatestBlogPosts() { // Oppdaterer forsiden med den siste blogposten i arrayet
@@ -35,7 +42,8 @@ function listLatestBlogPosts() { // Oppdaterer forsiden med den siste blogposten
 function getBlogPostModal() { // Legger modal i HTML så den blir åpnet når vi endrer modal modellen til 'block'
     let index = model.data.blogPosts.length - 1
     let HTML = /*HTML*/ `
-        <div class="modal" style="display:${model.modal}">
+    
+        <div onclick="outsideModalClickClose(event)" class="modal" style="display:${model.modal}">
             <div class="modal-content">
                 <button onclick="closeModal()" class="close">&times;</button>
                  <p>
@@ -45,6 +53,7 @@ function getBlogPostModal() { // Legger modal i HTML så den blir åpnet når vi
                 </p> 
             </div>
         </div>
+       
     `;
     return HTML; 
 }

@@ -18,7 +18,7 @@ function updateBlogPageView() {
 
 function getModal() { // Legger modal i HTML så den blir åpnet når vi endrer modal modellen til 'block'
     let HTML = /*HTML*/`
-    <div class="modal" style="display:${model.modal}">
+    <div onclick="outsideModalClickClose(event)" class="modal" style="display:${model.modal}">
     <div class="modal-content">
         <span onclick="closeModal()" class="close">&times;</span>
         <p>

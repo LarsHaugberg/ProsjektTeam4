@@ -185,7 +185,10 @@ function emptySelection(){
     updateView();
 }
 
-
+function selectComfort(comfortId){
+    model.inputs.bookingPage.comfortChoices.push(comfortId);
+    updateView();
+}
 
 
 
