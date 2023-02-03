@@ -1,6 +1,3 @@
-
-
-
 function selectFleet(fleetId){
     model.inputs.bookingPage.fleetChoice = fleetId;
     console.log('fleet Id:' + fleetId);

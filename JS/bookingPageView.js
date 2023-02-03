@@ -35,7 +35,6 @@ function getBookingPage() {
     return HTML;
 }
 
-//kan denne ligge i viewet??
 function isSelected(fleetId) {
     if (fleetId == model.inputs.bookingPage.fleetChoice) return 'selected="selected"';
     else return '';
@@ -65,12 +64,10 @@ function getMonthAsTable() {
     let date = 1;
     let daysInSelectedMonth = model.data.daysInMonth[currentMonth];
     let started = false;
-
     day.setFullYear(currentYear, currentMonth, 0);
-    // console.log('date0 sin ukedag: ' + day.getDay());
+
     for (let a = 0; a < rows; a++) {//  ukene eks uke numer
         let startPostition = day.getDay();
-        // console.log('startposisjon: ' + startPostition);
         HTML += "<tr>";
         for (let b = 0; b < columns; b++) { // uke dager eks mandag tirsdag
             if (a == 0) { // øverste linje
@@ -96,11 +93,8 @@ function getMonthAsTable() {
                 }
                 else {
                     HTML += '<td></td>';
-                    //console.log('tom plass');
                 }
-
             }
-
         }
         HTML += "</tr>";
     }
