@@ -8,11 +8,10 @@ function updateAdminPagePictureView() { // Viser viewet på administratorsiden f
             class="adminpage-picture-box">  <img class="front-page-images fill" 
             src="${model.data.frontPagePictures[model.app.currentPicture].imageLink}">
         </div><br>
-            <div 
-                class="adminpage-arraylist-box"> ${adminPagePictureLoop()}
-                <button onclick="adminPageUploadPicture()" class="adminpage-arraylist-box-button">LAST OPP</button>
-            </div><br>
-    
+        <div class="adminpage-arraylist-box-wrapper">
+            <div class="adminpage-arraylist-box"> ${adminPagePictureLoop()}</div><br>
+            <button onclick="adminPageUploadPicture()">LAST OPP</button>
+        </div>
     </div>
     `;
     return HTML;

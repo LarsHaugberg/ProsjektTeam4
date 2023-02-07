@@ -192,7 +192,7 @@ const model = {
 
         bookings: [
             {
-                orderId: 1,
+                orderId: 0,
                 fleetId: 0,
                 chosenPackage: null,
                 chosenComforts: [1],

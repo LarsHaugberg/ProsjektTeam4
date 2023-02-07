@@ -17,7 +17,7 @@ function getClassesForDateButton(date) {
     }
     if (countHours > 18) { return "date-button red-button"; }
     if (countHours > 12) { return "date-button light-red-button"; }
-    if (countHours > 1) { return "date-button yellow-button"; }
+    if (countHours > 0) { return "date-button yellow-button"; }
     return "date-button";
 }
 

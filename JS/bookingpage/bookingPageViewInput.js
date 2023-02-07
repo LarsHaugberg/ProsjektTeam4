@@ -34,7 +34,11 @@ function getInputComfortChoices(){
 	
 	for(let comfort of comfortList){
 		html += /*html*/`<li>${getComfortById(comfort.id).name} antall: ${comfort.count} 
-        sum: ${getComfortById(comfort.id).price * comfort.count}</li>`;
+        sum: ${getComfortById(comfort.id).price * comfort.count}
+		<button onclick="comfortAmount('subtract', ${comfort.id})">-</button>
+		<button onclick="comfortAmount('add', ${comfort.id})">+</button>
+		<button onclick="deleteComfortChoicesByComfortId(${comfort.id})">x</button>
+		</li>`;
 	}
 	html += '</ul></div>';
 	return html;

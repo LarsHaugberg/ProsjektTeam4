@@ -1,7 +1,9 @@
 function updateBookingPageView() {
     let HTML = /*HTML*/`
     ${upperNavBar()}
-    <h1>Booking Side</h1> <hr/> ${getBookingPage()}`;
+    <h1>Booking Side</h1> <hr/> <div class="booking-wrapper" > ${getBookingPage()} </div>
+    ${bottomNavBar()}
+    `;
     return HTML;
 }
 
@@ -23,7 +25,8 @@ function getBookingPage() {
     HTML += /*HTML*/`<button onclick="goToNextMonth()">Neste måned</button>`;
     HTML += /*HTML*/`<br /><h3>${model.inputs.bookingPage.selectedDate.getFullYear()}<h3>`;
     HTML += /*HTML*/`<br /><h3>${getSelectedMonthName()}<h3>`;
-    HTML += `${showCalendar()} ${getBookingInput()}
+    HTML += /*HTML*/`${showCalendar()} ${getBookingInput()}
+    <button onclick="addBooking()">Bestill</button>
     `;
     return HTML;
 }

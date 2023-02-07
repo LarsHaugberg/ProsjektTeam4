@@ -1,6 +1,5 @@
 function selectFleet(fleetId) {
     model.inputs.bookingPage.fleetChoice = fleetId;
-    console.log('fleet Id:' + fleetId);
     updateView();
 }
 
@@ -77,14 +76,47 @@ function getNewBookingId(){
 
 // sender av gåre bestiling
 function addBooking() {
-    let booking = {};
-    booking.orderId = getNewBookingId();
-    booking.fleetId = 0;
-    booking.chosenPackage = null;
-    booking.chosenComforts = model.inputs.bookingPage.comfortChoices;
-    booking.chosenDate = "";
-    booking.chosenHours = 
-    booking.customer
-    booking.totalPrice
-    model.data.bookings.push()
+    let newBooking = {};
+    newBooking.orderId = getNewBookingId();
+    newBooking.fleetId = Number(model.inputs.bookingPage.fleetChoice);
+    newBooking.chosenPackage = null;
+    newBooking.chosenComforts = model.inputs.bookingPage.comfortChoices.map((x) => x);
+    newBooking.chosenDate = new Date(model.inputs.bookingPage.selectedDate.valueOf());
+    newBooking.chosenHours = model.inputs.bookingPage.selectedHours.map((x) => x);
+    newBooking.customer = model.app.currentUser;
+    newBooking.totalPrice = totalSum();
+    if (model.inputs.bookingPage.selectedHours.length < 1) { return; }
+    model.data.bookings.push(newBooking);
+    emptySelection();
+    updateView();
+    console.log(newBooking);
+}
+
+function comfortAmount(amount, comfortId) {
+    let value = 0;
+    if(amount == 'add'){ 
+        model.inputs.bookingPage.comfortChoices.push(comfortId);
+    }
+    if(amount == 'subtract'){ 
+        for(let i = 0; i < model.inputs.bookingPage.comfortChoices.length; i++){
+            if(model.inputs.bookingPage.comfortChoices[i] == comfortId){
+                model.inputs.bookingPage.comfortChoices.splice(i, 1);
+            }
+        }
+    }
+    updateView();
+}
+
+function reset(index){
+    model.inputs.bookingPage.comfortChoices.splice(index);
+}
+
+function deleteComfortChoicesByComfortId(comfortId){
+	for(let i = 0; i < model.inputs.bookingPage.comfortChoices.length; i++){
+		let id = model.inputs.bookingPage.comfortChoices[i];
+		if(getComfortById(id).id == comfortId){
+			model.inputs.bookingPage.comfortChoices.splice(i, 1);
+		}
+	}
+    updateView();
 }
