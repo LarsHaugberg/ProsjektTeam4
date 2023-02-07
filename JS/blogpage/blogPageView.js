@@ -6,10 +6,11 @@ function updateBlogPageView() {
         <button onclick="openEditorModal()">NyBloggPost</button>
         <hr/>
         ${bottomNavBar()}
-        <div class="blogWrapper">
+        <div class="blog-wrapper">
             ${listAllBlogPosts()}
             ${getModal()} 
         </div>
+        
     `;
     return HTML;
 }
@@ -49,7 +50,7 @@ function listEditorPictures() { // Looper igjennom blogpost bilde arrayet og vis
         `
             <img onclick="chooseEditorPicture(${i})" 
             style="border-color:${model.data.blogPictures[i].editorBorder}" 
-            class="imgSelectorBox" src="${model.data.blogPictures[i].imageLink}">
+            class="img-selector-box" src="${model.data.blogPictures[i].imageLink}">
         `;
     }
     return HTML;

@@ -1,5 +1,5 @@
-function login(){
-    let attempt = ''
+function login(){ // Sjekker om username og passord stemmer overens med det som står i inputfeltene i loginView. 
+    let attempt = '';
 for (let i = 0; i < model.data.users.length; i++) {
     if(model.inputs.loginPage.userName == model.data.users[i].name)
     {

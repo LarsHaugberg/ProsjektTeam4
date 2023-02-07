@@ -5,14 +5,14 @@ function updateFrontPageView() {
         <h1>Ida's Badestue Utleie</h1>
             <hr/>
             ${bottomNavBar()}
-        <div class="frontPagePictureBox">
-            <img class="frontPageImages fill" 
-            src="${model.data.frontPagePictures[model.app.currentPicture]}">
+        <div class="frontpage-picture-box">
+            <img class="front-page-images fill" 
+            src="${model.data.frontPagePictures[model.app.currentPicture].imageLink}">
         </div>
             <button onclick="changeFrontPagePicture('<')"><</button>
             <button onclick="changeFrontPagePicture('>')">></button>
             ${listLatestBlogPosts()}
-        <div>
+        <div class="blog-wrapper">
             ${getBlogPostModal()}
         </div>
     `;

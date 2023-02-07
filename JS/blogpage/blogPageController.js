@@ -29,7 +29,7 @@ function updateEditorModalContent() { // Oppdaterer modal view på editor modal
         >${model.inputs.blogPage.currentPost}</textarea> 
         <br>
         <h5>Velg et av bildene for og få det med i blogginnlegget</h5>
-        <div class="editorPictureContainer">${listEditorPictures()}</div>
+        <div class="editor-picture-container">${listEditorPictures()}</div>
             <br>
             <button type="submit" onclick="generateNewBlogPost()">Lag post</button>
         </div>

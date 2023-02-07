@@ -1,6 +1,5 @@
-
 const model = {
-
+    modal: 'none',
     app: {
         currentPage: 'frontPage',
         currentUser: '',
@@ -9,13 +8,19 @@ const model = {
         modalContent: '',
 
     },
-    modal: 'none',
-
 
     inputs: {
         loginPage: {
-            userName:'',
-            password:'',
+            userName: '',
+            password: '',
+        },
+        newUserPage: {
+            name: '',
+            adress: '',
+            phone: '',
+            email: '',
+            password: '',
+            confirmedPassword: '',
         },
         frontPage: {
         },
@@ -45,6 +50,13 @@ const model = {
                 adress: 'admin adresse',
                 phoneNumber: 'admin tlf',
                 email: 'admin@mail',
+                password: '1234',
+            },
+            {
+                name: 'test',
+                adress: 'hytti heiti 3',
+                phoneNumber: '12341234',
+                email: 'test@gmail.com',
                 password: '1234',
             },
             {
@@ -184,7 +196,7 @@ const model = {
                 fleetId: 0,
                 chosenPackage: null,
                 chosenComforts: [1],
-                chosenDate: new Date(),
+                chosenDate: new Date(),// string av booket dato
                 chosenHours: [9, 10, 11, 12, 13, 14, 15, 16],
                 customer: '',
                 totalPrice: 0,
@@ -226,7 +238,21 @@ const model = {
                 editorBorder: 'white',
             },
         ],
-        frontPagePictures: ['img/picture1.jpg', 'img/picture2.jpg', 'img/picture3.jpg',],
+        frontPagePictures: [
+            {
+                imageLink: 'img/picture1.jpg',
+                pictureTitle: 'Picture1',
+            },
+            {
+                imageLink: 'img/picture2.jpg',
+                pictureTitle: 'Picture2',
+            },
+            {
+                imageLink: 'img/picture3.jpg',
+                pictureTitle: 'Picture3',
+            }
+            
+        ],
 
         daysInMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], //funker det å ha denne her?
         hoursInDay: 24,
@@ -238,8 +264,6 @@ const model = {
             weekendPriceDay: 5000,
         },
     },
-
-
 }
 // Hvordan går man frem for og lage en kalender og data modell for det?
 // Datafunksjoner for priser i kalender

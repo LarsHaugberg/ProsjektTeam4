@@ -1,4 +1,4 @@
-function changeFrontPagePicture(selector){
+function changeFrontPagePicture(selector){ //Bytter bilder på frontsiden ettersom man trykker på knappene
 	let frontPagePictures = model.data.frontPagePictures;
 
 	if(selector === '>'){

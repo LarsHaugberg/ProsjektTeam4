@@ -1,16 +1,21 @@
 body {
     margin: 0;
     padding: 0;
+    padding-top: 30px;
+    
+}
+.blog-wrapper {
+  padding-bottom: 50px;
 }
 
 /* FrontPage Styling*/
-.frontPagePictureBox {
+.frontpage-picture-box {
   height: 300px;
   width: 300px;
   background-color: rgb(48, 50, 42);
 
 }
-.frontPageImages {
+.front-page-images {
   
   object-fit: cover;
   width: 100%;
@@ -19,13 +24,26 @@ body {
 /* FrontPage Styling*/
 
 /* NavBar Top */
-.navbarTop {
-  overflow: hidden;
+.navbar-top {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  overflow: visible;
   background-color: #333;
+  height: 47px
+  
 }
 
-.navbarTop a {
+.navbar-top a {
   float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.navbar-top b {
+  float: right;
   font-size: 16px;
   color: white;
   text-align: center;
@@ -78,30 +96,38 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 /* NavBar Bottom */
-.navbarBottom {
+.navbar-bottom {
     position: fixed;
     bottom: 0;
     width: 100%;
     color: rgb(9, 9, 9);
     text-align: center;
     background-color: #333;;
-    padding: 10px; 
+    padding: 0px; 
+    height: 35px;
+    overflow: hidden;
+    
   }
   .img {
     height: 30px;
     width: 30px;
+    padding: 0px;
+    margin: 0px;
     
   }
-  .navbarBottom a:hover {
+  .navbar-bottom a:hover {
     background-color: rgb(243, 239, 239);
   }
-  .navbarBottom a {
+  .navbar-bottom a {
     text-decoration: none;
     padding: 25px;
+    
   }
   .social-icon {
-    font-size: 20px;
+    font-size: 10px;
+    
   }
 /* NavBarBottom */
 
@@ -123,7 +149,7 @@ body {
   width: 80%; /* Could be more or less, depending on screen size */
   height: 60%;
 }
-.imgSelectorBox {
+.img-selector-box {
   height: 100px;
   width: 100px;
   border: solid;
@@ -156,8 +182,34 @@ body {
 }
 /* -Modal Styling- */
 
-
-
+/* -AdminPage Styling- */
+.adminpage-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+.adminpage-picture-box {
+  height: 400px;
+  width: 400px;
+  margin: 100px;
+}
+.adminpage-arraylist-box {
+  display: grid;
+  grid-template-columns: (1fr 1fr 1fr);
+  grid-template-rows:repeat(8, 30px);
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  background-color: hotpink;
+  margin: 100px;
+}
+.adminpage-arraylist-box-button{
+  
+  align-self: flex-end;
+}
+.adminpage-removebutton{
+  margin: 20px;
+  padding: 1px;
+}
 
 
 /*Til bookingPage*/

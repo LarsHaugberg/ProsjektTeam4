@@ -13,10 +13,10 @@ function closeModal() { // Endrer modal modellen så den blir lukket
     updateView()
 }
 
-function outsideModalClickClose(event){ // lukker modalen når du klikker på utsiden
+function outsideModalClickClose(event) { // lukker modalen når du klikker på utsiden
     if (!event.target.closest(".modal-content")) {
-      closeModal();
-    } 
+        closeModal();
+    }
 }
 
 function sendToWebPage(webPage) { // Linker ikonene på navBarBottom til SoMe sidene
@@ -36,11 +36,11 @@ function sendToWebPage(webPage) { // Linker ikonene på navBarBottom til SoMe si
 
 function checkIfPostHasImg(index) { // Sjekker om blogposten inneholder et bilde, hvis den ikke har det så sender den ikke med IMG HTML
     let temp;
-        if (model.data.blogPosts[index].postPicture == undefined) { return '' }
-        else {
+    if (model.data.blogPosts[index].postPicture == undefined) { return '' }
+    else {
         temp = /*HTML*/`  
-            <div class="frontPagePictureBox">
-                <img class="frontPageImages fill" src="${model.data.blogPosts[index].postPicture}">
+            <div class="frontpage-picture-box">
+                <img class="front-page-images fill" src="${model.data.blogPosts[index].postPicture}">
             </div>
         `;
         return temp
@@ -49,7 +49,7 @@ function checkIfPostHasImg(index) { // Sjekker om blogposten inneholder et bilde
 
 function bottomNavBar() { // Tegner opp navBar nederst på siden
     let HTML = /*HTML*/`
-        <div class="navbarBottom">
+        <div class="navbar-bottom">
             <a onclick="sendToWebPage('youtube')"><img class="img" src="img/youtube.png"></a>
             <a onclick="sendToWebPage('twitter')"><img class="img" src="img/twitter.png"></a>
             <a onclick="sendToWebPage('facebook')"><img class="img" src="img/facebook.png"></a>
@@ -59,33 +59,65 @@ function bottomNavBar() { // Tegner opp navBar nederst på siden
     return HTML
 }
 
-function upperNavBar() { // Tegner opp navBar øverst på siden
-    let HTML = /*HTML*/ `
-        <div class="navbarTop">
+function upperNavBar() { // Tegner opp navBar øverst på siden // Skal vi skrive den om og trekke ut? Spør Joachim
+    let HTML = ``;
+    if (model.app.currentUser == 'admin') {
+        HTML = /*HTML*/ `
+        <div class="navbar-top">
             <a onclick="switchPage('frontPage')">Forside</a>
             <a onclick="switchPage('bookingPage')">BookingSide</a>
             <a onclick="switchPage('blogPage')">Bloggside</a>
-            
-            <div class="dropdown">
+            <b onclick="logOutUser()">Logg UT</b>
+        <div class="dropdown">
                 <button class="dropbtn">AdminSide
                 <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">Admin 1</a>
-                    <a href="#">Admin 2</a>
-                    <a href="#">Admin 3</a>
+                    <a onclick="switchPage('adminPagePicture')">AdminBildeSide</a>
+                    <a onclick="switchPage('adminPageComfort')">AdminComfortSide</a>
+                    <a onclick="switchPage('adminPageBooking')">AdminBookingSide</a>
                 </div>
-            </div> 
+        </div> 
             <a onclick="switchPage('loginPage')">${showCurrentLoggedInUser()}</a>
         </div>
+     
     `;
+    } else if (model.app.currentUser != '' && model.app.currentUser != 'admin') {
+        HTML = /*HTML*/ `
+    
+        <div class="navbar-top">
+            <a onclick="switchPage('frontPage')">Forside</a>
+            <a onclick="switchPage('bookingPage')">BookingSide</a>
+            <a onclick="switchPage('blogPage')">Bloggside</a>
+            <b onclick="logOutUser()">Logg UT</b>
+            <a onclick="switchPage('loginPage')">${showCurrentLoggedInUser()}</a>
+        </div>
+     
+    `;
+    }
+    if (model.app.currentUser == '') {
+        HTML = /*HTML*/` 
+        <div class="navbar-top">
+            <a onclick="switchPage('frontPage')">Forside</a>
+            <a onclick="switchPage('bookingPage')">BookingSide</a>
+            <a onclick="switchPage('blogPage')">Bloggside</a>
+            <a onclick="switchPage('loginPage')">${showCurrentLoggedInUser()}</a>
+        </div>`;
+    }
     return HTML;
 }
 
-function showCurrentLoggedInUser(){
+function showCurrentLoggedInUser() { // Viser frem hvilken user som er logget inn i Navbaren
     let HTML = ``
-    if(model.app.currentUser == ''){
+    if (model.app.currentUser == '') {
         HTML = 'LoginSide'
-    } else { HTML = 'Logget inn som ' + model.app.currentUser}
+    } else {HTML = 'Logget inn som ' + model.app.currentUser }
     return HTML
+}
+
+function logOutUser() { // Logo out knappen
+    model.app.currentUser = '';
+    alert('Du har nå logget ut')
+    updateView()
+
 }
