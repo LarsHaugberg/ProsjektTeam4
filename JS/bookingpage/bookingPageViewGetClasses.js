@@ -15,7 +15,7 @@ function getClassesForDateButton(date) {
             countHours += booking.chosenHours.length;
         }
     }
-    if (countHours > 18) { return "date-button red-button"; }
+    if (countHours >= 17) { return "date-button red-button"; }
     if (countHours > 12) { return "date-button light-red-button"; }
     if (countHours > 0) { return "date-button yellow-button"; }
     return "date-button";

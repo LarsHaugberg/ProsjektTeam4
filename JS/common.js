@@ -67,6 +67,7 @@ function upperNavBar() { // Tegner opp navBar øverst på siden // Skal vi skriv
             <a onclick="switchPage('frontPage')">Forside</a>
             <a onclick="switchPage('bookingPage')">BookingSide</a>
             <a onclick="switchPage('blogPage')">Bloggside</a>
+            <a onclick="switchPage('blogPage'),openEditorModal()">Ny blogpost</a>
             <b onclick="logOutUser()">Logg UT</b>
         <div class="dropdown">
                 <button class="dropbtn">AdminSide

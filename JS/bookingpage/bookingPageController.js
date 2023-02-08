@@ -28,7 +28,7 @@ function getComfortById(id) {
     }
     return null;
 }
-
+// totalsum
 function totalSum() {
     return sumHoursSelected() + sumComfortsSelected();
 }
@@ -92,27 +92,24 @@ function addBooking() {
     console.log(newBooking);
 }
 
-function comfortAmount(amount, comfortId) {
-    let value = 0;
-    if(amount == 'add'){ 
-        model.inputs.bookingPage.comfortChoices.push(comfortId);
-    }
-    if(amount == 'subtract'){ 
-        for(let i = 0; i < model.inputs.bookingPage.comfortChoices.length; i++){
-            if(model.inputs.bookingPage.comfortChoices[i] == comfortId){
-                model.inputs.bookingPage.comfortChoices.splice(i, 1);
-            }
+function addComfort(comfortId){
+    model.inputs.bookingPage.comfortChoices.push(comfortId);
+    updateView();
+
+}
+
+function subtractComfort(comfortId){
+    for(let i = model.inputs.bookingPage.comfortChoices.length -1; i >= 0 ; i--){
+        if(model.inputs.bookingPage.comfortChoices[i] == comfortId){
+            model.inputs.bookingPage.comfortChoices.splice(i, 1);
+            break;
         }
-    }
+    }  
     updateView();
 }
 
-function reset(index){
-    model.inputs.bookingPage.comfortChoices.splice(index);
-}
-
 function deleteComfortChoicesByComfortId(comfortId){
-	for(let i = 0; i < model.inputs.bookingPage.comfortChoices.length; i++){
+	for(let i = model.inputs.bookingPage.comfortChoices.length -1; i >= 0 ; i--){
 		let id = model.inputs.bookingPage.comfortChoices[i];
 		if(getComfortById(id).id == comfortId){
 			model.inputs.bookingPage.comfortChoices.splice(i, 1);

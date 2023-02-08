@@ -108,7 +108,3 @@ function getDayName(dayIndex){
     if(dayIndex == 6) return 'Søn';
     else return 'error day' + dayIndex;
 }
-
-/*  ${getDayName(day.getDay() - 1)}  <br />  */
-/*  Heldagspris: ${getPriceDay(day.getDay())} 
-<br> Timespris: ${getPriceHour()} */

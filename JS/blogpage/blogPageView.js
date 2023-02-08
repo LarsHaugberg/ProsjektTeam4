@@ -3,7 +3,6 @@ function updateBlogPageView() {
     `
         ${upperNavBar()}
         <h1>Ida's Mental Helse Blogg</h1>
-        <button onclick="openEditorModal()">NyBloggPost</button>
         <hr/>
         ${bottomNavBar()}
         <div class="blog-wrapper">

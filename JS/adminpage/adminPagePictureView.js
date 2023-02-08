@@ -10,7 +10,7 @@ function updateAdminPagePictureView() { // Viser viewet på administratorsiden f
         </div><br>
         <div class="adminpage-arraylist-box-wrapper">
             <div class="adminpage-arraylist-box"> ${adminPagePictureLoop()}</div><br>
-            <button onclick="adminPageUploadPicture()">LAST OPP</button>
+            <button onclick="adminPageUploadPicture()" class="adminpage-uploadbutton">LAST OPP</button>
         </div>
     </div>
     `;

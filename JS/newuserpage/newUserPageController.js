@@ -27,6 +27,7 @@ function generateNewUsers() {  //Generer ny bruker basert på verdiene i input f
             model.inputs.newUserPage.email = '';
             model.inputs.newUserPage.password = '';
             model.inputs.newUserPage.confirmedPassword = '';
+            switchPage('loginPage')
             updateView()
         } else alert("Passordene er ikke like")
     }

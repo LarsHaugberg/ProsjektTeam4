@@ -2,7 +2,7 @@ const model = {
     modal: 'none',
     app: {
         currentPage: 'frontPage',
-        currentUser: '',
+        currentUser: 'admin',
         currentPicture: 0, // 'img/picture1.jpg',  // src="/badebilde.jpg"
         editorPicture: 0,
         modalContent: '',
@@ -10,6 +10,19 @@ const model = {
     },
 
     inputs: {
+
+        
+
+        adminPageComfort: {
+            price: '',
+            product:  '',
+            weekdayHourPrice: '',
+            weekdayDayPrice: '',
+            weekendHourPrice: '',
+            weekendDayPrice: '',
+            selectPackage: 0,
+        },
+
         loginPage: {
             userName: '',
             password: '',
