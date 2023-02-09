@@ -8,7 +8,7 @@ function updateAdminPageComfortView() { // Viser viewet på administratorsiden f
     <br><br><br>
     ${comfortsExtraProductLoop()}
     <br><br><br><br><br><br><br><br><br><br><br>
-    <input type="text" onchange="model.inputs.adminPageComfort.price = this.value" placeholder="Pris"/>
+    <input type="number" onchange="model.inputs.adminPageComfort.price = this.value" placeholder="Pris"/>
     <input type="text" onchange="model.inputs.adminPageComfort.product = this.value" placeholder="Vare"/>
     <button onclick="addComfortsInComfortsArray()"> Legg til produkter</button>
     </div>    
@@ -31,9 +31,13 @@ function updateAdminPageComfortView() { // Viser viewet på administratorsiden f
     <select onchange="changePackageEditorContent(this.value) ">${packageOptionsSelector()}</select>
     
     ${showPackageEditor()}
-    <br><br><br><br><br><br><br><br><br><br><br><br>
-    <button> Legg til pakke</button>
+    <br>
+    
+    <input type="text" onchange="model.inputs.adminPageComfort.packageProduct = this.value" placeholder="Vare"/> <button>Legg til Vare</button><br><br><br>
+    <button> Legg til pakke</button><br>
+    
     <button onclick="removePackage()">fjærn pakke</button>
+
     </div>
     </div>
 

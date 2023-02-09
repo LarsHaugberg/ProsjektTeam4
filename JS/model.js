@@ -21,6 +21,7 @@ const model = {
             weekendHourPrice: '',
             weekendDayPrice: '',
             selectPackage: 0,
+            packageProduct: '',
         },
 
         loginPage: {
@@ -90,14 +91,13 @@ const model = {
                 },
                 hours: 4,
                 comforts: [
-                    { id: 0, quantity: 4, },
-                    { id: 1, quantity: 6, },
-                    { id: 2, quantity: 6, },
-                    { id: 3, quantity: 6, },
-                    { id: 4, quantity: 1, },
-                    { id: 5, quantity: 6, },
+                    { name: 'Vin',              quantity: 4, },
+                    { name: 'shampo og balsam', quantity: 6, },
+                    { name: 'håndklær',         quantity: 6, },
+                    { name: 'mineralvann',      quantity: 6, },
+                    { name: 'aroma',            quantity: 1, },
+                    { name: 'Badekåpe',         quantity: 6, },
                 ],
-
             },
             {
                 id: 1,
@@ -108,14 +108,13 @@ const model = {
                 },
                 hours: 4,
                 comforts: [
-                    { id: 0, quantity: 3, },
-                    { id: 1, quantity: 4, },
-                    { id: 2, quantity: 4, },
-                    { id: 3, quantity: 4, },
-                    { id: 4, quantity: 1, },
-                    { id: 5, quantity: 4, },
+                    { name: 'Vin',              quantity: 3, },
+                    { name: 'shampo og balsam', quantity: 4, },
+                    { name: 'håndklær',         quantity: 4, },
+                    { name: 'mineralvann',      quantity: 4, },
+                    { name: 'aroma',            quantity: 1, },
+                    { name: 'Badekåpe',         quantity: 4, },
                 ],
-
             },
             {
                 id: 2,
@@ -126,11 +125,11 @@ const model = {
                 },
                 hours: 1,
                 comforts: [
-                    { id: 1, quantity: 4, },
-                    { id: 2, quantity: 4, },
-                    { id: 3, quantity: 4, },
-                    { id: 4, quantity: 1, },
-                    { id: 5, quantity: 4, },
+                    { name: 'shampo og balsam', quantity: 4, },
+                    { name: 'håndklær',         quantity: 4, },
+                    { name: 'mineralvann',      quantity: 4, },
+                    { name: 'aroma',            quantity: 1, },
+                    { name: 'Badekåpe',         quantity: 4, },
                 ],
             },
             {
@@ -142,11 +141,11 @@ const model = {
                 },
                 hours: 1,
                 comforts: [
-                    { id: 1, quantity: 5, },
-                    { id: 2, quantity: 5, },
-                    { id: 3, quantity: 5, },
-                    { id: 4, quantity: 1, },
-                    { id: 5, quantity: 5, },
+                    { name: 'shampo og balsam', quantity: 5, },
+                    { name: 'håndklær',         quantity: 5, },
+                    { name: 'mineralvann',      quantity: 5, },
+                    { name: 'aroma',            quantity: 1, },
+                    { name: 'Badekåpe',         quantity: 5, },
                 ],
 
             },
@@ -159,12 +158,12 @@ const model = {
                 },
                 hours: 2,
                 comforts: [
-                    { id: 0, quantity: 1, },
-                    { id: 1, quantity: 2, },
-                    { id: 2, quantity: 2, },
-                    { id: 3, quantity: 2, },
-                    { id: 4, quantity: 1, },
-                    { id: 5, quantity: 2, },
+                    { name: 'Vin',              quantity: 1, },
+                    { name: 'shampo og balsam', quantity: 2, },
+                    { name: 'håndklær',         quantity: 2, },
+                    { name: 'mineralvann',      quantity: 2, },
+                    { name: 'aroma',            quantity: 1, },
+                    { name: 'Badekåpe',         quantity: 2, },
                 ],
 
             },

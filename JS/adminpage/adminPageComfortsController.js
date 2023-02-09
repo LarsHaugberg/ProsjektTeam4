@@ -25,10 +25,11 @@ function addComfortsInComfortsArray() { // Legge til comforts objekter
 function loopComfortsArray() { // Returnerer ID til  addComfortsInComfortsArray() funksjonen
     let counter = 0;
     for (let i = 0; i < model.data.comforts.length; i++) {
-        counter++
+        while (counter == model.data.comforts[i].id) { counter++ }
     }
     return counter;
 }
+
 function comittPriceChanges() { // Samlefunksjon som sjekker verdien i inputfeltet 
     checkWeekdayPriceHour()     // eventuelt beholder verdien om de er tomme
     checkWeekdayPriceDay()
@@ -89,20 +90,42 @@ function changePackageEditorContent(index) { // Tar i mot select sin value og en
 function packageOptionsComfortLoop() { // Retunerer HTML med innholdet i valgt pakke
     let HTML =
         `
-        PakkeNavn : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name}<br>
-        Ukedags pris : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].price.weekdayPrice}<br>
-        Helgepris : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].price.weekendPrice}<br>
-        timer : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].hours}<br>`
-    for (let i = 0; i < model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts.length; i++) {
-        HTML += ` 
-        <li>${model.data.comforts[i].name}: 
-        antall: ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts[i].quantity}
-        </li>
+        PakkeNavn :  ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name} <input type="text"/><br><br>
+        Ukedags pris : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].price.weekdayPrice} <input type="number"/><br><br>
+        Helgepris : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].price.weekendPrice} <input type="number"/><br><br>
+        timer : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].hours}&nbsp;<button>▲</button> <button>▼</button><br><br> 
         `
+    for (let i = 0; i < model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts.length; i++) {
+        HTML +=
+            ` 
+        <li>${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts[i].name} : 
+        antall: ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts[i].quantity} &nbsp; 
+        <button onclick="addSubtractQuantity('▲',${i})">▲</button> 
+        <button onclick="addSubtractQuantity('▼',${i})">▼</button>
+        <button onclick="adminPageRemoveComfortFromPackage(${i})">X</button> <br><br>
+        
+        </li>
+        `;
     }
-
     return HTML
 }
+
+function adminPageRemoveComfortFromPackage(index) {
+    model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts.splice(index, 1)
+    updateView()
+}
+
+function addSubtractQuantity(toDo, product) {
+    let quantityInPackage = model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts
+    if (toDo == '▼' && quantityInPackage[product].quantity != 0) {
+        quantityInPackage[product].quantity--;
+    }
+    else { quantityInPackage[product].quantity++; }
+    updateView()
+}
+
+
+/* <input type="number" placeholder="${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts[i].quantity}"/> */
 
 function removePackage() { // Fjerner valgt pakke fra arrayet
     model.data.packageOptions.splice(model.inputs.adminPageComfort.selectPackage, 1)
