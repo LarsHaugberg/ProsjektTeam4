@@ -110,12 +110,12 @@ function packageOptionsComfortLoop() { // Retunerer HTML med innholdet i valgt p
     return HTML
 }
 
-function adminPageRemoveComfortFromPackage(index) {
+function adminPageRemoveComfortFromPackage(index) { // Sletter objekter fra packageOptions arrayet
     model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts.splice(index, 1)
     updateView()
 }
 
-function addSubtractQuantity(toDo, product) {
+function addSubtractQuantity(toDo, product) { // Øker eller senker antall produkter
     let quantityInPackage = model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts
     if (toDo == '▼' && quantityInPackage[product].quantity != 0) {
         quantityInPackage[product].quantity--;
