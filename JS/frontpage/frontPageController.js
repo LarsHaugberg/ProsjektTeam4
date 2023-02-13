@@ -13,4 +13,4 @@ function changeFrontPagePicture(selector){ //Bytter bilder på frontsiden etters
 		}	
 	}
 	updateView()
-}
+} 

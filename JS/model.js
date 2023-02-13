@@ -1,5 +1,7 @@
 const model = {
     modal: 'none',
+   
+    
     app: {
         currentPage: 'frontPage',
         currentUser: 'admin',

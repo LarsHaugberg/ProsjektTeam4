@@ -40,7 +40,7 @@ function getBlogPostModal() { // Legger modal i HTML så den blir åpnet når vi
     `
         <div onclick="outsideModalClickClose(event)" class="modal" style="display:${model.modal}">
             <div class="modal-content">
-                <button onclick="closeModal()" class="close">&times;</button>
+                <span onclick="closeModal()" class="close">&times;</span>
                  <p>
                     <h1>${model.data.blogPosts[index].postTitle}</h1>
                         ${checkIfPostHasImg(index)}
