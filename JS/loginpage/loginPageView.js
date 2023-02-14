@@ -1,7 +1,6 @@
 function updateLoginPageView() {  
     let HTML = /*HTML*/
-    `   ${upperNavBar()}
-        ${bottomNavBar()}
+    `   
         <h1> Login side </h1>
         <form> 
         <input 

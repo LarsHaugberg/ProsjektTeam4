@@ -1,7 +1,6 @@
 function updateUserPageView() { // Alle inputfeltene som tar imot bruker data 
     let HTML = /*HTML*/
-        `   ${upperNavBar()}
-        ${bottomNavBar()}
+        `   
         <h1> LAG NY BRUKER </h1>
         <input 
             type="text" placeholder="Navn"

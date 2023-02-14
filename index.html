@@ -17,8 +17,8 @@
 
     <!-- blogPage -->
     <script src="JS/blogpage/blogPageView.js"></script>
-    <script src="JS/blogpage/blogPageController.js"></script>   
-    
+    <script src="JS/blogpage/blogPageController.js"></script>
+
     <!-- login -->
     <script src="JS/loginpage/loginPageView.js"></script>
     <script src="JS/loginpage/loginPageController.js"></script>
@@ -53,21 +53,21 @@
 
 <body>
     <div id="app"></div>
-    
+
 
     <script>
         updateView()
         function updateView() {
-            let HTML = "";
+            let HTML = upperNavBar() + bottomNavBar();
             let currentPage = model.app.currentPage
-            if (currentPage == 'frontPage') { HTML = updateFrontPageView();}
-            if (currentPage == "bookingPage") { HTML = updateBookingPageView();}
-            if (currentPage == "blogPage") { HTML = updateBlogPageView();}
-            if (currentPage == 'loginPage') { HTML = updateLoginPageView();}
-            if (currentPage == 'newUserPage') { HTML = updateUserPageView();}
-            if (currentPage == 'adminPagePicture') { HTML = updateAdminPagePictureView();}
-            if (currentPage == 'adminPageComfort') { HTML = updateAdminPageComfortView();}
-            if (currentPage == 'adminPageBooking') { HTML = updateAdminPageBookingView();}
+            if (currentPage == 'frontPage') { HTML += updateFrontPageView(); }
+            if (currentPage == "bookingPage") { HTML += updateBookingPageView(); }
+            if (currentPage == "blogPage") { HTML += updateBlogPageView(); }
+            if (currentPage == 'loginPage') { HTML += updateLoginPageView(); }
+            if (currentPage == 'newUserPage') { HTML += updateUserPageView(); }
+            if (currentPage == 'adminPagePicture') { HTML += updateAdminPagePictureView(); }
+            if (currentPage == 'adminPageComfort') { HTML += updateAdminPageComfortView(); }
+            if (currentPage == 'adminPageBooking') { HTML += updateAdminPageBookingView(); }
             document.getElementById('app').innerHTML = HTML;
         }
     </script>

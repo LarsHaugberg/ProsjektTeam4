@@ -1,10 +1,8 @@
 function updateFrontPageView() {
     let HTML = /*HTML*/
     `   
-         ${upperNavBar()}
         <h1>Ida's Badestue Utleie</h1>
-            <hr/>
-            ${bottomNavBar()}
+            <hr/> 
         <div class="frontpage-picture-box">
             <img class="front-page-images fill" 
             src="${model.data.frontPagePictures[model.app.currentPicture].imageLink}">

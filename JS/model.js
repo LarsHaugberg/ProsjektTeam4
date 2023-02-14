@@ -8,13 +8,9 @@ const model = {
         currentPicture: 0, // 'img/picture1.jpg',  // src="/badebilde.jpg"
         editorPicture: 0,
         modalContent: '',
-
     },
 
     inputs: {
-
-        
-
         adminPageComfort: {
             price: '',
             product:  '',
@@ -24,6 +20,10 @@ const model = {
             weekendDayPrice: '',
             selectPackage: 0,
             packageProduct: '',
+            weekendPrice: 0,
+            weekdayPrice: 0,
+            packageName: '',
+            selectPackageDropdown: null,
         },
 
         loginPage: {

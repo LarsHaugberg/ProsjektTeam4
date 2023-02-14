@@ -1,7 +1,5 @@
 function updateAdminPagePictureView() { // Viser viewet på administratorsiden for bildebehandling
     let HTML = /*HTML*/ `
-    ${upperNavBar()}
-    ${bottomNavBar()}
     <h1> Administrator side for bildebehanlding</h1>
     <div class="adminpage-wrapper">
         <div 

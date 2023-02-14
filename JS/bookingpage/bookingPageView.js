@@ -1,8 +1,8 @@
 function updateBookingPageView() {
     let HTML = /*HTML*/`
-    ${upperNavBar()}
-    <h1>Booking Side</h1> <hr/> <div class="booking-wrapper" > ${getBookingPage()} </div>
-    ${bottomNavBar()}
+    <h1>Booking Side</h1> <hr/> <div class="booking-wrapper" > 
+    ${getBookingPage()} 
+    </div>
     `;
     return HTML;
 }
@@ -26,8 +26,9 @@ function getBookingPage() {
     HTML += /*HTML*/`<br /><h3>${model.inputs.bookingPage.selectedDate.getFullYear()}<h3>`;
     HTML += /*HTML*/`<br /><h3>${getSelectedMonthName()}<h3>`;
     HTML += /*HTML*/`${showCalendar()} ${getBookingInput()}
-    <button onclick="packageModalContent()">Pakker</button>
+    <button onclick="packageModalContentTEST()">Pakker</button>
     <button onclick="addBooking()">Bestill</button>
+    <div>${getModal()}</div>
     `;
     return HTML;
 }

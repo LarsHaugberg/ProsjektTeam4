@@ -1,10 +1,8 @@
 function updateBlogPageView() {
     let HTML = /*HTML*/
     `
-        ${upperNavBar()}
         <h1>Ida's Mental Helse Blogg</h1>
         <hr/>
-        ${bottomNavBar()}
         <div class="blog-wrapper">
             ${listAllBlogPosts()}
             ${getModal()} 
@@ -12,21 +10,6 @@ function updateBlogPageView() {
         
     `;
     return HTML;
-}
-
-function getModal() { // Legger modal i HTML så den blir åpnet når vi endrer modal modellen til 'block'
-    let HTML = /*HTML*/
-    `
-        <div onclick="outsideModalClickClose(event)" class="modal" style="display:${model.modal}">
-            <div class="modal-content">
-                <span onclick="closeModal()" class="close">&times;</span>
-                <p>
-                 ${model.app.modalContent} 
-                </p> 
-            </div>
-        </div>
-    `;
-    return HTML
 }
 
 function listAllBlogPosts() { // Looper igjennom alle blogpost arrayet og viser dem på blogsiden
