@@ -51,7 +51,9 @@ function packageModalContent() {
 }
 
 function addPackageToInputs(id){
-    model.inputs.bookingPage.packageChoice = id;
+    //model.inputs.bookingPage.packageChoice = id;
+    let packageToCopy = getPackageById(id);
+    model.inputs.bookingPage.packageChoice = JSON.parse(JSON.stringify(packageToCopy));
     closeModal();
     console.log(id);
 }

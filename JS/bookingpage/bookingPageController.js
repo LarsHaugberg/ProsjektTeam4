@@ -79,7 +79,10 @@ function addBooking() {
     let newBooking = {};
     newBooking.orderId = getNewBookingId();
     newBooking.fleetId = Number(model.inputs.bookingPage.fleetChoice);
-    newBooking.chosenPackage = null;
+                                                                                            //kopierer objektet
+    if(model.inputs.bookingPage.chosenPackage){newBooking.chosenPackage = JSON.parse(JSON.stringify(model.inputs.bookingPage.chosenPackage));}
+    else {newBooking.chosenPackage = null;}
+
     newBooking.chosenComforts = model.inputs.bookingPage.comfortChoices.map((x) => x);
     newBooking.chosenDate = new Date(model.inputs.bookingPage.selectedDate.valueOf());
     newBooking.chosenHours = model.inputs.bookingPage.selectedHours.map((x) => x);
@@ -116,4 +119,12 @@ function deleteComfortChoicesByComfortId(comfortId){
 		}
 	}
     updateView();
+}
+
+function getFleetNameById(id) {
+    for (let fleet of model.data.fleets) {
+        if (id == fleet.id)
+            return fleet.name;
+    }
+    return null;
 }

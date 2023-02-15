@@ -45,6 +45,11 @@ function selectHour(hour){
 }*/
 
 function selectHour(hour){
+    //denne if er foreløping ikke testet...
+    if(model.inputs.bookingPage.packageChoice){
+		selectPackageHours(hour);
+		return;
+	}
 
     if(!checkIfHourIsSelected(hour)){
 		if(model.inputs.bookingPage.selectedHours.length > 0){
@@ -158,4 +163,44 @@ function checkIfHourIsSelected(hour){
         }
     }
     return false;
+}
+
+
+
+//forelopig ikke testet...
+function selectPackageHours(hour){
+	
+	if(checkIfHourIsSelected(hour)){
+			model.inputs.bookingPage.selectedHours = [];
+			updateView();
+			return;
+	}
+    if(model.inputs.bookingPage.selectedHours.length > 0){
+        console.log('fungerer denne if-en??');
+		model.inputs.bookingPage.selectedHours = [];
+        
+		
+	}
+    					//getPackageById(model.inputs.bookingPage.packageChoice).hours;
+    let hoursToSelect = model.inputs.bookingPage.packageChoice.hours;
+    for(let i = 0; i < hoursToSelect; i++){
+        let packageHour = hour + i;
+        if(checkIfHourIsBooked(packageHour) || packageHour > 23){
+            //model.app.msg = "Velg et annet tidspunkt";
+            console.log('velg et annet tidspunkt!');
+            model.inputs.bookingPage.selectedHours = [];
+            updateView();
+            return;
+        }
+        else{
+            model.inputs.bookingPage.selectedHours.push(packageHour);
+        }
+    
+        
+        
+    }
+    
+    updateView();
+    return;
+	
 }

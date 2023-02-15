@@ -11,34 +11,27 @@ function updateBookingPageView() {
 function getBookingPage() {
     let HTML = '';
 
-    HTML += /*HTML*/`<div><b> Velg flåte: </b></div>
-    <img src="img/picture1.jpg" alt="flåte1" width="262" height="192">
-    <img src="img/picture3.jpg" alt="flåte2" width="274" height="184">
-    <button onclick="packageModalContent()">Pakker</button>
-    <img onclick="selectFleet(${model.data.fleets.id})" src="/img/picture1.jpg" alt="flåte1" width="262" height="192">
-    <img onclick="selectFleet(${model.data.fleets.id})" src="/img/picture3.jpg" alt="flåte2" width="274" height="184">
+    HTML += /*HTML*/`<div><b> Velg flåte: </b></div>`;
+     
+    for (let fleet of model.data.fleets) {
+        HTML += /* html */ `<div class="booking-image" onclick="selectFleet(${fleet.id})">${fleet.img}</div>`;
+    }
 
-   
-     <div><select id="fleetSelector" onchange="selectFleet(this.value)">
-         <option value=""><i>- Flåte -</i></option>`;
 
-        for (let fleet of model.data.fleets) {
-            HTML += /*HTML*/`<option ${isSelected(fleet.id)} value="${fleet.id}">${fleet.id} : ${fleet.name}</option>`;
-        }
-
-        HTML += /*HTML*/`</select>
-    </div>
+    HTML += /*HTML*/`
+    
     <div> 
-        Flåte valgt er: ${(model.inputs.bookingPage.fleetChoice || model.inputs.bookingPage.fleetChoice === 0) ? model.inputs.bookingPage.fleetChoice : ''} 
+        Flåte valgt er: ${fleetNameChosen()} 
     </div>
     <button onclick="goToPrevMonth()">Forrige måned</button> 
-    <button onclick="goToNextMonth()">Neste måned</button><br>
+    <button onclick="goToNextMonth()">Neste måned</button>
+    <button class="pakker-btn" onclick="packageModalContent()">Pakker</button>
+    <br>
 
     <h3>${getSelectedMonthName()} ${model.inputs.bookingPage.selectedDate.getFullYear()} <h3>
     ${showCalendar()} 
     <div>
         <div>
-            
             ${getComfortDropdown()} 
         </div>
             ${getInputComfortChoices()} 
@@ -56,4 +49,14 @@ function isSelected(fleetId) {
     else return '';
 }
 
+function fleetNameChosen(){
+   if (model.inputs.bookingPage.fleetChoice === 1){
+    return getFleetNameById(1);
+   } 
+   if(model.inputs.bookingPage.fleetChoice === 0) {
+    return getFleetNameById(0);
+   }else{ 
+    return ''}
+
+}
 

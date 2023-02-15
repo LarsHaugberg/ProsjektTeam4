@@ -225,13 +225,13 @@ const model = {
         fleets: [
             {
                 id: 0,
-                name: 'Båt0',
-                img: `<img src="/img/picture1.jpg" alt="flåte1" width="262" height="192">`,
+                name: 'Skarven',
+                img: `<img src="img/picture1.jpg" alt="flåte1" width="268" height="188">`,
             },
             {
                 id: 1,
-                name: 'Båt1',
-                img: `<img src="/img/picture3.jpg" alt="flåte2" width="274" height="184">`,
+                name: 'Måken',
+                img: `<img src="img/picture3.jpg" alt="flåte2" width="268" height="188">`,
             },
         ],
 
