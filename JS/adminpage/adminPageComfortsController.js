@@ -87,6 +87,7 @@ function addSubtractQuantity(toDo, product) { // Øker eller senker antall produ
     let quantityInPackage = model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts
     if (toDo == '▼' && quantityInPackage[product].quantity != 0) { quantityInPackage[product].quantity--; }
     else { quantityInPackage[product].quantity++; }
+    if (quantityInPackage[product].quantity == 0) { quantityInPackage[product].quantity++; }
     updateView()
 }
 
@@ -102,7 +103,7 @@ function addItemToPackage() {   // Legger til nytt produkt til pakken
     updateView()
 }
 
-function addNewPackage() {
+function addNewPackage() { // Legger til ny pakke 
     let input = model.inputs.adminPageComfort
     let name = input.newPackageName
     let newHours = input.newPackageHouer
