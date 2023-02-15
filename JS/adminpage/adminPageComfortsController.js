@@ -1,14 +1,3 @@
-function comfortsExtraProductLoop() { // Lager HTML og lister igjennom comforts arrayet 
-    let HTML = '';                    // og legger til knapper sletting 
-    for (let i = 0; i < model.data.comforts.length; i++) {
-        HTML += `
-        <li>${model.data.comforts[i].name} - ${model.data.comforts[i].price},- </li>
-        <button onclick="removeComforts(${i})">X</button>
-        `
-    }
-    return HTML;
-}
-
 function removeComforts(index) { // Slettefunksjonen for og fjerne fra comforts arrayet
     model.data.comforts.splice(index, 1)
     updateView()
@@ -18,9 +7,7 @@ function addComfortsInComfortsArray() { // Legge til comforts objekter
     let id = loopComfortsArray()
     let name = model.inputs.adminPageComfort.product
     let price = model.inputs.adminPageComfort.price
-    if (price == '' || name == '') {
-        alert('Fyll inn feltene')
-    }
+    if (price == '' || name == '') { alert('Fyll inn feltene') }
     else model.data.comforts.push({ id: id, name: name, price: price })
     updateView()
 }
@@ -33,112 +20,39 @@ function loopComfortsArray() { // Returnerer ID til  addComfortsInComfortsArray(
     return counter;
 }
 
-function comittPriceChanges() { // Samlefunksjon som sjekker verdien i inputfeltet 
-    checkWeekdayPriceHour()     // eventuelt beholder verdien om de er tomme
-    checkWeekdayPriceDay()
-    checkWeekendPriceHour()
-    checkWeekendPriceDay()
+function comittPriceChanges() { // Sjekker hvilke priser som er endra også kaller funksjonen for å endre prisene i modellen
+    if (model.inputs.adminPageComfort.weekdayPriceHour != '') { setPrice('weekdayHour') }
+    if (model.inputs.adminPageComfort.weekdayPriceDay != '') { setPrice('weekdayDay') }
+    if (model.inputs.adminPageComfort.weekendPriceHour != '') { setPrice('weekendHour') }
+    if (model.inputs.adminPageComfort.weekendPriceDay != '') { setPrice('weekendDay') }
     updateView()
 }
 
-function checkWeekdayPriceHour(isWeekend, innVerdi) { // Sjekker om inpufeltet er tomt, endrer modellen hvis vi fyller inn ny pris
-    // let verdi = innVerdi
-    //weekdayHourPrice
-    if (model.inputs.adminPageComfort.weekdayHourPrice != '') {
-        model.data.prices.weekdayPriceHour = model.inputs.adminPageComfort.weekdayHourPrice;
-        model.inputs.adminPageComfort.weekdayHourPrice = '';
+function setPrice(toChek) { // Endrer pris i modellen basert på parameter
+    let input = model.inputs.adminPageComfort
+    let price = model.data.prices
+    if (toChek == 'weekdayHour') {
+        price.weekdayPriceHour = input.weekdayPriceHour;
+        input.weekdayPriceHour = '';
+    } else if (toChek == 'weekdayDay') {
+        price.weekdayPriceDay = input.weekdayPriceDay;
+        input.weekdayPriceDay = '';
+    } else if (toChek == 'weekendHour') {
+        price.weekendPriceHour = input.weekendPriceHour;
+        input.weekendPriceHour = '';
+    } else if (toChek == 'weekendDay') {
+        price.weekendPriceDay = input.weekendPriceDay;
+        input.weekendPriceDay = '';
     }
-    else { model.data.prices.weekdayPriceHour = model.data.prices.weekdayPriceHour }
 }
 
-function checkWeekdayPriceDay() { // Sjekker om inpufeltet er tomt, endrer modellen hvis vi fyller inn ny pris
-    if (model.inputs.adminPageComfort.weekdayDayPrice != '') {
-        model.data.prices.weekdayPriceDay = model.inputs.adminPageComfort.weekdayDayPrice;
-        model.inputs.adminPageComfort.weekdayDayPrice = '';
-    }
-    else { model.data.prices.weekdayPriceDay = model.data.prices.weekdayPriceDay }
-}
-
-function checkWeekendPriceHour() { // Sjekker om inpufeltet er tomt, endrer modellen hvis vi fyller inn ny pris
-    if (model.inputs.adminPageComfort.weekendHourPrice != '') {
-        model.data.prices.weekendPriceHour = model.inputs.adminPageComfort.weekendHourPrice;
-        model.inputs.adminPageComfort.weekendHourPrice = '';
-    }
-    else { model.data.prices.weekendPriceHour = model.data.prices.weekendPriceHour }
-}
-
-function checkWeekendPriceDay() { // Sjekker om inpufeltet er tomt, endrer modellen hvis vi fyller inn ny pris
-    if (model.inputs.adminPageComfort.weekendDayPrice != '') {
-        model.data.prices.weekendPriceDay = model.inputs.adminPageComfort.weekendDayPrice;
-        model.inputs.adminPageComfort.weekendDayPrice = '';
-    }
-    else { model.data.prices.weekendPriceDay = model.data.prices.weekendPriceDay }
-}
-// ${model.inputs.adminPageComfort.selectPackageDropdown == null ? 'Velg pakke' : `${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name}`}
-function packageOptionsSelector() { // Returnerer valgene i dropdown menyen
-    let HTML = `<option>${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name}}</option>`;
-    for (let i = 0; i < model.data.packageOptions.length; i++) {
-        if (model.data.packageOptions[i].name != model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name) {
-            HTML += `
-        <option value="${i}">${model.data.packageOptions[i].name}</option>  
-        `
-        }
-    }
-    return HTML
-
-}
 function changePackageEditorContent(index) { // Tar i mot select sin value og endrer valgt pakke i modellen
     model.inputs.adminPageComfort.selectPackage = index
     model.inputs.adminPageComfort.selectPackageDropdown = model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name
     updateView()
 }
 
-function showPackageEditor() { // Returnerer HTML med innholdet i valgt pakke
-    let HTML = //html
-        `
-        <div>PakkeNavn :  ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name}</div>
-        <div class="admin-package-inputbox">
-            <input class="admin-spann-button" 
-            onchange="model.inputs.adminPageComfort.packageName = this.value"
-            type="text"/>
-            <button onclick="changePackageOptions('name')">v</button>
-        </div>
-        <div>Ukedags pris : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].price.weekdayPrice}</div> 
-        <div class="admin-package-inputbox">
-            <input class="admin-spann-button"  
-            onchange="model.inputs.adminPageComfort.weekdayPrice = this.value"
-            type="number"/>
-            <button onclick="changePackageOptions('weekdayPrice')">v</button>
-        </div>
-        <div>Helgepris : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].price.weekendPrice}</div> 
-        <div class="admin-package-inputbox">
-            <input class="admin-spann-button" 
-            onchange="model.inputs.adminPageComfort.weekendPrice = this.value" 
-            type="number"/>
-            <button onclick="changePackageOptions('weekendPrice')">v</button>
-        </div>
-        <div>timer : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].hours}</div>
-        <div class="admin-package-hour-buttons">
-            <button onclick="addSubtractHour('▲')">▲</button> 
-            <button onclick="addSubtractHour('▼')">▼</button>
-        </div>
-        `
-    for (let i = 0; i < model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts.length; i++) {
-        HTML += //html
-            ` 
-        <div>${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts[i].name} : 
-        antall: ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts[i].quantity}</div>
-        <div class="admin-package-inputbox">   
-            <button onclick="addSubtractQuantity('▲',${i})">▲</button> 
-            <button onclick="addSubtractQuantity('▼',${i})">▼</button>
-            <button onclick="adminPageRemoveComfortFromPackage(${i})">X</button>
-        </div>
-        `;
-    }
-    return HTML
-}
-
-function changePackageOptions(toDo) {
+function changePackageOptions(toDo) { // Endrer pakkenavn, ukedag pris eller helg pris basert på parameter
     let packagePrice = model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].price
     let inputPackageOptions = model.inputs.adminPageComfort
     if (toDo == 'weekendPrice') {
@@ -154,7 +68,6 @@ function changePackageOptions(toDo) {
         inputPackageOptions.packageName = '';
     }
     updateView()
-
 }
 
 function adminPageRemoveComfortFromPackage(index) { // Sletter objekter fra packageOptions arrayet
@@ -172,9 +85,7 @@ function addSubtractHour(toDo) { // Endrer
 
 function addSubtractQuantity(toDo, product) { // Øker eller senker antall produkter
     let quantityInPackage = model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts
-    if (toDo == '▼' && quantityInPackage[product].quantity != 0) {
-        quantityInPackage[product].quantity--;
-    }
+    if (toDo == '▼' && quantityInPackage[product].quantity != 0) { quantityInPackage[product].quantity--; }
     else { quantityInPackage[product].quantity++; }
     updateView()
 }
@@ -182,6 +93,39 @@ function addSubtractQuantity(toDo, product) { // Øker eller senker antall produ
 function removePackage() { // Fjerner valgt pakke fra arrayet
     model.data.packageOptions.splice(model.inputs.adminPageComfort.selectPackage, 1)
     updateView()
+}
+
+function addItemToPackage() {   // Legger til nytt produkt til pakken 
+    let package = model.data.packageOptions[model.inputs.adminPageComfort.selectPackage];
+    let packageName = model.inputs.adminPageComfort
+    package.comforts.push({ name: packageName.packageProduct, quantity: 1 })
+    updateView()
+}
+
+function addNewPackage() {
+    let input = model.inputs.adminPageComfort
+    let name = input.newPackageName
+    let newHours = input.newPackageHouer
+    let newWeekdayPrice = input.newPackageWeekdayPrice
+    let newWeekendPrice = input.newPackageWeekendPrice
+    let newId = loopPackageArray()
+    model.data.packageOptions.push(
+        {
+            id: newId,
+            name: name,
+            price: { weekdayPrice: newWeekdayPrice, weekendPrice: newWeekendPrice, },
+            hours: newHours,
+            comforts: []
+        })
+    updateView()
+}
+
+function loopPackageArray() { // Returnerer ID til  addNewPackage() funksjonen
+    let counter = 0;
+    for (let i = 0; i < model.data.packageOptions.length; i++) {
+        while (counter == model.data.packageOptions[i].id) { counter++ }
+    }
+    return counter;
 }
 
 
