@@ -128,12 +128,3 @@ function loopPackageArray() { // Returnerer ID til  addNewPackage() funksjonen
     }
     return counter;
 }
-
-
-
-
-
-
-
-
-
