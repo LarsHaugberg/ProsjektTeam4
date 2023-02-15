@@ -16,34 +16,34 @@ function getComfortDropdown() {
 	return HTML;
 }
 
-function getInputComfortChoicesorg() {
-	let comfortList = [];
-	for (let dataComfort of model.data.comforts) {
-		let comfortCount = 0;
-		for (let comfortId of model.inputs.bookingPage.comfortChoices) {
-			if (dataComfort.id == comfortId) {
-				comfortCount++;
-			}
-		}
-		if (comfortCount > 0) {
-			comfortList.push({ id: dataComfort.id, count: comfortCount });
-		}
-	}
-	let html = '<div>';
-	html += `<ul>`;
+// function getInputComfortChoicesorg() {
+// 	let comfortList = [];
+// 	for (let dataComfort of model.data.comforts) {
+// 		let comfortCount = 0;
+// 		for (let comfortId of model.inputs.bookingPage.comfortChoices) {
+// 			if (dataComfort.id == comfortId) {
+// 				comfortCount++;
+// 			}
+// 		}
+// 		if (comfortCount > 0) {
+// 			comfortList.push({ id: dataComfort.id, count: comfortCount });
+// 		}
+// 	}
+// 	let html = '<div>';
+// 	html += `<ul>`;
 
-	for (let comfort of comfortList) {
-		html += /*html*/`<li>${getComfortById(comfort.id).name} antall: ${comfort.count} 
-        sum: ${getComfortById(comfort.id).price * comfort.count}
-		<button onclick="subtractComfort(${comfort.id})">-</button>
-		<button onclick="addComfort(${comfort.id})">+</button>
-		<button onclick="deleteComfortChoicesByComfortId(${comfort.id})">x</button>
-		</li>`;
-	}
-	html += '</ul></div>';
-	html += /* html */`${sumHoursSelected()}<br>${sumComfortsSelected()}<br>${totalSum()}`;
-	return html;
-} 
+// 	for (let comfort of comfortList) {
+// 		html += /*html*/`<li>${getComfortById(comfort.id).name} antall: ${comfort.count} 
+//         sum: ${getComfortById(comfort.id).price * comfort.count}
+// 		<button onclick="subtractComfort(${comfort.id})">-</button>
+// 		<button onclick="addComfort(${comfort.id})">+</button>
+// 		<button onclick="deleteComfortChoicesByComfortId(${comfort.id})">x</button>
+// 		</li>`;
+// 	}
+// 	html += '</ul></div>';
+// 	html += /* html */`${sumHoursSelected()}<br>${sumComfortsSelected()}<br>${totalSum()}`;
+// 	return html;
+// } 
 
 function getInputComfortChoices() {
 	let comfortList = [];

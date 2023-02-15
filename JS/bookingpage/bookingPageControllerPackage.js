@@ -21,7 +21,7 @@ function packageModalContent() {
 }
 
 
-function packageModalContentTEST() { 
+function packageModalContent() { 
     
 	let html = '<br><div id="ytretest">';
     
@@ -30,6 +30,8 @@ function packageModalContentTEST() {
 		<tr><td>Pakke:</td><td>${packageOption.name}</td></tr>
 		<tr><td>ukedagspris:</td><td>${packageOption.price.weekdayPrice} ,-</td></tr>
 		<tr><td>helgepris:</td><td>${packageOption.price.weekendPrice} ,-</td></tr>
+		<tr><td>Bestil pakken her:</td><td><button onclick="addPackageToInputs(${packageOption.id})">BESTIL</button></td></tr>
+
 		</table><br>  
 
 		<table class="package-table-comforts">
@@ -48,9 +50,14 @@ function packageModalContentTEST() {
     openModal();
 }
 
+function addPackageToInputs(id){
+    model.inputs.bookingPage.packageChoice = id;
+    closeModal();
+    console.log(id);
+}
+
 
 /*
-
 row = rad = lodrett
 colums = rekke = vannret   
 

@@ -41,7 +41,7 @@ function getPackageById(id) {
     return null;
 }
 
-//main controller
+//main controller 
 function emptySelection() {
     model.inputs.bookingPage.selectedHours = [];
     model.inputs.bookingPage.packageChoice = null;
