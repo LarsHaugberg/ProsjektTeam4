@@ -42,7 +42,7 @@ function getMonthAsTable() {
                     date++;
                 }
                 else {
-                    HTML += '<td></td>';
+                    HTML += '<td id="blancTdCalendar"><button id="blancTdBtn"></button></td>';
                 }
             }
         }

@@ -26,7 +26,7 @@ function packageModalContent() {
 	let html = '<br><div id="ytretest">';
     
 	for(let packageOption of model.data.packageOptions){
-		html += /*HTML*/`<div id="indretest"><table class="package-table-name-price">
+		html += /*HTML*/`<div id="indretest"><table id="package-table-name-price">
 		<tr><td>Pakke:</td><td>${packageOption.name}</td></tr>
 		<tr><td>ukedagspris:</td><td>${packageOption.price.weekdayPrice} ,-</td></tr>
 		<tr><td>helgepris:</td><td>${packageOption.price.weekendPrice} ,-</td></tr>
@@ -34,7 +34,7 @@ function packageModalContent() {
 
 		</table><br>  
 
-		<table class="package-table-comforts">
+		<table id="package-table-comforts">
         <th>Tilbehør inkludert:</th>
         <th>Antall:</th>
         `;  

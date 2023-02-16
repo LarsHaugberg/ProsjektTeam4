@@ -79,8 +79,8 @@ function addBooking() {
     let newBooking = {};
     newBooking.orderId = getNewBookingId();
     newBooking.fleetId = Number(model.inputs.bookingPage.fleetChoice);
-                                                                                            //kopierer objektet
-    if(model.inputs.bookingPage.chosenPackage){newBooking.chosenPackage = JSON.parse(JSON.stringify(model.inputs.bookingPage.chosenPackage));}
+     //kopierer objektet
+    if(model.inputs.bookingPage.packageChoice != null){newBooking.chosenPackage = JSON.parse(JSON.stringify(model.inputs.bookingPage.packageChoice));}
     else {newBooking.chosenPackage = null;}
 
     newBooking.chosenComforts = model.inputs.bookingPage.comfortChoices.map((x) => x);
