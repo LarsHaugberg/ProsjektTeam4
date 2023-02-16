@@ -30,7 +30,7 @@ body {
   width: 100%;
   position: fixed;
   top: 0;
-  overflow: hidden;
+  overflow: visible;
   background-color: #333;
   height: 47px
   
