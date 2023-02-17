@@ -106,7 +106,7 @@ function addItemToPackage() {   // Legger til nytt produkt til pakken
 function addNewPackage() { // Legger til ny pakke 
     let input = model.inputs.adminPageComfort
     let name = input.newPackageName
-    let newHours = input.newPackageHouer
+    let newHours = input.newPackageHour
     let newWeekdayPrice = input.newPackageWeekdayPrice
     let newWeekendPrice = input.newPackageWeekendPrice
     let newId = loopPackageArray()
