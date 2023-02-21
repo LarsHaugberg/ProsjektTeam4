@@ -1,24 +1,25 @@
-function packageModalContent() { 
-    model.app.modalContent = /*HTML*/``;
-    let packageRow = 13;
-    let packageColum = 2;
-    model.app.modalContent += /*HTML*/`<table>`;
-    for (let r = 0; r < packageRow; r++) {
-        model.app.modalContent += /*HTML*/`<tr>`;
-        for (let c = 0; c < packageColum; c++) {
-            model.app.modalContent += /*HTML*/ `<td>                           
-                ${model.data.packageOptions}
-            </td>`;
+
+// function packageModalContent() { 
+//     model.app.modalContent = /*HTML*/``;
+//     let packageRow = 13;
+//     let packageColum = 2;
+//     model.app.modalContent += /*HTML*/`<table>`;
+//     for (let r = 0; r < packageRow; r++) {
+//         model.app.modalContent += /*HTML*/`<tr>`;
+//         for (let c = 0; c < packageColum; c++) {
+//             model.app.modalContent += /*HTML*/ `<td>                           
+//                 ${model.data.packageOptions}
+//             </td>`;
             
-        }
+//         }
 
 
-        model.app.modalContent += /*HTML*/`</tr>`; 
-    }
-    model.app.modalContent += /*HTML*/ `</table>`;
+//         model.app.modalContent += /*HTML*/`</tr>`; 
+//     }
+//     model.app.modalContent += /*HTML*/ `</table>`;
 
-    openModal();
-}
+//     openModal();
+// }
 
 
 function packageModalContent() { 

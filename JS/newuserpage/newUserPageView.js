@@ -1,7 +1,9 @@
 function updateUserPageView() { // Alle inputfeltene som tar imot bruker data 
     let HTML = /*HTML*/
-        `   
-        <h1> LAG NY BRUKER </h1>
+        ` 
+        <div class="login-container">
+        <div class="new-user-container">  
+        <h1 class="admin-box-subtitle-title"> LAG NY BRUKER </h1>
         <input 
             type="text" placeholder="Navn"
             onchange="model.inputs.newUserPage.name = this.value" 
@@ -33,6 +35,8 @@ function updateUserPageView() { // Alle inputfeltene som tar imot bruker data
             value="${model.inputs.newUserPage.confirmedPassword}"
         /> Bekreft Passord<br> 
         <button onclick="generateNewUsers()">Lag Ny Bruker</button>
+        </div>
+        </div>
     `;
     return HTML;
 }

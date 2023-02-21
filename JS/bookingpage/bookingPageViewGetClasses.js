@@ -1,4 +1,4 @@
-function getClassesForDateButton(date) {
+function getClassesForDateButtonOrginal(date) {
     const bookings = model.data.bookings;
     let fleet = model.inputs.bookingPage.fleetChoice;
     let fullYear = model.inputs.bookingPage.selectedDate.getFullYear();
@@ -47,4 +47,38 @@ function getClassesForHourButton(hour) {
         return "hour-button blue-button";
     }
     return "hour-button";
+}
+
+
+
+function getClassesForDateButton(date) {
+	let todayDate = new Date().getTime();
+	let selectedDate = model.inputs.bookingPage.selectedDate;
+	
+	let buttonDate = new Date(selectedDate.getFullYear(),selectedDate.getMonth(), date+1).getTime();
+	if(buttonDate < todayDate){
+		//console.log('er mindre enn!');
+		return "date-button un-selectable";
+	}
+	
+    const bookings = model.data.bookings;
+    let fleet = model.inputs.bookingPage.fleetChoice;
+    let fullYear = model.inputs.bookingPage.selectedDate.getFullYear();
+    let month = model.inputs.bookingPage.selectedDate.getMonth();
+    let countHours = 0;
+    if (date == model.inputs.bookingPage.selectedDate.getDate()) {
+        return "date-button blue-button";
+    }
+    for (const booking of bookings) {
+        if (booking.fleetId == fleet &&
+            booking.chosenDate.getFullYear() == fullYear &&
+            booking.chosenDate.getMonth() == month &&
+            booking.chosenDate.getDate() == date) {
+            countHours += booking.chosenHours.length;
+        }
+    }
+    if (countHours >= 17) { return "date-button red-button"; }
+    if (countHours > 12) { return "date-button light-red-button"; }
+    if (countHours > 0) { return "date-button yellow-button"; }
+    return "date-button";
 }

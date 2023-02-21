@@ -49,6 +49,13 @@ function emptySelection() {
     updateView();
 }
 
+function emptySelectedHours(){
+    model.inputs.bookingPage.selectedHours = [];
+    
+    updateView();
+
+}
+
 function selectComfort(comfortId) {
     model.inputs.bookingPage.comfortChoices.push(comfortId);
     updateView();
@@ -88,6 +95,7 @@ function addBooking() {
     newBooking.chosenHours = model.inputs.bookingPage.selectedHours.map((x) => x);
     newBooking.customer = model.app.currentUser;
     newBooking.totalPrice = totalSum();
+    //hindrer at man kan bestille uten timer.
     if (model.inputs.bookingPage.selectedHours.length < 1) { return; }
     model.data.bookings.push(newBooking);
     emptySelection();
@@ -122,9 +130,12 @@ function deleteComfortChoicesByComfortId(comfortId){
 }
 
 function getFleetNameById(id) {
+    console.log('getFleetNameByID kjoerer: '+ id)
     for (let fleet of model.data.fleets) {
-        if (id == fleet.id)
+        if (id == fleet.id){
+            //console.log('if-en i getFleetNameById slaar til!');
             return fleet.name;
+        }    
     }
     return null;
 }

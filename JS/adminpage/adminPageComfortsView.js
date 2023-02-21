@@ -1,7 +1,8 @@
 function updateAdminPageComfortView() { // Viser viewet på administratorsiden for bildebehandling
     let HTML = /*HTML*/ `
-    <h1> Administrator side for Comforts</h1>
+    
     <div class="adminpage-comforts-wrapper">
+    <h1 class="admin-box-subtitle-title"> Administrator side for Comforts</h1>
         <div class="adminpage-comforts-box-row1"> 
             <h4 class="admin-box-subtitle-title">Tilgjenglige ekstraprodukter</h4>
             ${comfortsExtraProductLoop()}

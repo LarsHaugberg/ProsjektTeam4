@@ -38,7 +38,7 @@ function getBookingPage() {
         <div>
             ${getModal()}
         </div>
-        <button onclick="addBooking()">Bestill</button>
+        <button onclick="checkOrder()">Bestill</button>
     </div>
     `;
     return HTML;

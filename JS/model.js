@@ -292,17 +292,3 @@ const model = {
 //
 //Hvordan lagre datoer med priser? controller-funksjon som regner ut pris og ser om dag valgt er helg eller ikke?
 // 
-/*  forslag til sumeringen inputs for booking siden
-vare    antal   sum
-pakke4:    1   1504       
-arstn
-iaersnt
-ernis
-Timer     4    2000
-vin       2     400
-shogbalsm 1     100  
-minevann  2     100
--------------------
-total sum      4104
-
-*/
