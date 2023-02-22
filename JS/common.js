@@ -54,9 +54,9 @@ function checkIfPostHasImg(index) { // Sjekker om blogposten inneholder et bilde
     if (model.data.blogPosts[index].postPicture == undefined) { return '' }
     else {
         temp = /*HTML*/`  
-            <div class="frontpage-picture-box">
-                <img class="front-page-images fill" src="${model.data.blogPosts[index].postPicture}">
-            </div>
+            
+                <img class="standard-img" src="${model.data.blogPosts[index].postPicture}">
+            
         `;
         return temp
     }

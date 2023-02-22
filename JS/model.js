@@ -48,12 +48,12 @@ const model = {
         },
         bookingPage: {
 
-            fleetChoice: null,
+            fleetChoice: 0, //setter til 0 stedet for null
             packageChoice: null,
             comfortChoices: [],
             selectedDate: new Date(),
             selectedHours: [],
-            isDateSelected: false,
+            isDateSelected: false,//tester aa sette til true
 
         },
         blogPage: {
@@ -100,10 +100,10 @@ const model = {
                 hours: 4,
                 comforts: [
                     { name: 'Vin',              quantity: 4, },
-                    { name: 'shampo og balsam', quantity: 6, },
-                    { name: 'håndklær',         quantity: 6, },
-                    { name: 'mineralvann',      quantity: 6, },
-                    { name: 'aroma',            quantity: 1, },
+                    { name: 'Shampo og Balsam', quantity: 6, },
+                    { name: 'Håndklær',         quantity: 6, },
+                    { name: 'Mineralvann',      quantity: 6, },
+                    { name: 'Aroma',            quantity: 1, },
                     { name: 'Badekåpe',         quantity: 6, },
                 ],
             },
@@ -117,10 +117,10 @@ const model = {
                 hours: 4,
                 comforts: [
                     { name: 'Vin',              quantity: 3, },
-                    { name: 'shampo og balsam', quantity: 4, },
-                    { name: 'håndklær',         quantity: 4, },
-                    { name: 'mineralvann',      quantity: 4, },
-                    { name: 'aroma',            quantity: 1, },
+                    { name: 'Shampo og Balsam', quantity: 4, },
+                    { name: 'Håndklær',         quantity: 4, },
+                    { name: 'Mineralvann',      quantity: 4, },
+                    { name: 'Aroma',            quantity: 1, },
                     { name: 'Badekåpe',         quantity: 4, },
                 ],
             },
@@ -133,10 +133,10 @@ const model = {
                 },
                 hours: 1,
                 comforts: [
-                    { name: 'shampo og balsam', quantity: 4, },
-                    { name: 'håndklær',         quantity: 4, },
-                    { name: 'mineralvann',      quantity: 4, },
-                    { name: 'aroma',            quantity: 1, },
+                    { name: 'Shampo og Balsam', quantity: 4, },
+                    { name: 'Håndklær',         quantity: 4, },
+                    { name: 'Mineralvann',      quantity: 4, },
+                    { name: 'Aroma',            quantity: 1, },
                     { name: 'Badekåpe',         quantity: 4, },
                 ],
             },
@@ -149,10 +149,10 @@ const model = {
                 },
                 hours: 1,
                 comforts: [
-                    { name: 'shampo og balsam', quantity: 5, },
-                    { name: 'håndklær',         quantity: 5, },
-                    { name: 'mineralvann',      quantity: 5, },
-                    { name: 'aroma',            quantity: 1, },
+                    { name: 'Shampo og Balsam', quantity: 5, },
+                    { name: 'Håndklær',         quantity: 5, },
+                    { name: 'Mineralvann',      quantity: 5, },
+                    { name: 'Aroma',            quantity: 1, },
                     { name: 'Badekåpe',         quantity: 5, },
                 ],
 
@@ -167,10 +167,10 @@ const model = {
                 hours: 2,
                 comforts: [
                     { name: 'Vin',              quantity: 1, },
-                    { name: 'shampo og balsam', quantity: 2, },
-                    { name: 'håndklær',         quantity: 2, },
-                    { name: 'mineralvann',      quantity: 2, },
-                    { name: 'aroma',            quantity: 1, },
+                    { name: 'Shampo og Balsam', quantity: 2, },
+                    { name: 'Håndklær',         quantity: 2, },
+                    { name: 'Mineralvann',      quantity: 2, },
+                    { name: 'Aroma',            quantity: 1, },
                     { name: 'Badekåpe',         quantity: 2, },
                 ],
 
@@ -185,22 +185,22 @@ const model = {
             },
             {
                 id: 1,
-                name: 'shampo og balsam',
+                name: 'Shampo og Balsam',
                 price: 100,
             },
             {
                 id: 2,
-                name: 'håndkler',
+                name: 'Håndkler',
                 price: 100,
             },
             {
                 id: 3,
-                name: 'mineralvann',
+                name: 'Mineralvann',
                 price: 50,
             },
             {
                 id: 4,
-                name: 'aroma',
+                name: 'Aroma',
                 price: 80,
             },
             {
@@ -237,14 +237,38 @@ const model = {
 
         blogPosts: [
             {
-                postId: 1,
+                postId: 0,
                 postTitle: 'Blogg1',
                 postText: 'Velkommen til mentalhelseblogg',
                 postPicture: 'img/blogPicture1.jpg',
             },
             {
-                postId: 2,
+                postId: 1,
                 postTitle: 'Blogg2',
+                postText: 'Velkommen til Mental helse',
+                postPicture: 'img/blogPicture2.jpg',
+            },
+            {
+                postId: 2,
+                postTitle: 'Blogg3',
+                postText: 'Velkommen til mentalhelseblogg',
+                postPicture: 'img/blogPicture1.jpg',
+            },
+            {
+                postId: 3,
+                postTitle: 'Blogg4',
+                postText: 'Velkommen til Mental helse',
+                postPicture: 'img/blogPicture2.jpg',
+            },
+            {
+                postId: 4,
+                postTitle: 'Blogg5',
+                postText: 'Velkommen til mentalhelseblogg',
+                postPicture: 'img/blogPicture1.jpg',
+            },
+            {
+                postId: 5,
+                postTitle: 'Blogg6',
                 postText: 'Velkommen til Mental helse',
                 postPicture: 'img/blogPicture2.jpg',
             },

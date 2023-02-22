@@ -1,7 +1,3 @@
-function getBookingInput() {
-	let HTML = `<div> ${getComfortDropdown()} ${getInputComfortChoices()} </div>`;
-	return HTML;
-}
 
 function getComfortDropdown() {
 	let HTML = ""
@@ -16,7 +12,7 @@ function getComfortDropdown() {
 	return HTML;
 }
 
-function getInputComfortChoices() {
+function getInputChoices() {
 	let comfortList = [];
 	for (let dataComfort of model.data.comforts) {
 		let comfortCount = 0;
@@ -32,32 +28,30 @@ function getInputComfortChoices() {
 	let html = '<div>';
 	html += `<table class="comforts-table">`;
 	html += /*html*/`
-	<tr>
-		<th>
-			Vare
-		</th>
-		<th>
-			Pr stk
-		</th>
-		<th>
-			Antall
-		</th>
-		<th>
-			Pris totalt
-		</th>
-		
-	</tr>
-	`;
+	<tr><th>Vare</th><th>Pr stk</th><th>Antall</th><th>Pris totalt</th></tr>`;
 
 	for (let comfort of comfortList) {
 		html += /*html*/`<tr><td>${getComfortById(comfort.id).name}</td><td>${getComfortById(comfort.id).price}</td><td> ${comfort.count} </td>
-        <td>${getComfortById(comfort.id).price * comfort.count}</td>
-		<td><button onclick="subtractComfort(${comfort.id})">-</button>
-		<button onclick="addComfort(${comfort.id})">+</button>
-		<button onclick="deleteComfortChoicesByComfortId(${comfort.id})">x</button></td>
-		</tr>`;
+        <td>${getComfortById(comfort.id).price * comfort.count}</td><td></td></tr>`;
 	}
 	html += `</table></div>`;
 	html += /* html */`${sumHoursSelected()}<br>${sumComfortsSelected()}<br>${totalSum()}`;
+	return html;
+}
+
+function inputListBooking(){
+	let html = '';
+    html += /*HTML*/`
+        <table>
+            <tr><td>Valgt flåte: </td><td>${fleetNameChosen()}</td></tr>
+            <tr style="border-bottom: 2px solid black;"></tr>
+            <tr><td>Vare</td><td>Antall</td><td>Sum</td></tr>
+            <tr style="border-bottom: 1px solid black;"></tr>
+            ${packageIsChosen()}
+            ${hoursComfortsSelected()}
+            <tr style="border-bottom: 2px solid black;"></tr>
+            <tr><td>Total Sum:</td><td></td><td>${totalSum()}</td></tr>
+		</table><br>
+        `;
 	return html;
 }

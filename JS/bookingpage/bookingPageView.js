@@ -2,8 +2,11 @@ function updateBookingPageView() {
     let HTML = /*HTML*/`
     <h1>Booking Side</h1> <hr/> 
     <div class="booking-wrapper"> 
-        ${getBookingPage()} 
+    <div class="booking-container">
+    ${getBookingPage()}
     </div>
+    </div>
+    ${getModal()} 
     `;
     return HTML;
 }
@@ -11,35 +14,37 @@ function updateBookingPageView() {
 function getBookingPage() {
     let HTML = '';
 
-    HTML += /*HTML*/`<div><b> Velg flåte: </b></div>`;
-     
-    for (let fleet of model.data.fleets) {
-        HTML += /* html */ `<div class="booking-image" onclick="selectFleet(${fleet.id})">${fleet.img}</div>`;
-    }
-
-
     HTML += /*HTML*/`
+    <div class="col-1">
+        <div class="booking-subtitle"><b>Flåte valgt er: ${fleetNameChosen()}</b></div>
+        `;
+        for (let fleet of model.data.fleets) {
+            HTML += /* html */ `<div class="booking-image" onclick="selectFleet(${fleet.id})">${fleet.img}</div>`;
+        }
+        HTML += /*HTML*/`
+        <!-- <div> Flåte valgt er: ${fleetNameChosen()} </div>  -->
+        <div class="booking-buttons">
+        <button class="bokking-btn" onclick="comfortsModalContent()">Comforts</button>
+        <button class="bokking-btn" onclick="packageModalContent()">Pakker</button>
+        <button class="bokking-btn" onclick="checkOrder()">Bestill</button>
+        </div>
+        <br>
+        <div class="booking-order-overview">${inputListBooking()}</div>
+     
+    </div>
+    <div class="col-2">
+    <div class="booking-month-button">
+    <button  onclick="goToPrevMonth()">Forrige måned</button> 
+    <button  onclick="goToNextMonth()">Neste måned</button>
+    </div>
     
-    <div> 
-        Flåte valgt er: ${fleetNameChosen()} 
-    </div>
-    <button onclick="goToPrevMonth()">Forrige måned</button> 
-    <button onclick="goToNextMonth()">Neste måned</button>
-    <button class="pakker-btn" onclick="packageModalContent()">Pakker</button>
-    <br>
-
-    <h3>${getSelectedMonthName()} ${model.inputs.bookingPage.selectedDate.getFullYear()} <h3>
-    ${showCalendar()} 
-    <div>
-        <div>
-            ${getComfortDropdown()} 
-        </div>
-            ${getInputComfortChoices()} 
-        <div>
-            ${getModal()}
-        </div>
-        <button onclick="checkOrder()">Bestill</button>
-    </div>
+    <h3 class="booking-subtitle">${getSelectedMonthName()} ${model.inputs.bookingPage.selectedDate.getFullYear()} ${showDate()}</h3>
+    <div>${getMonthAsTable()} </div>
+    <div>${getTimePicker()}</div>
+    
+       
+        
+    
     `;
     return HTML;
 }

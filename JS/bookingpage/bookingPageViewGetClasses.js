@@ -58,7 +58,7 @@ function getClassesForDateButton(date) {
 	let buttonDate = new Date(selectedDate.getFullYear(),selectedDate.getMonth(), date+1).getTime();
 	if(buttonDate < todayDate){
 		//console.log('er mindre enn!');
-		return "date-button un-selectable";
+		return "date-button passed-day-button";
 	}
 	
     const bookings = model.data.bookings;

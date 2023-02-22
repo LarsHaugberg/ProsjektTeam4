@@ -1,27 +1,4 @@
 
-// function packageModalContent() { 
-//     model.app.modalContent = /*HTML*/``;
-//     let packageRow = 13;
-//     let packageColum = 2;
-//     model.app.modalContent += /*HTML*/`<table>`;
-//     for (let r = 0; r < packageRow; r++) {
-//         model.app.modalContent += /*HTML*/`<tr>`;
-//         for (let c = 0; c < packageColum; c++) {
-//             model.app.modalContent += /*HTML*/ `<td>                           
-//                 ${model.data.packageOptions}
-//             </td>`;
-            
-//         }
-
-
-//         model.app.modalContent += /*HTML*/`</tr>`; 
-//     }
-//     model.app.modalContent += /*HTML*/ `</table>`;
-
-//     openModal();
-// }
-
-
 function packageModalContent() { 
     
 	let html = '<br><div id="ytretest">';
@@ -29,9 +6,10 @@ function packageModalContent() {
 	for(let packageOption of model.data.packageOptions){
 		html += /*HTML*/`<div id="indretest"><table id="package-table-name-price">
 		<tr><td>Pakke:</td><td>${packageOption.name}</td></tr>
-		<tr><td>ukedagspris:</td><td>${packageOption.price.weekdayPrice} ,-</td></tr>
-		<tr><td>helgepris:</td><td>${packageOption.price.weekendPrice} ,-</td></tr>
-		<tr><td>Bestil pakken her:</td><td><button onclick="addPackageToInputs(${packageOption.id})">BESTIL</button></td></tr>
+		<tr><td>Antall Timer:</td><td>${packageOption.hours}</td></tr>
+		<tr><td>Ukedagspris:</td><td>${packageOption.price.weekdayPrice} ,-</td></tr>
+		<tr><td>Helgepris:</td><td>${packageOption.price.weekendPrice} ,-</td></tr>
+		<tr><td>Bestill pakken her:</td><td><button onclick="addPackageToInputs(${packageOption.id})">Velg</button></td></tr>
 
 		</table><br>  
 
@@ -53,6 +31,7 @@ function packageModalContent() {
 
 function addPackageToInputs(id){
     //model.inputs.bookingPage.packageChoice = id;
+    model.inputs.bookingPage.selectedHours = [];
     let packageToCopy = getPackageById(id);
     model.inputs.bookingPage.packageChoice = JSON.parse(JSON.stringify(packageToCopy));
     closeModal();

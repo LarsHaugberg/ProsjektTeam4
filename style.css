@@ -5,9 +5,12 @@ body {
     user-select: none;
 }
 
-
-.blog-wrapper, .booking-wrapper{
+.blog-wrapper{
   padding-bottom: 50px;
+}
+.standard-img{
+  height: 300px;
+  width: 400px;
 }
 
 /* Login Styling*/
@@ -39,19 +42,80 @@ body {
 /* New-user Styling*/
 
 /* FrontPage Styling*/
+.frontpage-container{
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  justify-items: center;
+}
+.frontpage-title{
+  grid-column: 1 / span 3;
+  justify-self: center;
+  padding: 5px;
+  margin: 25px;
+}
 .frontpage-picture-box {
   height: 300px;
-  width: 300px;
-  background-color: rgb(48, 50, 42);
-
+  width: 100%;
+}
+.frontpage-left-button{
+  justify-self: end;
+  width: 60px;
+  background-color: transparent;
+  border-color: transparent;
+  font-size: 25px;
+}
+.frontpage-right-button{
+  justify-self: start;
+  width: 60px;
+  background-color: transparent;
+  border-color: transparent;
+  font-size: 25px;
 }
 .front-page-images {
-  
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 /* FrontPage Styling*/
+
+/* Blogpage Styling*/
+.blogpage-container{
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    justify-items: center;
+    margin-bottom: 55px;
+}
+.mini-preview-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  min-height: 620px;
+  width: 100%;
+  border: solid;
+  border-color: black;
+  justify-items: center;
+  
+}
+.blog-preview{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 200px;
+  max-height: 200px;
+  overflow: hidden;
+}
+.mini-preview-title{
+  grid-column: 1 / span 2;
+  justify-self: center;
+  padding: 5px;
+  margin: 5px;
+}
+.mini-preview-img{
+  padding: 5px;
+  height: 80px;
+  width: 100px;
+  object-fit: contain;
+}
+
+/* Blogpage Styling*/
 
 /* NavBar Top */
 .navbar-top {
@@ -165,7 +229,6 @@ body {
   }
 /* NavBarBottom */
 
-
 /* Modal Styling */
 .modal {
   display: none; /* Hidden by default */
@@ -218,37 +281,31 @@ body {
 
 /* -AdminPage Styling- */
 .adminpage-wrapper {
-  display: flex;
-  flex-direction: row;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
 }
 .adminpage-picture-box {
-  height: 400px;
-  width: 400px;
-  margin: 100px;
-}
-.adminpage-arraylist-box-wrapper{
-  display: grid; grid-template-columns:(1fr);
-  grid-template-rows:(400 20);
-  justify-items: stretch;
-  height: 420px;
-  width: 300px;
+  height: 500px;
+  width: 600px;
+  margin-top: 100px;
 }
 .adminpage-arraylist-box {
   display: grid;
-  grid-template-columns: (1fr 1fr 1fr);
-  grid-template-rows:repeat(8, 30px);
-  align-items: stretch;
-  height: 320px;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: stretch;
+  height: 250px;
   width: 300px;
   margin-top: 100px;
-  background-color: hotpink;
+  padding: 10px;
+  background-color: rgb(197, 172, 223);
 }
-.adminpage-uploadbutton{
-align-self: end;
-}
-.adminpage-removebutton{
-  margin: 20px;
-  padding: 1px;
+.admin-picturebox-subtitle-title{
+  grid-column: 1 / span 2;
+  justify-self: center;
+  padding: 5px;
+  margin: 5px;
 }
 /* -AdminPagePicture Styling- */
 
@@ -309,6 +366,60 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+/* -AdminPageComforts styling- */
+
+/* booking */
+/*  */
+.booking-wrapper{
+  padding-bottom: 50px;
+}
+
+.booking-container{
+  display: grid;
+  grid-template-columns:1fr 2fr;
+  column-gap: 30px; 
+  margin: 15px;
+}
+.col-1{
+display: grid;
+grid-template-columns: 1fr 1fr;
+justify-items: center;
+margin: 5px;
+}
+.col-2{
+display: grid;
+grid-template-columns: 1fr 1fr;
+align-items: start;
+margin: 5px;
+} 
+.booking-subtitle{
+  grid-column: 1 / span 2;
+  justify-self: center;
+  max-height: 50px;
+  padding: 5px;
+  margin: 5px;
+}
+.booking-buttons{
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: stretch;
+  grid-column: 1 / span 2;
+  
+}
+.booking-order-overview{
+  grid-column: 1 / span 2;
+  justify-self: stretch;
+}
+.booking-month-button{
+  display: grid;
+  max-height: 50px;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  justify-items: stretch;
+  grid-column: 1 / span 2;
+}
 
 #blancTdBtn {
   background-color: #999;
@@ -320,8 +431,9 @@ table, th, td {
   border: 1px solid;
 }
 table {
+  
   border-collapse: collapse;
-  width: 40%;
+  width: 100%;
   
 }
 
@@ -340,9 +452,16 @@ td {
   height: 100%;
 }
 .un-selectable {
-  background-color: #999;
+  background-color: #bbb;
   pointer-events: none;
 }
+.passed-day-button{
+  background-color: #ddd;
+  pointer-events: none;
+}
+
+
+
 /* dato farger for okuperte tider */
 .red-button{
   background-color: red;
@@ -415,7 +534,9 @@ td {
   display: inline;
 }
 
-.pakker-btn{
+.bokking-btn{
+  margin-left: 10px;
+  margin-right: 10px;
   padding: 20px;
   border-radius: 20px;
   border: 1px solid black;

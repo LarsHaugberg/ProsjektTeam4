@@ -1,22 +1,24 @@
 function updateFrontPageView() {
     let HTML = /*HTML*/
     `   
-        <h1>Ida's Badestue Utleie</h1>
-            <hr/> 
+    <div class="frontpage-container">
+        <h1 class="frontpage-title">Ida's Badestue Utleie</h1>
+        <button class="frontpage-left-button" onclick="changeFrontPagePicture('<')"><</button>
         <div class="frontpage-picture-box">
             <img class="front-page-images fill" 
             src="${model.data.frontPagePictures[model.app.currentPicture].imageLink}">
-        </div>
-            <button onclick="changeFrontPagePicture('<')"><</button>
-            <button onclick="changeFrontPagePicture('>')">></button>
+            </div>
+            <button class="frontpage-right-button" onclick="changeFrontPagePicture('>')">></button>
+            <br>
             ${listLatestBlogPosts()}
-        <div class="blog-wrapper">
+            <div class="blog-wrapper">
             ${getBlogPostModal()}
+            </div>
         </div>
-    `;
+            `;
     return HTML;
 }
-
+// ${checkIfPostHasImg(index)}
 function listLatestBlogPosts() { // Oppdaterer forsiden med den siste blogposten i arrayet
     let index = model.data.blogPosts.length - 1
     let HTML = /*HTML*/ 
@@ -25,7 +27,7 @@ function listLatestBlogPosts() { // Oppdaterer forsiden med den siste blogposten
             <a href="#" onclick="openModal()">
                 <h1 >${model.data.blogPosts[index].postTitle}</h1>
             </a>
-                ${checkIfPostHasImg(index)}
+                
             <div>${model.data.blogPosts[index].postText}<div>
         </div>
     `;

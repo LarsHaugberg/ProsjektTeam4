@@ -1,13 +1,20 @@
-function showCalendar() {
+// function showCalendar() {
+//     let selectedDate = model.inputs.bookingPage.selectedDate.getDate();
+//     let HTML = getMonthAsTable();
+//     HTML += /*HTML*/`<br /> dato valgt: ${(model.inputs.bookingPage.fleetChoice || model.inputs.bookingPage.fleetChoice === 0) ? selectedDate : ''} <br />`;
+//     HTML += getTimePicker();
+//     return HTML;
+// }
+function showDate() {
     let selectedDate = model.inputs.bookingPage.selectedDate.getDate();
-    let HTML = getMonthAsTable();
+    let HTML = "";
     HTML += /*HTML*/`<br /> dato valgt: ${(model.inputs.bookingPage.fleetChoice || model.inputs.bookingPage.fleetChoice === 0) ? selectedDate : ''} <br />`;
-    HTML += getTimePicker();
     return HTML;
 }
 
 function getMonthAsTable() {
     if (model.inputs.bookingPage.fleetChoice === null) return '';
+    model.inputs.bookingPage.isDateSelected = true;                 //tester denne linjen
     let day = new Date();
     let currentMonth = model.inputs.bookingPage.selectedDate.getMonth();
     let currentYear = model.inputs.bookingPage.selectedDate.getFullYear();

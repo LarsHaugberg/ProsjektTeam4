@@ -1,12 +1,11 @@
 function adminPagePictureLoop() { // Lister opp bildene i frontPagePictures inn i adminPageArray div'en legger til slettefunksjon
     let HTML = '';
+    model.app.currentPicture = 0
     for (let i = 0; i < model.data.frontPagePictures.length; i++) {
         HTML += /*HTML*/`
-       <ul onclick="adminPagePreviewPictureSelector(${i})">
-            <a href="#">${model.data.frontPagePictures[i].pictureTitle}</a> 
-            <button onclick="removeAdminPagePicture(${i})" class="adminpage-removebutton">X</button>
-       </ul>  `;
-
+            <a onclick="adminPagePreviewPictureSelector(${i})" href="#">${model.data.frontPagePictures[i].pictureTitle}</a> 
+            <button onclick="removeAdminPagePicture(${i})">X</button>
+       `;
     }
     return HTML;
 }
@@ -16,8 +15,9 @@ function adminPagePreviewPictureSelector(index) { // Endrer modellen til indexen
 }
 function removeAdminPagePicture(index) { // Sletter bilder fra frontPagePictures arrayet
     model.data.frontPagePictures.splice(index, 1)
-
+    updateView()
 }
+
 function adminPageUploadPicture() { // Funksjon som later som vi har en backend og pusher et bildet i arrayet
     let imglink = "/img/picture4.png";
     let title =  'Picture4';

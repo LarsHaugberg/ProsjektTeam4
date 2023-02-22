@@ -29,9 +29,22 @@ function getComfortById(id) {
     return null;
 }
 // totalsum
+/*
 function totalSum() {
     return sumHoursSelected() + sumComfortsSelected();
+}*/
+
+function totalSum() {
+	let totalPrice = 0;
+	if(model.inputs.bookingPage.packageChoice){
+		if(!isWeekend())
+			totalPrice = sumComfortsSelected() + model.inputs.bookingPage.packageChoice.price.weekdayPrice;
+		else totalPrice = sumComfortsSelected() + model.inputs.bookingPage.packageChoice.price.weekendPrice;
+        return totalPrice;
+	}
+    return sumHoursSelected() + sumComfortsSelected();
 }
+
 
 function getPackageById(id) {
     for (let package of model.data.packageOptions) {
@@ -105,6 +118,7 @@ function addBooking() {
 
 function addComfort(comfortId){
     model.inputs.bookingPage.comfortChoices.push(comfortId);
+    updateEditorModalContenComforts();
     updateView();
 
 }
@@ -116,6 +130,7 @@ function subtractComfort(comfortId){
             break;
         }
     }  
+    updateEditorModalContenComforts();
     updateView();
 }
 
@@ -126,6 +141,7 @@ function deleteComfortChoicesByComfortId(comfortId){
 			model.inputs.bookingPage.comfortChoices.splice(i, 1);
 		}
 	}
+    updateEditorModalContenComforts();
     updateView();
 }
 

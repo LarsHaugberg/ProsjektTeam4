@@ -1,13 +1,16 @@
 function updateBlogPageView() {
     let HTML = /*HTML*/
     `
-        <h1>Ida's Mental Helse Blogg</h1>
-        <hr/>
-        <div class="blog-wrapper">
-            ${listAllBlogPosts()}
-            ${getModal()} 
+    
+        <div class="blogpage-container">
+            <h1 class="frontpage-title">Ida's Mental Helse Blogg</h1>
+            <br>
+            <div class="mini-preview-container">
+                ${listAllBlogPosts()}
+            </div>
         </div>
-        
+            ${getModal()} 
+       
     `;
     return HTML;
 }
@@ -17,12 +20,25 @@ function listAllBlogPosts() { // Looper igjennom alle blogpost arrayet og viser 
     for (let index = model.data.blogPosts.length - 1; index > -1; index--) {
         HTML += /*HTML*/
         `
-            <h1 onclick="openSelectedBlogPostModal(${index})">${model.data.blogPosts[index].postTitle}</h1>
-            ${checkIfPostHasImg(index)}
-            <div>${model.data.blogPosts[index].postText}<div>
+        <div class="blog-preview">
+            <h2 class="mini-preview-title" onclick="openSelectedBlogPostModal(${index})">${model.data.blogPosts[index].postTitle}</h2>
+            <div>${model.data.blogPosts[index].postText}</div>
+            ${checkIfPostPreviewHasImg(index)}
+        </div>
         `;
     }
     return HTML;
+}
+
+function checkIfPostPreviewHasImg(index) { // Sjekker om blogposten inneholder et bilde, hvis den ikke har det så sender den ikke med IMG HTML
+    let html;
+    if (model.data.blogPosts[index].postPicture == undefined) { return '' }
+    else {
+        html = /*HTML*/`   
+            <img class="mini-preview-img" src="${model.data.blogPosts[index].postPicture}"> 
+        `;
+        return html
+    }
 }
 
 function listEditorPictures() { // Looper igjennom blogpost bilde arrayet og viser dem på editor modalen
