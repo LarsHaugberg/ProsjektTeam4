@@ -11,13 +11,13 @@ const model = {
     inputs: {
         adminPageComfort: {
             // tilgjenlig ekstraprodukter box
-            price: '',
-            product:  '',
+            price: 0,
+            product:  0,
             // endre priser box
-            weekdayPriceDay: '',
-            weekdayPriceHour: '',
-            weekendPriceDay: '',
-            weekendPriceHour: '',
+            weekdayPriceDay: 0,
+            weekdayPriceHour: 0,
+            weekendPriceDay: 0,
+            weekendPriceHour: 0,
             // endre pakke box
             selectPackage: 0,
             packageProduct: '',

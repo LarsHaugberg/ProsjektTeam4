@@ -7,19 +7,17 @@ function selectDate(date) {
     updateView();
 }
 
-
 function getPriceDay(day) {
-    if (day < 6 && day > 0) return model.data.prices.weekdayPriceDay;
-    else return model.data.prices.weekendPriceDay;
+    if (day < 6 && day > 0) return Number(model.data.prices.weekdayPriceDay);
+    else return Number(model.data.prices.weekendPriceDay);
 
 }
 
 function getPriceHour() {
     let day = model.inputs.bookingPage.selectedDate.getDay();
-    if (day < 6 && day > 0) return model.data.prices.weekdayPriceHour;
-    else return model.data.prices.weekendPriceHour;
+    if (day < 6 && day > 0) return Number(model.data.prices.weekdayPriceHour);
+    else return Number(model.data.prices.weekendPriceHour);
 }
-
 //returnerer samlet pris på timer valgt
 function sumHoursSelected() {
     let day = model.inputs.bookingPage.selectedDate.getDay();
@@ -70,6 +68,7 @@ function selectHour(hour) {
     updateView();
 
 }
+
 function getHighestHourSelected() {
     if (model.inputs.bookingPage.selectedHours.length > 0) {
         let max = model.inputs.bookingPage.selectedHours[0];

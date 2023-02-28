@@ -7,7 +7,7 @@ function addComfortsInComfortsArray() { // Legge til comforts objekter
     let id = loopComfortsArray()
     let name = model.inputs.adminPageComfort.product
     let price = model.inputs.adminPageComfort.price
-    if (price == '' || name == '') { alert('Fyll inn feltene') }
+    if (price == 0 || name == '') { alert('Fyll inn feltene') }
     else model.data.comforts.push({ id: id, name: name, price: price })
     updateView()
 }
@@ -21,10 +21,10 @@ function loopComfortsArray() { // Returnerer ID til  addComfortsInComfortsArray(
 }
 
 function comittPriceChanges() { // Sjekker hvilke priser som er endra også kaller funksjonen for å endre prisene i modellen
-    if (model.inputs.adminPageComfort.weekdayPriceHour != '') { setPrice('weekdayHour') }
-    if (model.inputs.adminPageComfort.weekdayPriceDay != '') { setPrice('weekdayDay') }
-    if (model.inputs.adminPageComfort.weekendPriceHour != '') { setPrice('weekendHour') }
-    if (model.inputs.adminPageComfort.weekendPriceDay != '') { setPrice('weekendDay') }
+    if (model.inputs.adminPageComfort.weekdayPriceHour != 0) { setPrice('weekdayHour') }
+    if (model.inputs.adminPageComfort.weekdayPriceDay != 0) { setPrice('weekdayDay') }
+    if (model.inputs.adminPageComfort.weekendPriceHour != 0) { setPrice('weekendHour') }
+    if (model.inputs.adminPageComfort.weekendPriceDay != 0) { setPrice('weekendDay') }
     updateView()
 }
 
@@ -33,16 +33,16 @@ function setPrice(toChek) { // Endrer pris i modellen basert på parameter
     let price = model.data.prices
     if (toChek == 'weekdayHour') {
         price.weekdayPriceHour = input.weekdayPriceHour;
-        input.weekdayPriceHour = '';
+        input.weekdayPriceHour = 0;
     } else if (toChek == 'weekdayDay') {
         price.weekdayPriceDay = input.weekdayPriceDay;
-        input.weekdayPriceDay = '';
+        input.weekdayPriceDay = 0;
     } else if (toChek == 'weekendHour') {
         price.weekendPriceHour = input.weekendPriceHour;
-        input.weekendPriceHour = '';
+        input.weekendPriceHour = 0;
     } else if (toChek == 'weekendDay') {
         price.weekendPriceDay = input.weekendPriceDay;
-        input.weekendPriceDay = '';
+        input.weekendPriceDay = 0;
     }
 }
 
@@ -57,11 +57,11 @@ function changePackageOptions(toDo) { // Endrer pakkenavn, ukedag pris eller hel
     let inputPackageOptions = model.inputs.adminPageComfort
     if (toDo == 'weekendPrice') {
         packagePrice.weekendPrice = inputPackageOptions.weekendPrice;
-        inputPackageOptions.weekendPrice = '';
+        inputPackageOptions.weekendPrice = 0;
     }
     if (toDo == 'weekdayPrice') {
         packagePrice.weekdayPrice = inputPackageOptions.weekdayPrice;
-        inputPackageOptions.weekdayPrice = '';
+        inputPackageOptions.weekdayPrice = 0;
     }
     if (toDo == 'name') {
         model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name = inputPackageOptions.packageName;

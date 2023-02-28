@@ -27,7 +27,14 @@ function getClassesForHourButton(hour) {
     let fullYear = model.inputs.bookingPage.selectedDate.getFullYear();
     let month = model.inputs.bookingPage.selectedDate.getMonth();
     let date = model.inputs.bookingPage.selectedDate.getDate();
+    let selectedDate = model.inputs.bookingPage.selectedDate;
+    let todayDate = new Date().getTime();
+    let buttonDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), date, hour).getTime();
 
+	if(buttonDate < todayDate){
+		
+		return "date-button passed-hour-button";
+	}
     if (hour < 7) {return "hour-button un-selectable";}
     for (let b = 0; b < bookings.length; b++) {
         let booking = bookings[b];
@@ -49,8 +56,6 @@ function getClassesForHourButton(hour) {
     return "hour-button";
 }
 
-
-
 function getClassesForDateButton(date) {
 	let todayDate = new Date().getTime();
 	let selectedDate = model.inputs.bookingPage.selectedDate;
@@ -60,7 +65,6 @@ function getClassesForDateButton(date) {
 		//console.log('er mindre enn!');
 		return "date-button passed-day-button";
 	}
-	
     const bookings = model.data.bookings;
     let fleet = model.inputs.bookingPage.fleetChoice;
     let fullYear = model.inputs.bookingPage.selectedDate.getFullYear();

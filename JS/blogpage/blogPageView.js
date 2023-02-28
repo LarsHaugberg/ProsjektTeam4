@@ -20,8 +20,8 @@ function listAllBlogPosts() { // Looper igjennom alle blogpost arrayet og viser 
     for (let index = model.data.blogPosts.length - 1; index > -1; index--) {
         HTML += /*HTML*/
         `
-        <div class="blog-preview">
-            <h2 class="mini-preview-title" onclick="openSelectedBlogPostModal(${index})">${model.data.blogPosts[index].postTitle}</h2>
+        <div class="blog-preview" onclick="openSelectedBlogPostModal(${index})">
+            <h2 class="mini-preview-title" >${model.data.blogPosts[index].postTitle}</h2>
             <div>${model.data.blogPosts[index].postText}</div>
             ${checkIfPostPreviewHasImg(index)}
         </div>

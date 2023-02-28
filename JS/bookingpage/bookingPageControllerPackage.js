@@ -1,18 +1,13 @@
-
 function packageModalContent() { 
-    
 	let html = '<br><div id="ytretest">';
-    
 	for(let packageOption of model.data.packageOptions){
 		html += /*HTML*/`<div id="indretest"><table id="package-table-name-price">
 		<tr><td>Pakke:</td><td>${packageOption.name}</td></tr>
 		<tr><td>Antall Timer:</td><td>${packageOption.hours}</td></tr>
 		<tr><td>Ukedagspris:</td><td>${packageOption.price.weekdayPrice} ,-</td></tr>
 		<tr><td>Helgepris:</td><td>${packageOption.price.weekendPrice} ,-</td></tr>
-		<tr><td>Bestill pakken her:</td><td><button onclick="addPackageToInputs(${packageOption.id})">Velg</button></td></tr>
-
+		<tr>${btnChoosePackage(packageOption.id)}</tr>
 		</table><br>  
-
 		<table id="package-table-comforts">
         <th>Tilbehør inkludert:</th>
         <th>Antall:</th>
@@ -23,9 +18,7 @@ function packageModalContent() {
 		html += `</table></div>`;  
     }
     html += `</div>`;
-	
     model.app.modalContent = html;
-
     openModal();
 }
 
@@ -38,72 +31,21 @@ function addPackageToInputs(id){
     console.log(id);
 }
 
+function removePackageChoice(){
+    model.inputs.bookingPage.packageChoice = null;
+    closeModal();
+}
 
-/*
-row = rad = lodrett
-colums = rekke = vannret   
-
-
-pakke        navn
-timer:        x 
-ukedagpris: xxxx,- 
-helgpris:   xxxx,-
-comforts:
-    navn     antal 
-    navn     antal 
-    navn     antal 
-    navn     antal 
-    navn     antal 
-    navn     antal 
-
-Pakke:            Jentekveld (6 stk)
-
-timer:                   4
-ukedagpris:            5264,- 
-helgpris:              7664,-
-
-comforts:
-vin:                     4
-shampo og balsam:        6
-håndklær:                6
-mineralvann:             6
-aroma:                   1
-Badekåpe:                6
-
-
-
-*/
-/*  forslag til sumeringen inputs for booking siden
-vare    antal   sum
-pakke4:    1   1504       
-arstn
-iaersnt
-ernis
-Timer     4    2000
-vin       2     400
-shogbalsm 1     100  
-minevann  2     100
--------------------
-total sum      4104
-
-*/
-/* 
-<input 
-onchange="model.inputs.blogPage.titlePost = this.value" 
-value="${model.inputs.blogPage.titlePost}" 
-placeholder="Tittel blogpost"> 
-<br>
-<textarea class="textarea"
-onchange="model.inputs.blogPage.currentPost = this.value" 
-placeholder="Skriv blogginnlegget" 
-cols="70" 
-rows="24"
->${model.inputs.blogPage.currentPost}</textarea> 
-<br>
-<h5>Velg et av bildene for og få det med i blogginnlegget</h5>
-<div class="editor-picture-container">${listEditorPictures()}</div>
-<br>
-<button type="submit" onclick="generateNewBlogPost()">Lag post</button>
-</div>
-
- */
+function btnChoosePackage(id){
+    let html = '';
+	if(model.inputs.bookingPage.packageChoice){
+		if (model.inputs.bookingPage.packageChoice.id == id) {
+			html = /* html */`<td>Fjern pakke:</td><td><button onclick="removePackageChoice()">Fjern</button></td>`;
+		} else {
+			html = /* html */`<td>Bestill pakken her:</td><td><button onclick="addPackageToInputs(${id})">Velg</button></td>`;
+		}
+	} else {
+		html = /* html */`<td>Bestill pakken her:</td><td><button onclick="addPackageToInputs(${id})">Velg</button></td>`;
+	}
+    return html;
+}

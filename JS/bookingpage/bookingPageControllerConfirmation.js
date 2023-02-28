@@ -19,8 +19,6 @@ function confirmationModalContent() {
 		</table><br>
         <button onclick="addBooking()">Bekreft bestilling</button>
         `;
-
-
     model.app.modalContent = html;
     openModal();
 }
@@ -46,8 +44,8 @@ function checkOrderForPackage() {
     else {
         html = `<tr><td>${model.inputs.bookingPage.packageChoice.name}:</td><td>1</td>
     <td>${isWeekend() ? model.inputs.bookingPage.packageChoice.price.weekendPrice :
-                model.inputs.bookingPage.packageChoice.price.weekdayPrice}</td></tr>
-            <tr><td>Timer:</td><td>${model.inputs.bookingPage.packageChoice.hours}</td><td></td></tr> `;
+            model.inputs.bookingPage.packageChoice.price.weekdayPrice}</td></tr>
+        <tr><td>Timer:</td><td>${model.inputs.bookingPage.packageChoice.hours}</td><td></td></tr> `;
     }
     return html
 }

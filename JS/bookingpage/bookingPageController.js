@@ -4,12 +4,16 @@ function selectFleet(fleetId) {
 }
 
 function goToNextMonth() {
+    model.inputs.bookingPage.selectedHours = [];
     model.inputs.bookingPage.selectedDate.setMonth(model.inputs.bookingPage.selectedDate.getMonth() + 1);
+    model.inputs.bookingPage.selectedDate.setDate(1);
     updateView();
 }
 
 function goToPrevMonth() {
+    model.inputs.bookingPage.selectedHours = [];
     model.inputs.bookingPage.selectedDate.setMonth(model.inputs.bookingPage.selectedDate.getMonth() - 1);
+    model.inputs.bookingPage.selectedDate.setDate(1);
     updateView();
 }
 
@@ -28,11 +32,6 @@ function getComfortById(id) {
     }
     return null;
 }
-// totalsum
-/*
-function totalSum() {
-    return sumHoursSelected() + sumComfortsSelected();
-}*/
 
 function totalSum() {
 	let totalPrice = 0;
@@ -64,9 +63,7 @@ function emptySelection() {
 
 function emptySelectedHours(){
     model.inputs.bookingPage.selectedHours = [];
-    
     updateView();
-
 }
 
 function selectComfort(comfortId) {
@@ -93,7 +90,6 @@ function getNewBookingId(){
 		i++;
 	}
 }
-
 // sender av gåre bestiling
 function addBooking() {
     let newBooking = {};
@@ -112,6 +108,7 @@ function addBooking() {
     if (model.inputs.bookingPage.selectedHours.length < 1) { return; }
     model.data.bookings.push(newBooking);
     emptySelection();
+    closeModal();
     updateView();
     console.log(newBooking);
 }
@@ -149,7 +146,6 @@ function getFleetNameById(id) {
     console.log('getFleetNameByID kjoerer: '+ id)
     for (let fleet of model.data.fleets) {
         if (id == fleet.id){
-            //console.log('if-en i getFleetNameById slaar til!');
             return fleet.name;
         }    
     }

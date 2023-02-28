@@ -1,4 +1,3 @@
-
 function getComfortDropdown() {
 	let HTML = ""
 	HTML += /* html */ `<div><select onchange="selectComfort(this.value)"> 
