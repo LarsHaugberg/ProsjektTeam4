@@ -1,8 +1,11 @@
 function updateFrontPageView() {
     let HTML = /*HTML*/
-    `   
+        `           
+    <div id="video-body">
+        <video id="video" src="img/vid1.mp4" loop autoplay muted></video>
+    </div>
     <div class="frontpage-container">
-        <h1 class="frontpage-title">Ida's Badestue Utleie</h1>
+
         <button class="frontpage-left-button" onclick="changeFrontPagePicture('<')"><</button>
         <div class="frontpage-picture-box">
             <img class="front-page-images fill" 
@@ -21,8 +24,8 @@ function updateFrontPageView() {
 // ${checkIfPostHasImg(index)}
 function listLatestBlogPosts() { // Oppdaterer forsiden med den siste blogposten i arrayet
     let index = model.data.blogPosts.length - 1
-    let HTML = /*HTML*/ 
-    `
+    let HTML = /*HTML*/
+        `
         <div>
             <a href="#" onclick="openModal()">
                 <h1 >${model.data.blogPosts[index].postTitle}</h1>
@@ -36,8 +39,8 @@ function listLatestBlogPosts() { // Oppdaterer forsiden med den siste blogposten
 
 function getBlogPostModal() { // Legger modal i HTML så den blir åpnet når vi endrer modal modellen til 'block'
     let index = model.data.blogPosts.length - 1
-    let HTML = /*HTML*/ 
-    `
+    let HTML = /*HTML*/
+        `
         <div onclick="outsideModalClickClose(event)" class="modal" style="display:${model.modal}">
             <div class="modal-content">
                 <span onclick="closeModal()" class="close">&times;</span>
@@ -50,7 +53,7 @@ function getBlogPostModal() { // Legger modal i HTML så den blir åpnet når vi
         </div>
        
     `;
-    return HTML; 
+    return HTML;
 }
- 
+
 

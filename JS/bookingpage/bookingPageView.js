@@ -24,9 +24,9 @@ function getBookingPage() {
         HTML += /*HTML*/`
         <!-- <div> Flåte valgt er: ${fleetNameChosen()} </div>  -->
         <div class="booking-buttons">
-        <button class="bokking-btn" onclick="comfortsModalContent()">Comforts</button>
-        <button class="bokking-btn" onclick="packageModalContent()">Pakker</button>
-        <button class="bokking-btn" onclick="checkOrder()">Bestill</button>
+        <button class="booking-btn" onclick="comfortsModalContent()">Comforts</button>
+        <button class="booking-btn" onclick="packageModalContent()">Pakker</button>
+        <button class="booking-btn" onclick="checkOrder()">Bestill</button>
         </div>
         <br>
         <div class="booking-order-overview">${inputListBooking()}</div>

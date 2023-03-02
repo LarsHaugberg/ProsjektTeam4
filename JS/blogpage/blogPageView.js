@@ -3,7 +3,7 @@ function updateBlogPageView() {
     `
     
         <div class="blogpage-container">
-            <h1 class="frontpage-title">Ida's Mental Helse Blogg</h1>
+            
             <br>
             <div class="mini-preview-container">
                 ${listAllBlogPosts()}
@@ -22,7 +22,7 @@ function listAllBlogPosts() { // Looper igjennom alle blogpost arrayet og viser 
         `
         <div class="blog-preview" onclick="openSelectedBlogPostModal(${index})">
             <h2 class="mini-preview-title" >${model.data.blogPosts[index].postTitle}</h2>
-            <div>${model.data.blogPosts[index].postText}</div>
+            <div class="blog-text-mini-preview">${model.data.blogPosts[index].postText}</div>
             ${checkIfPostPreviewHasImg(index)}
         </div>
         `;
