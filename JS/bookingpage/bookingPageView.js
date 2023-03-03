@@ -1,6 +1,6 @@
 function updateBookingPageView() {
     let HTML = /*HTML*/`
-    <h1>Booking Side</h1> <hr/> 
+   
     <div class="booking-wrapper"> 
     <div class="booking-container">
     ${getBookingPage()}
@@ -13,18 +13,22 @@ function updateBookingPageView() {
 
 function getBookingPage() {
     let HTML = '';
-
     HTML += /*HTML*/`
     <div class="col-1">
-        <div class="booking-subtitle"><b>Flåte valgt er: ${fleetNameChosen()}</b></div>
         `;
         for (let fleet of model.data.fleets) {
-            HTML += /* html */ `<div class="booking-image" onclick="selectFleet(${fleet.id})">${fleet.img}</div>`;
+            HTML += /* html */ `
+            <div 
+                class="booking-image"
+                style="border-color:${model.data.fleets[fleet.id].border}"  
+                onclick="selectFleet(${fleet.id}),settBorder(${fleet.id})">
+                ${fleet.img}
+            </div>`;
         }
         HTML += /*HTML*/`
         <!-- <div> Flåte valgt er: ${fleetNameChosen()} </div>  -->
         <div class="booking-buttons">
-        <button class="booking-btn" onclick="comfortsModalContent()">Comforts</button>
+        <button class="booking-btn" onclick="comfortsModalContent()">Ekstra produkter</button>
         <button class="booking-btn" onclick="packageModalContent()">Pakker</button>
         <button class="booking-btn" onclick="checkOrder()">Bestill</button>
         </div>
@@ -38,7 +42,7 @@ function getBookingPage() {
     <button  onclick="goToNextMonth()">Neste måned</button>
     </div>
     
-    <h3 class="booking-subtitle">${getSelectedMonthName()} ${model.inputs.bookingPage.selectedDate.getFullYear()} ${showDate()}</h3>
+    <div class="booking-subtitle">${getSelectedMonthName()} ${model.inputs.bookingPage.selectedDate.getFullYear()} ${showDate()}</div>
     <div>${getMonthAsTable()} </div>
     <div>${getTimePicker()}</div>
     

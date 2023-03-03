@@ -84,7 +84,7 @@ const model = {
             },
             {
                 name: 'test',
-                adress: 'hytti heiti 3',
+                adress: 'hytti heiti 2',
                 phoneNumber: '12341234',
                 email: 'test@gmail.com',
                 password: '1234',
@@ -224,8 +224,28 @@ const model = {
                 fleetId: 0,
                 chosenPackage: null,
                 chosenComforts: [1],
-                chosenDate: new Date(),// string av booket dato
+                chosenDate: new Date("2023-03-13"),// string av booket dato
                 chosenHours: [9, 10, 11, 12, 13, 14, 15, 16],
+                customer: '',
+                totalPrice: 0,
+            },
+            {
+                orderId: 1,
+                fleetId: 0,
+                chosenPackage: null,
+                chosenComforts: [1],
+                chosenDate:  new Date("2023-03-14"),// string av booket dato
+                chosenHours: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+                customer: '',
+                totalPrice: 0,
+            },
+            {
+                orderId: 2,
+                fleetId: 0,
+                chosenPackage: null,
+                chosenComforts: [1],
+                chosenDate: new Date("2023-03-15"),// string av booket dato
+                chosenHours: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
                 customer: '',
                 totalPrice: 0,
             },
@@ -235,11 +255,13 @@ const model = {
                 id: 0,
                 name: 'Skarven',
                 img: `<img src="img/picture1.jpg" alt="flåte1" width="268" height="188">`,
+                border: 'white',
             },
             {
                 id: 1,
                 name: 'Måken',
                 img: `<img src="img/picture3.jpg" alt="flåte2" width="268" height="188">`,
+                border: 'white',
             },
         ],
 

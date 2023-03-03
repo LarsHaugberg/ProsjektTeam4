@@ -522,10 +522,6 @@ td {
 #modal-package{
   background-color: #999;
 }
-/*test .container > ul {  
-  border: 4px solid red;  
-}*/
-
 
 #package-table-name-price, tr, td{
   border: none;
@@ -559,6 +555,10 @@ td {
 }
 
 .booking-image{
+  width: 268px;
+  height: 188px;
+  border: solid;
+  border-width: 4px;
   margin: 10px;
   display: inline;
 }

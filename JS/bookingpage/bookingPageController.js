@@ -3,6 +3,14 @@ function selectFleet(fleetId) {
     updateView();
 }
 
+function settBorder(index){
+    for (let i = 0; i < model.data.fleets.length; i++) {
+        model.data.fleets[i].border = "white"
+    }
+    model.data.fleets[index].border = "black"
+    updateView();
+}
+
 function goToNextMonth() {
     model.inputs.bookingPage.selectedHours = [];
     model.inputs.bookingPage.selectedDate.setMonth(model.inputs.bookingPage.selectedDate.getMonth() + 1);
@@ -20,7 +28,7 @@ function goToPrevMonth() {
 function sumComfortsSelected() {
     let priceSum = 0;
     for (let comfortId of model.inputs.bookingPage.comfortChoices) {
-        priceSum += getComfortById(comfortId).price;
+        priceSum += Number(getComfortById(comfortId).price);
     }
     return priceSum;
 }
@@ -37,8 +45,8 @@ function totalSum() {
 	let totalPrice = 0;
 	if(model.inputs.bookingPage.packageChoice){
 		if(!isWeekend())
-			totalPrice = sumComfortsSelected() + model.inputs.bookingPage.packageChoice.price.weekdayPrice;
-		else totalPrice = sumComfortsSelected() + model.inputs.bookingPage.packageChoice.price.weekendPrice;
+			totalPrice = sumComfortsSelected() + Number(model.inputs.bookingPage.packageChoice.price.weekdayPrice);
+		else totalPrice = sumComfortsSelected() + Number(model.inputs.bookingPage.packageChoice.price.weekendPrice);
         return totalPrice;
 	}
     return sumHoursSelected() + sumComfortsSelected();
