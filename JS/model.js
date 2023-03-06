@@ -254,13 +254,13 @@ const model = {
             {
                 id: 0,
                 name: 'Skarven',
-                img: `<img src="img/picture1.jpg" alt="flåte1" width="268" height="188">`,
+                img: `<img src="img/fleetskarvenBooking.jpeg" alt="flåte1" width="288" height="162">`,
                 border: 'white',
             },
             {
                 id: 1,
                 name: 'Måken',
-                img: `<img src="img/picture3.jpg" alt="flåte2" width="268" height="188">`,
+                img: `<img src="img/fleetmakenBooking.jpeg" alt="flåte2" width="288" height="162">`,
                 border: 'white',
             },
         ],
@@ -319,15 +319,15 @@ const model = {
         ],
         frontPagePictures: [
             {
-                imageLink: 'img/picture1.jpg',
+                imageLink: 'img/fleetskarvenFront.jpeg',
                 pictureTitle: 'Picture1',
             },
             {
-                imageLink: 'img/picture2.jpg',
+                imageLink: 'img/fleetmakenFront.jpeg',
                 pictureTitle: 'Picture2',
             },
             {
-                imageLink: 'img/picture3.jpg',
+                imageLink: 'img/larvikinnlop2560x1440.jpeg',
                 pictureTitle: 'Picture3',
             }
             

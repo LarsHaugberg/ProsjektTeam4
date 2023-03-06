@@ -42,10 +42,10 @@ function getBookingPage() {
     <button  onclick="goToNextMonth()">Neste måned</button>
     </div>
     
-    <div class="booking-subtitle">${getSelectedMonthName()} ${model.inputs.bookingPage.selectedDate.getFullYear()} ${showDate()}</div>
-    <div>${getMonthAsTable()} </div>
-    <div>${getTimePicker()}</div>
-    
+    <div class="booking-subtitle">
+        <div>${getSelectedMonthName()} ${model.inputs.bookingPage.selectedDate.getFullYear()} ${getMonthAsTable()} </div>
+        <div>${showDate()} ${getTimePicker()}</div>
+    </div>
        
         
     
