@@ -80,18 +80,18 @@ function upperNavBar() { // Tegner opp navBar øverst på siden // Skal vi skriv
         HTML = /*HTML*/ `
         <div class="navbar-top">
             <a onclick="switchPage('frontPage')">Forside</a>
-            <a onclick="switchPage('bookingPage')">BookingSide</a>
-            <a onclick="switchPage('blogPage')">Bloggside</a>
-            <a onclick="switchPage('blogPage'),openEditorModal()">Ny blogpost</a>
-            <b onclick="logOutUser()">Logg UT</b>
+            <a onclick="switchPage('bookingPage')">Booking</a>
+            <a onclick="switchPage('blogPage')">Blogg</a>
+            <a onclick="switchPage('blogPage'),openEditorModal()">Ny Blogpost</a>
+            <b onclick="logOutUser()">Logg ut</b>
         <div class="dropdown">
-                <button class="dropbtn">AdminSide
+                <button class="dropbtn">Administrator
                 <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a onclick="switchPage('adminPagePicture')">AdminBildeSide</a>
-                    <a onclick="switchPage('adminPageComfort')">AdminComfortSide</a>
-                    <a onclick="switchPage('adminPageBooking')">AdminBookingSide</a>
+                    <a onclick="switchPage('adminPagePicture')">Kontrollpanel Bilder</a>
+                    <a onclick="switchPage('adminPageComfort')">Kontrollpanel Produkter</a>
+                    <a onclick="switchPage('adminPageBooking')">Kontrollpanel Booking</a>
                 </div>
         </div> 
             <a onclick="switchPage('loginPage')">${showCurrentLoggedInUser()}</a>
@@ -103,9 +103,9 @@ function upperNavBar() { // Tegner opp navBar øverst på siden // Skal vi skriv
     
         <div class="navbar-top">
             <a onclick="switchPage('frontPage')">Forside</a>
-            <a onclick="switchPage('bookingPage')">BookingSide</a>
-            <a onclick="switchPage('blogPage')">Bloggside</a>
-            <b onclick="logOutUser()">Logg UT</b>
+            <a onclick="switchPage('bookingPage')">Booking</a>
+            <a onclick="switchPage('blogPage')">Blogg</a>
+            <b onclick="logOutUser()">Logg ut</b>
             <a onclick="switchPage('loginPage')">${showCurrentLoggedInUser()}</a>
         </div>
      
@@ -115,8 +115,8 @@ function upperNavBar() { // Tegner opp navBar øverst på siden // Skal vi skriv
         HTML = /*HTML*/` 
         <div class="navbar-top">
             <a onclick="switchPage('frontPage')">Forside</a>
-            <a onclick="switchPage('bookingPage')">BookingSide</a>
-            <a onclick="switchPage('blogPage')">Bloggside</a>
+            <a onclick="switchPage('bookingPage')">Booking</a>
+            <a onclick="switchPage('blogPage')">Blogg</a>
             <a onclick="switchPage('loginPage')">${showCurrentLoggedInUser()}</a>
         </div>`;
     }
@@ -126,7 +126,7 @@ function upperNavBar() { // Tegner opp navBar øverst på siden // Skal vi skriv
 function showCurrentLoggedInUser() { // Viser frem hvilken user som er logget inn i Navbaren
     let HTML = ``
     if (model.app.currentUser == '') {
-        HTML = 'LoginSide'
+        HTML = 'Logg inn'
     } else {HTML = 'Logget inn som ' + model.app.currentUser }
     return HTML
 }

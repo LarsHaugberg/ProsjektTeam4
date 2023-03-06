@@ -1,40 +1,27 @@
-
-
-
 function selectAdminDate(date){
     if (model.inputs.adminPageBooking.selectedDate.getDate() != date) {
         model.inputs.adminPageBooking.selectedBooking = null;
     }
     model.inputs.adminPageBooking.isDateSelected = true;
     model.inputs.adminPageBooking.selectedDate.setDate(date);
-    
     updateView();
-
 }
 
 function goToPrevMonthAdmin(){
-    
     model.inputs.adminPageBooking.selectedDate.setMonth(model.inputs.adminPageBooking.selectedDate.getMonth() - 1);
     model.inputs.adminPageBooking.selectedDate.setDate(1);
     updateView();
-
-
 }
 
-
 function goToNextMonthAdmin(){
-    
     model.inputs.adminPageBooking.selectedDate.setMonth(model.inputs.adminPageBooking.selectedDate.getMonth() + 1);
     model.inputs.adminPageBooking.selectedDate.setDate(1);
     updateView();
-
-    
 }
 
 function selectBookingAdmin(orderId){
     model.inputs.adminPageBooking.selectedBooking = orderId;
     updateView();
-
 }
 
 function getBookingById(id){
@@ -55,15 +42,3 @@ function getUserByName(username){
     return null;
 }
 
-
-
-//brukes ikke tror jeg
-function getPackageById(id){
-    for(let packageOption of model.data.packageOptions){
-        if(packageOption.id == id){
-            console.log(packageOption);
-            return packageOption;
-        }
-    }
-    return null;
-}

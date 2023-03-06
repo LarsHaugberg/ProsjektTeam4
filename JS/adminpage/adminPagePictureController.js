@@ -4,7 +4,7 @@ function adminPagePictureLoop() { // Lister opp bildene i frontPagePictures inn 
     for (let i = 0; i < model.data.frontPagePictures.length; i++) {
         HTML += /*HTML*/`
             <a onclick="adminPagePreviewPictureSelector(${i})" href="#">${model.data.frontPagePictures[i].pictureTitle}</a> 
-            <button onclick="removeAdminPagePicture(${i})">X</button>
+            <button onclick="removeAdminPagePicture(${i})">Fjern bilde</button>
        `;
     }
     return HTML;

@@ -1,12 +1,14 @@
 function updateAdminPageBookingView() { // Viser viewet på administratorsiden for bildebehandling
     let HTML = /*HTML*/ `
-    <h1> Administrator side for Bookinger</h1>
-    <h2>${getSelectedMonthNameAdmin(model.inputs.adminPageBooking.selectedDate.getMonth())} ${model.inputs.adminPageBooking.selectedDate.getFullYear()}</h2>
+    
+    
     `;
     HTML += `<div class="admin-booking-page">
     
     <div class="admin-month">
+    <h2>${getSelectedMonthNameAdmin(model.inputs.adminPageBooking.selectedDate.getMonth())} ${model.inputs.adminPageBooking.selectedDate.getFullYear()}</h2>
         <div class="booking-month-button-div"> 
+        
             <button class="booking-month-button" onclick="goToPrevMonthAdmin()">Forrige måned</button> 
             <button class="booking-month-button" onclick="goToNextMonthAdmin()">Neste måned</button>
            

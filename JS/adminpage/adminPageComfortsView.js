@@ -3,7 +3,7 @@ function updateAdminPageComfortView() { // Viser viewet på administratorsiden f
     
     <div class="adminpage-comforts-wrapper">
         <div class="adminpage-comforts-box-row1"> 
-            <h4 class="admin-box-subtitle-title">Tilgjenglige ekstraprodukter</h4>
+            <h4 class="admin-box-subtitle-title">Tilgjenglige ekstraprodukter:</h4>
             ${comfortsExtraProductLoop()}
             <div class="admin-extra-produckt-inputbox">
                 <input type="number" onchange="model.inputs.adminPageComfort.price = this.value" placeholder="Pris"/>
@@ -13,12 +13,12 @@ function updateAdminPageComfortView() { // Viser viewet på administratorsiden f
         </div>    
     
         <div class="adminpage-comforts-box-row1">
-            <h4 class="admin-box-subtitle-title">Endre priser hverdag</h4>
+            <h4 class="admin-box-subtitle-title">Endre priser hverdag:</h4>
            
             <input type="number" onchange="model.inputs.adminPageComfort.weekdayPriceHour = this.value" placeholder="${model.data.prices.weekdayPriceHour} Timespris Hverdag"/>
             <input type="number" onchange="model.inputs.adminPageComfort.weekdayPriceDay = this.value" placeholder="${model.data.prices.weekdayPriceDay} Dagspris Hverdag"/>
           
-            <h4 class="admin-box-subtitle-title">Endre priser Helg</h4>
+            <h4 class="admin-box-subtitle-title">Endre priser helg:</h4>
             
             <input type="number" onchange="model.inputs.adminPageComfort.weekendPriceHour = this.value" placeholder="${model.data.prices.weekendPriceHour} Timespris Helg"/>
             <input type="number" onchange="model.inputs.adminPageComfort.weekendPriceDay = this.value" placeholder="${model.data.prices.weekendPriceDay} Dagspris Helg">
@@ -32,7 +32,7 @@ function updateAdminPageComfortView() { // Viser viewet på administratorsiden f
             <input type="text" 
             onchange="model.inputs.adminPageComfort.packageProduct = this.value,model.app.selectPackageDropdown = this.value" 
             placeholder="Vare"/> 
-            <button onclick="addItemToPackage()">Legg til Vare</button> 
+            <button onclick="addItemToPackage()">Legg til vare</button> 
             <button class="admin-spann-button" onclick="removePackage()">Fjern pakke</button>
         </div>
         

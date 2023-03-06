@@ -36,7 +36,7 @@ const model = {
             selectPackageDropdown: null,
             // legg til pakke box
             newPackageName: '',
-            newPackageHour: 1,
+            newPackageHour: 0,
             newPackageWeekdayPrice: 0,
             newPackageWeekendPrice: 0,
         },

@@ -52,21 +52,25 @@ function changePackageEditorContent(index) { // Tar i mot select sin value og en
     updateView()
 }
 
-function changePackageOptions(toDo) { // Endrer pakkenavn, ukedag pris eller helg pris basert på parameter
+function changePackageOptions(toDo) { // Endrer pakkenavn, ukedag pris eller helg pris basert på parameter /* H */
     let packagePrice = model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].price
     let inputPackageOptions = model.inputs.adminPageComfort
-    if (toDo == 'weekendPrice') {
+
+    if (toDo == 'weekendPrice' && inputPackageOptions.weekendPrice != 0) {
         packagePrice.weekendPrice = inputPackageOptions.weekendPrice;
         inputPackageOptions.weekendPrice = 0;
     }
-    if (toDo == 'weekdayPrice') {
+    
+    if (toDo == 'weekdayPrice' && inputPackageOptions.weekdayPrice != 0) {
         packagePrice.weekdayPrice = inputPackageOptions.weekdayPrice;
         inputPackageOptions.weekdayPrice = 0;
     }
-    if (toDo == 'name') {
+    
+    if (toDo == 'name' && inputPackageOptions.packageName != '') {
         model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name = inputPackageOptions.packageName;
         inputPackageOptions.packageName = '';
     }
+    else alert("Fyll inn feltet")
     updateView()
 }
 
@@ -96,10 +100,13 @@ function removePackage() { // Fjerner valgt pakke fra arrayet
     updateView()
 }
 
-function addItemToPackage() {   // Legger til nytt produkt til pakken 
+function addItemToPackage() {   // Legger til nytt produkt til pakken
     let package = model.data.packageOptions[model.inputs.adminPageComfort.selectPackage];
     let packageName = model.inputs.adminPageComfort
-    package.comforts.push({ name: packageName.packageProduct, quantity: 1 })
+    if (model.inputs.adminPageComfort.packageProduct == "") {
+        alert("Legg til navn på vare")
+    }
+    else { package.comforts.push({ name: packageName.packageProduct, quantity: 1 }) }
     updateView()
 }
 
@@ -110,14 +117,19 @@ function addNewPackage() { // Legger til ny pakke
     let newWeekdayPrice = input.newPackageWeekdayPrice
     let newWeekendPrice = input.newPackageWeekendPrice
     let newId = loopPackageArray()
-    model.data.packageOptions.push(
-        {
-            id: newId,
-            name: name,
-            price: { weekdayPrice: newWeekdayPrice, weekendPrice: newWeekendPrice, },
-            hours: newHours,
-            comforts: []
-        })
+    if (input.newPackageName != ''
+        && input.newPackageHour != 0
+        && input.newPackageWeekdayPrice != 0
+        && input.newPackageWeekendPrice != 0) {
+        model.data.packageOptions.push(
+            {
+                id: newId,
+                name: name,
+                price: { weekdayPrice: newWeekdayPrice, weekendPrice: newWeekendPrice, },
+                hours: newHours,
+                comforts: []
+            })
+    } else return alert("Du må fylle ut alle feltene!");
     updateView()
 }
 
