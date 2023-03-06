@@ -1,7 +1,14 @@
 
 
 
-function selectAdminDate(){
+function selectAdminDate(date){
+    if (model.inputs.adminPageBooking.selectedDate.getDate() != date) {
+        model.inputs.adminPageBooking.selectedBooking = null;
+    }
+    model.inputs.adminPageBooking.isDateSelected = true;
+    model.inputs.adminPageBooking.selectedDate.setDate(date);
+    
+    updateView();
 
 }
 
@@ -22,4 +29,41 @@ function goToNextMonthAdmin(){
     updateView();
 
     
+}
+
+function selectBookingAdmin(orderId){
+    model.inputs.adminPageBooking.selectedBooking = orderId;
+    updateView();
+
+}
+
+function getBookingById(id){
+    for (let booking of model.data.bookings){
+        if(booking.orderId == id){
+            return booking;
+        }
+    }
+    return null;
+}
+
+function getUserByName(username){
+    for(let user of model.data.users){
+        if(username == user.name){
+            return user;
+        }
+    }
+    return null;
+}
+
+
+
+//brukes ikke tror jeg
+function getPackageById(id){
+    for(let packageOption of model.data.packageOptions){
+        if(packageOption.id == id){
+            console.log(packageOption);
+            return packageOption;
+        }
+    }
+    return null;
 }

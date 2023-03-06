@@ -102,7 +102,7 @@ function hoursComfortsSelected() {
     `;
     if (model.inputs.bookingPage.packageChoice == null) {
         html += /* html */`
-        <tr><td>Comforts:</td><td></td<td></td></tr>
+        <tr><td>Comforts:</td><td></td><td></td></tr>
         <tr style="border-bottom: 1px solid black;"></tr>
         `;
     }
@@ -123,7 +123,7 @@ function packageIsChosen() {
     `;
     if (model.inputs.bookingPage.packageChoice !== null && model.inputs.bookingPage.comfortChoices.length > 0) {
         html += /* html */`
-        <tr><td>Ekstra Comforts:</td><td></td<td></td></tr>
+        <tr><td>Ekstra Comforts:</td><td></td><td></td></tr>
         <tr style="border-bottom: 1px solid black;"></tr>
         `;
     }

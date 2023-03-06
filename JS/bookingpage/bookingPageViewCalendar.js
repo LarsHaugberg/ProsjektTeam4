@@ -55,9 +55,7 @@ function getMonthAsTable() {
         }
         HTML += "</tr>";
     }
-    HTML += `</table>`;
-    HTML += `<p> Døgnpris: ${getPriceDay(model.inputs.bookingPage.selectedDate.getDay())} 
-    <br> Timespris: ${getPriceHour()} </p>`
+  
     return HTML;
 }
 

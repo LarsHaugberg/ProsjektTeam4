@@ -1,5 +1,6 @@
 function selectFleet(fleetId) {
     model.inputs.bookingPage.fleetChoice = fleetId;
+    model.inputs.bookingPage.selectedHours = [];
     updateView();
 }
 

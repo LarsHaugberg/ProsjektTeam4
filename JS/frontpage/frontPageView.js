@@ -57,3 +57,13 @@ function getBlogPostModal() { // Legger modal i HTML så den blir åpnet når vi
 }
 
 
+function getFrontPageTable(){
+    let html = `<div class="front-page-table-div">
+        </div>
+            <table class="front-page-table">
+            
+            </table>
+        </div>`;
+
+    return html;
+}

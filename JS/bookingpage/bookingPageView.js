@@ -37,17 +37,19 @@ function getBookingPage() {
      
     </div>
     <div class="col-2">
-    <div class="booking-month-button">
-    <button  onclick="goToPrevMonth()">Forrige måned</button> 
-    <button  onclick="goToNextMonth()">Neste måned</button>
+        <div class="booking-calender">
+        <div class="booking-subtitle">${getSelectedMonthName()} ${model.inputs.bookingPage.selectedDate.getFullYear()} </div>
+             <div class="next-prew-month-buttons">   
+                <button  onclick="goToPrevMonth()">Forrige måned</button> 
+                <button  onclick="goToNextMonth()">Neste måned</button>
+            </div>
+            <div class="claender-component">${getMonthAsTable()}${getTimePicker()}</div>    
+            
+        </div>
     </div>
     
-    <div class="booking-subtitle">${getSelectedMonthName()} ${model.inputs.bookingPage.selectedDate.getFullYear()} ${showDate()}</div>
-    <div>${getMonthAsTable()} </div>
-    <div>${getTimePicker()}</div>
     
-       
-        
+    
     
     `;
     return HTML;

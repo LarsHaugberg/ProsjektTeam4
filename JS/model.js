@@ -13,6 +13,7 @@ const model = {
         adminPageBooking: {
             fleetChoice: 0,
             selectedDate: new Date(),
+            selectedBooking: null,
             
             
         },
@@ -226,7 +227,7 @@ const model = {
                 chosenComforts: [1],
                 chosenDate: new Date("2023-03-13"),// string av booket dato
                 chosenHours: [9, 10, 11, 12, 13, 14, 15, 16],
-                customer: '',
+                customer: 'test',
                 totalPrice: 0,
             },
             {
@@ -236,7 +237,7 @@ const model = {
                 chosenComforts: [1],
                 chosenDate:  new Date("2023-03-14"),// string av booket dato
                 chosenHours: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-                customer: '',
+                customer: 'test',
                 totalPrice: 0,
             },
             {
@@ -246,7 +247,7 @@ const model = {
                 chosenComforts: [1],
                 chosenDate: new Date("2023-03-15"),// string av booket dato
                 chosenHours: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-                customer: '',
+                customer: 'test',
                 totalPrice: 0,
             },
         ],
@@ -279,7 +280,7 @@ const model = {
             {
                 postId: 1,
                 postTitle: 'Isbading for mental trening',
-                postText: `Isbadging er en måte å anerkjenne og belønne ferdigheter og prestasjoner på. Det fungerer ved at en person tjener merker, eller "badges", for å fullføre visse oppgaver eller demonstrere bestemte ferdigheter. Disse merkene kan deretter vises på en persons profil eller nettsted som en måte å vise frem deres prestasjoner.
+                postText: `Isbading er en måte å anerkjenne og belønne ferdigheter og prestasjoner på. Det fungerer ved at en person tjener merker, eller "badges", for å fullføre visse oppgaver eller demonstrere bestemte ferdigheter. Disse merkene kan deretter vises på en persons profil eller nettsted som en måte å vise frem deres prestasjoner.
                 En av fordelene med isbadging er at det kan gi en mer omfattende og nøyaktig måte å anerkjenne prestasjoner på enn tradisjonelle sertifiseringer eller grader. Isbadging kan være spesifikk for en bestemt ferdighet eller oppgave, og kan også være mer fleksibel og tilpassbar for å imøtekomme individuelle behov og mål.
                 Isbadging er også en effektiv måte å øke engasjementet og motivasjonen til deltakerne. Å tjene digitale merker kan være en belønning i seg selv, og det kan også gi en følelse av prestasjon og tilhørighet til en bestemt gruppe eller samfunn.
                 Mens isbadging har blitt populært i utdanningssektoren, blir det også brukt i andre bransjer som teknologi, helsevesen og forretningsverdenen. Isbadging kan være spesielt nyttig i karriereutvikling, der det kan gi arbeidsgivere en mer nøyaktig og omfattende måte å evaluere potensielle kandidater på.

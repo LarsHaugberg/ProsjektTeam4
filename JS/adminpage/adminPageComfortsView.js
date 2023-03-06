@@ -2,14 +2,13 @@ function updateAdminPageComfortView() { // Viser viewet på administratorsiden f
     let HTML = /*HTML*/ `
     
     <div class="adminpage-comforts-wrapper">
-    <h1 class="admin-box-subtitle-title"> Administrator side for Comforts</h1>
         <div class="adminpage-comforts-box-row1"> 
             <h4 class="admin-box-subtitle-title">Tilgjenglige ekstraprodukter</h4>
             ${comfortsExtraProductLoop()}
             <div class="admin-extra-produckt-inputbox">
                 <input type="number" onchange="model.inputs.adminPageComfort.price = this.value" placeholder="Pris"/>
                 <input type="text" onchange="model.inputs.adminPageComfort.product = this.value" placeholder="Vare"/>
-                <button class="admin-spann-button" onclick="addComfortsInComfortsArray()"> Legg til produkter</button>
+                <button class="admin-spann-button" onclick="addComfortsInComfortsArray()"> Legg til produkt</button>
             </div>    
         </div>    
     
@@ -34,7 +33,7 @@ function updateAdminPageComfortView() { // Viser viewet på administratorsiden f
             onchange="model.inputs.adminPageComfort.packageProduct = this.value,model.app.selectPackageDropdown = this.value" 
             placeholder="Vare"/> 
             <button onclick="addItemToPackage()">Legg til Vare</button> 
-            <button class="admin-spann-button" onclick="removePackage()">fjærn pakke</button>
+            <button class="admin-spann-button" onclick="removePackage()">Fjern pakke</button>
         </div>
         
         <div class="adminpage-comforts-box-row2"> 
@@ -59,7 +58,7 @@ function comfortsExtraProductLoop() { // Lager HTML og lister igjennom comforts 
     for (let i = 0; i < model.data.comforts.length; i++) {
         HTML += `
         <li>${model.data.comforts[i].name} - ${model.data.comforts[i].price},- </li>
-        <button onclick="removeComforts(${i})">X</button>
+        <button onclick="removeComforts(${i})">Fjern produkt</button>
         `
     }
     return HTML;
@@ -73,21 +72,21 @@ function showPackageEditor() { // Returnerer HTML med innholdet i valgt pakke
             <input class="admin-spann-button" 
             onchange="model.inputs.adminPageComfort.packageName = this.value"
             type="text"/>
-            <button onclick="changePackageOptions('name')">v</button>
+            <button onclick="changePackageOptions('name')">Endre</button>
         </div>
         <div>Ukedags pris : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].price.weekdayPrice}</div> 
         <div class="admin-package-inputbox">
             <input class="admin-spann-button"  
             onchange="model.inputs.adminPageComfort.weekdayPrice = this.value"
             type="number"/>
-            <button onclick="changePackageOptions('weekdayPrice')">v</button>
+            <button onclick="changePackageOptions('weekdayPrice')">Endre</button>
         </div>
         <div>Helgepris : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].price.weekendPrice}</div> 
         <div class="admin-package-inputbox">
             <input class="admin-spann-button" 
             onchange="model.inputs.adminPageComfort.weekendPrice = this.value" 
             type="number"/>
-            <button onclick="changePackageOptions('weekendPrice')">v</button>
+            <button onclick="changePackageOptions('weekendPrice')">Endre</button>
         </div>
         <div>Timer : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].hours}</div>
         <div class="admin-package-hour-buttons">
@@ -110,7 +109,7 @@ function loopPackageComforts() { // Returnerer HTML for ekstra produkter i vist 
         <div class="admin-package-inputbox">   
             <button onclick="addSubtractQuantity('▲',${i})">▲</button> 
             <button onclick="addSubtractQuantity('▼',${i})">▼</button>
-            <button onclick="adminPageRemoveComfortFromPackage(${i})">X</button>
+            <button onclick="adminPageRemoveComfortFromPackage(${i})">Slett</button>
         </div>
         `;
     }

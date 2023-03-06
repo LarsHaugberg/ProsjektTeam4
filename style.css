@@ -3,6 +3,18 @@ body {
     padding: 0;
     padding-top: 30px;
     background-color: rgb(239, 226, 205);
+    font-family: 'Arvo', serif;
+}
+button{
+  font-family: 'Arvo', serif;
+  font-size:medium;
+  
+}
+input{
+  font-family: 'Arvo', serif;
+}
+textarea{
+  font-family: 'Arvo', serif;
 }
 #video-body {
   position: absolute;
@@ -130,7 +142,7 @@ body {
 }
 .blog-text-mini-preview{
   margin: 10px;
-  height: 200px;
+  height: 190px;
   overflow: hidden;
 }
 .mini-preview-img{
@@ -148,9 +160,8 @@ body {
   position: fixed;
   top: 0;
   overflow: visible;
-  background-color: #333;
+  background-color: #8fb8c6;
   height: 47px
-  
 }
 
 .navbar-top a {
@@ -181,22 +192,23 @@ body {
   outline: none;
   color: white;
   padding: 14px 16px;
-  background-color: inherit;
+  background-color: #8fb8c6;
   font-family: inherit;
   margin: 0;
 }
 .navbar-top b:hover, .dropdown:hover .dropbtn {
-  background-color: red;
+  background-color: #8fb8c6;
  
 }
 .navbar-top a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
+  background-color: #acc1c9;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  color: white;
+  background-color: #8fb8c6;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -204,7 +216,7 @@ body {
 
 .dropdown-content a {
   float: none;
-  color: black;
+  color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -227,21 +239,22 @@ body {
     width: 100%;
     color: rgb(9, 9, 9);
     text-align: center;
-    background-color: #333;;
+    background-color: #8fb8c6;
     padding: 0px; 
     height: 35px;
     overflow: hidden;
     
+    
   }
   .img {
-    height: 30px;
-    width: 30px;
-    padding: 0px;
+    height: 25px;
+    width: 25px;
+    padding: 5px;
     margin: 0px;
     
   }
   .navbar-bottom a:hover {
-    background-color: rgb(243, 239, 239);
+    background-color: #acc1c9;
   }
   .navbar-bottom a {
     text-decoration: none;
@@ -340,17 +353,23 @@ body {
   grid-template-columns: 1fr 1fr;
   margin-left: 20px;
   margin-right: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
   justify-items: center;
 }
 .adminpage-comforts-box-row1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 270px;
+  height: 300PX;
   width: 600px; 
   margin: 5px;
   padding: 10px;
-  background-color: rgb(197, 172, 223);
+  background-color: rgb(173, 209, 171);
   overflow-wrap: normal;
+  border-radius: 35px;
+  border-style: solid;
+  border-width: 20px;
+  border-color: rgb(199, 212, 188);
 }
 .adminpage-comforts-box-row2 {
   display: grid;
@@ -359,8 +378,12 @@ body {
   width: 600px;
   margin: 5px;
   padding: 10px;
-  background-color: rgb(197, 172, 223);
+  background-color: rgb(173, 209, 171);
   overflow-wrap: normal;
+  border-radius: 35px;
+  border-style: solid;
+  border-width: 20px;
+  border-color: rgb(199, 212, 188);
 }
 .admin-box-subtitle-title{
   grid-column: 1 / span 2;
@@ -412,9 +435,8 @@ justify-items: center;
 margin: 5px;
 }
 .col-2{
-display: grid;
-grid-template-columns: 1fr 1fr;
-align-items: start;
+display: flex;
+flex-direction: column;
 margin: 5px;
 } 
 .booking-subtitle{
@@ -436,15 +458,46 @@ margin: 5px;
 .booking-order-overview{
   grid-column: 1 / span 2;
   justify-self: stretch;
+  background-color: rgb(173, 209, 171);
+  border-radius: 35px;
+  border-style: solid;
+  border-width: 20px;
+  border-color: rgb(199, 212, 188);
+  padding: 10px;
+  padding-top: 25px;
 }
-.booking-month-button{
+
+.booking-calender{
   display: grid;
-  max-height: 50px;
-  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  justify-self: center;
+  align-self: center;
+  min-width: 700px;
+  margin-top: 20px;
+  background-color: rgb(173, 209, 171);
+  border-radius: 35px;
+  border-style: solid;
+  border-width: 20px;
+  border-color: rgb(199, 212, 188);
+  
+}
+
+.next-prew-month-buttons{
+  display: grid;
+  grid-column: 1 / span 2;
+  justify-self: center;
   grid-template-columns: 1fr 1fr;
   justify-items: stretch;
-  grid-column: 1 / span 2;
+  width: 660px;
 }
+
+.claender-component{
+  grid-column: 1 / span 2;
+  justify-self: center;
+  width: 660px;
+  margin-bottom: 25px;
+}
+
 
 #blancTdBtn {
   background-color: #999;
@@ -454,6 +507,7 @@ margin: 5px;
 
 table, th, td {
   border: 1px solid;
+  
 }
 table {
   
@@ -463,6 +517,7 @@ table {
 }
 
 td {
+  
   height: 50px;
   vertical-align: center;
 }
@@ -569,6 +624,7 @@ td {
   padding: 20px;
   border-radius: 20px;
   border: 1px solid black;
+  
 }
 
 
@@ -590,6 +646,34 @@ table.admin-booking-table td{
 div.admin-booking-page{
   display: grid;
   height: 100vh;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
+}
+
+
+
+
+
+/*til admin-booking*/
+.green-button{
+  background-color: green;
+}
+
+.booking-list{
+  overflow: scroll;
+  background-color: coral;
+}
+
+.single-booking-list{
+  overflow: scroll;
+  background-color: lightgreen;
+}
+
+/*tester layout på knapper*/
+.booking-month-button-div{
+  display: flex;
+}
+
+.booking-month-button{
+  width:100%;
 }
