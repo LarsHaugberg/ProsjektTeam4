@@ -95,7 +95,6 @@ function showPackageEditor() { // Returnerer HTML med innholdet i valgt pakke
         </div>
         ${loopPackageComforts()}
         `;
-
     return HTML
 }
 

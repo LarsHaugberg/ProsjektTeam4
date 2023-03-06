@@ -1,7 +1,7 @@
 function updateFrontPageView() {
     let HTML = /*HTML*/
-        `           
-        
+        `    
+               
         <div class="frontpage-container">
             <button class="frontpage-left-button" onclick="changeFrontPagePicture('<')"><</button>
             <div class="frontpage-picture-box">

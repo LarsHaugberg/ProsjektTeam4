@@ -14,10 +14,7 @@ const model = {
             fleetChoice: 0,
             selectedDate: new Date(),
             selectedBooking: null,
-            
-            
         },
-
         adminPageComfort: {
             // tilgjenlig ekstraprodukter box
             price: 0,
@@ -40,7 +37,6 @@ const model = {
             newPackageWeekdayPrice: 0,
             newPackageWeekendPrice: 0,
         },
-
         loginPage: {
             userName: '',
             password: '',
@@ -66,12 +62,9 @@ const model = {
 
         },
         blogPage: {
-
             titlePost: '',
             currentPost: '',
-
         },
-
     },
 
     data: { // Husk og fylle ut alle verdier

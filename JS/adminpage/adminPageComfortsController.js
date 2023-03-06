@@ -21,10 +21,15 @@ function loopComfortsArray() { // Returnerer ID til  addComfortsInComfortsArray(
 }
 
 function comittPriceChanges() { // Sjekker hvilke priser som er endra også kaller funksjonen for å endre prisene i modellen
-    if (model.inputs.adminPageComfort.weekdayPriceHour != 0) { setPrice('weekdayHour') }
-    if (model.inputs.adminPageComfort.weekdayPriceDay != 0) { setPrice('weekdayDay') }
-    if (model.inputs.adminPageComfort.weekendPriceHour != 0) { setPrice('weekendHour') }
-    if (model.inputs.adminPageComfort.weekendPriceDay != 0) { setPrice('weekendDay') }
+    if (model.inputs.adminPageComfort.weekdayPriceHour === 0 &&
+        model.inputs.adminPageComfort.weekdayPriceDay === 0 &&
+        model.inputs.adminPageComfort.weekendPriceHour === 0 &&
+        model.inputs.adminPageComfort.weekendPriceDay === 0) { alert('Fyll inn feltene') }  
+         
+        if (model.inputs.adminPageComfort.weekdayPriceHour != 0) { setPrice('weekdayHour') }
+        if (model.inputs.adminPageComfort.weekdayPriceDay != 0) { setPrice('weekdayDay') }
+        if (model.inputs.adminPageComfort.weekendPriceHour != 0) { setPrice('weekendHour') }
+        if (model.inputs.adminPageComfort.weekendPriceDay != 0) { setPrice('weekendDay') };
     updateView()
 }
 
@@ -117,10 +122,10 @@ function addNewPackage() { // Legger til ny pakke
     let newWeekdayPrice = input.newPackageWeekdayPrice
     let newWeekendPrice = input.newPackageWeekendPrice
     let newId = loopPackageArray()
-    if (input.newPackageName != ''
-        && input.newPackageHour != 0
-        && input.newPackageWeekdayPrice != 0
-        && input.newPackageWeekendPrice != 0) {
+    if (input.newPackageName != '' &&
+        input.newPackageHour != 0 &&
+        input.newPackageWeekdayPrice != 0 &&
+        input.newPackageWeekendPrice != 0) {
         model.data.packageOptions.push(
             {
                 id: newId,
@@ -129,7 +134,7 @@ function addNewPackage() { // Legger til ny pakke
                 hours: newHours,
                 comforts: []
             })
-    } else return alert("Du må fylle ut alle feltene!");
+    } else return alert('Fyll inn feltene');
     updateView()
 }
 

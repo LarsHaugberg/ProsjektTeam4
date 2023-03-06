@@ -1,6 +1,5 @@
 function updateBookingPageView() {
     let HTML = /*HTML*/`
-   
     <div class="booking-wrapper"> 
     <div class="booking-container">
     ${getBookingPage()}
@@ -26,15 +25,13 @@ function getBookingPage() {
             </div>`;
         }
         HTML += /*HTML*/`
-        <!-- <div> Flåte valgt er: ${fleetNameChosen()} </div>  -->
         <div class="booking-buttons">
-        <button class="booking-btn" onclick="comfortsModalContent()">Ekstra produkter</button>
-        <button class="booking-btn" onclick="packageModalContent()">Pakker</button>
-        <button class="booking-btn" onclick="checkOrder()">Bestill</button>
+            <button class="booking-btn" onclick="comfortsModalContent()">Ekstra produkter</button>
+            <button class="booking-btn" onclick="packageModalContent()">Pakker</button>
+            <button class="booking-btn" onclick="checkOrder()">Bestill</button>
         </div>
         <br>
         <div class="booking-order-overview">${inputListBooking()}</div>
-     
     </div>
     <div class="col-2">
         <div class="booking-calender">
@@ -47,10 +44,6 @@ function getBookingPage() {
             
         </div>
     </div>
-    
-    
-    
-    
     `;
     return HTML;
 }
