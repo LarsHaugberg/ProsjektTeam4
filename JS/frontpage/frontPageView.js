@@ -6,6 +6,7 @@ function updateFrontPageView() {
     </div>
     <div class="frontpage-container">
 
+
         <button class="frontpage-left-button" onclick="changeFrontPagePicture('<')"><</button>
         <div class="frontpage-picture-box">
             <img class="front-page-images fill" 
