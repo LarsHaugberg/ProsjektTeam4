@@ -146,9 +146,6 @@ const model = {
                     { name: 'Snorkel', quantity: 1, },
                     { name: 'Badebukse', quantity: 2, },
                     { name: 'Håndklær', quantity: 2, },
-                    { name: 'Mineralvann', quantity: 2, },
-                    { name: 'Aroma essens', quantity: 1, },
-                    { name: 'Solkrem', quantity: 2, },
                 ],
 
             },
