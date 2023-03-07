@@ -79,7 +79,7 @@ function changePackageOptions(toDo) { // Endrer pakkenavn, ukedag pris eller hel
         model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name = inputPackageOptions.packageName;
         inputPackageOptions.packageName = '';
     }
-    else alert("Fyll inn feltet")
+   
     updateView()
 }
 

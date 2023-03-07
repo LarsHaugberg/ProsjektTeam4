@@ -41,9 +41,9 @@ function updateAdminPageComfortView() { // Viser viewet på administratorsiden f
             <div>Pakkenavn:</div>
             <input type="text" onchange="model.inputs.adminPageComfort.newPackageName = this.value" placeholder="Pakkenavn"/>
             <div>Ukedag pris:</div>
-            <input type="number" onchange="model.inputs.adminPageComfort.newPackageWeekendPrice = this.value" placeholder="Ukedag pris"/>
+            <input type="number" onchange="model.inputs.adminPageComfort.newPackageWeekdayPrice = this.value" placeholder="Ukedag pris"/>
             <div>Helg pris:</div>
-            <input type="number" onchange="model.inputs.adminPageComfort.newPackageWeekdayPrice = this.value" placeholder="Helg pris"/>
+            <input type="number" onchange="model.inputs.adminPageComfort.newPackageWeekendPrice = this.value" placeholder="Helg pris"/>
             <div>Timer:</div>
             <input type="number" onchange="model.inputs.adminPageComfort.newPackageHour = this.value" placeholder="Timer"/>
             <button class="admin-spann-button" onclick="addNewPackage()">Legg til pakke</button>

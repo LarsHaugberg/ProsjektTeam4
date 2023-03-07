@@ -5,7 +5,7 @@ for (let i = 0; i < model.data.users.length; i++) {
     {
         if(model.inputs.loginPage.password == model.data.users[i].password){
             model.app.currentUser = model.data.users[i].name
-            alert("Login Sucess")
+            alert("Innlogging vellykket")
             model.inputs.loginPage.userName = ''
             model.inputs.loginPage.password = ''
             attempt = 'Sucess'
@@ -13,5 +13,5 @@ for (let i = 0; i < model.data.users.length; i++) {
         } 
     } 
 }
-if(attempt != 'Sucess')  {alert('Login failed')}
+if(attempt != 'Sucess')  {alert('Innlogging feilet')}
 }
