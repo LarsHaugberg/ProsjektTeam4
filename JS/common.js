@@ -82,16 +82,16 @@ function upperNavBar() { // Tegner opp navBar øverst på siden // Skal vi skriv
             <a onclick="switchPage('frontPage')">Forside</a>
             <a onclick="switchPage('bookingPage')">Booking</a>
             <a onclick="switchPage('blogPage')">Blogg</a>
-            <a onclick="switchPage('blogPage'),openEditorModal()">Ny Blogpost</a>
+            <a onclick="switchPage('blogPage'),openEditorModal()">Ny blogpost</a>
             <b onclick="logOutUser()">Logg ut</b>
         <div class="dropdown">
                 <button class="dropbtn">Administrator
                 <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a onclick="switchPage('adminPagePicture')">Kontrollpanel Bilder</a>
-                    <a onclick="switchPage('adminPageComfort')">Kontrollpanel Produkter</a>
-                    <a onclick="switchPage('adminPageBooking')">Kontrollpanel Booking</a>
+                    <a onclick="switchPage('adminPagePicture')">Kontrollpanel bilder</a>
+                    <a onclick="switchPage('adminPageComfort')">Kontrollpanel produkter</a>
+                    <a onclick="switchPage('adminPageBooking')">Kontrollpanel booking</a>
                 </div>
         </div> 
             <a onclick="switchPage('loginPage')">${showCurrentLoggedInUser()}</a>

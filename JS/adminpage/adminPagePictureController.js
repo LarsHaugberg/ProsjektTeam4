@@ -20,7 +20,7 @@ function removeAdminPagePicture(index) { // Sletter bilder fra frontPagePictures
 
 function adminPageUploadPicture() { // Funksjon som later som vi har en backend og pusher et bildet i arrayet
     let imglink = "/img/picture4.png";
-    let title =  'Picture4';
+    let title =  'Forside bilde 4';
     model.data.frontPagePictures.push({pictureTitle: title, imageLink: imglink,})
     updateView()
 }  

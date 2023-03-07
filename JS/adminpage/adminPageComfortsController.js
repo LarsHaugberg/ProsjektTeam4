@@ -28,21 +28,12 @@ function comittPriceChanges() { // Sjekker hvilke priser som er endra også kall
     if (model.inputs.adminPageComfort.weekdayPriceHour === 0 &&
         model.inputs.adminPageComfort.weekdayPriceDay === 0 &&
         model.inputs.adminPageComfort.weekendPriceHour === 0 &&
-<<<<<<< HEAD
         model.inputs.adminPageComfort.weekendPriceDay === 0) { alert('Fyll inn minst ett felt') }
 
     if (model.inputs.adminPageComfort.weekdayPriceHour != 0) { setPrice('weekdayHour') }
     if (model.inputs.adminPageComfort.weekdayPriceDay != 0) { setPrice('weekdayDay') }
     if (model.inputs.adminPageComfort.weekendPriceHour != 0) { setPrice('weekendHour') }
     if (model.inputs.adminPageComfort.weekendPriceDay != 0) { setPrice('weekendDay') };
-=======
-        model.inputs.adminPageComfort.weekendPriceDay === 0) { alert('Fyll inn feltene') }  
-         
-        if (model.inputs.adminPageComfort.weekdayPriceHour != 0) { setPrice('weekdayHour') }
-        if (model.inputs.adminPageComfort.weekdayPriceDay != 0) { setPrice('weekdayDay') }
-        if (model.inputs.adminPageComfort.weekendPriceHour != 0) { setPrice('weekendHour') }
-        if (model.inputs.adminPageComfort.weekendPriceDay != 0) { setPrice('weekendDay') };
->>>>>>> dd9d123e2d588848dd6dda4ae4fdd76d4c456a28
     updateView()
 }
 

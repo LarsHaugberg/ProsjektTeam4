@@ -6,7 +6,7 @@ function selectFleet(fleetId) {
 
 function settBorder(index){
     for (let i = 0; i < model.data.fleets.length; i++) {
-        model.data.fleets[i].border = "white"
+        model.data.fleets[i].border = "#efe2cd"
     }
     model.data.fleets[index].border = "black"
     updateView();

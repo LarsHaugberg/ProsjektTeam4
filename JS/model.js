@@ -18,7 +18,7 @@ const model = {
         adminPageComfort: {
             // tilgjenlig ekstraprodukter box
             price: 0,
-            product:  0,
+            product: 0,
             // endre priser box
             weekdayPriceDay: 0,
             weekdayPriceHour: 0,
@@ -77,55 +77,46 @@ const model = {
                 password: '1234',
             },
             {
-                name: 'test',
-                adress: 'hytti heiti 2',
-                phoneNumber: '12341234',
-                email: 'test@gmail.com',
+                name: 'Petter Nesbo',
+                adress: 'Tiurveien 12',
+                phoneNumber: '98898899',
+                email: 'PetterN@gmail.com',
                 password: '1234',
             },
             {
-                name: 'ola norman',
-                adress: 'hytti heiti 3',
-                phoneNumber: '12341234',
-                email: 'ola.norman@gmail.com',
+                name: 'Ola Normann',
+                adress: 'Ytre Enebakk 12',
+                phoneNumber: '98898899',
+                email: 'Ola.Normann@gmail.com',
                 password: 'Sommer2020',
             },
+            {
+                name: 'Tina Tveiten',
+                adress: 'Hytti Heiti 3',
+                phoneNumber: '90609080',
+                email: 'Tina.Tveiten@gmail.com',
+                password: 'Sommer2020',
+            },
+
         ],
         packageOptions: [
             {
                 id: 0,
                 name: 'Jentekveld (6 stk)',
                 price: {
-                    weekdayPrice: 5264,
-                    weekendPrice: 7664,
+                    weekdayPrice: 1800,
+                    weekendPrice: 3250,
                 },
-                hours: 4,
+                hours: 7,
                 comforts: [
-                    { name: 'Vin',              quantity: 4, },
-                    { name: 'Shampo og Balsam', quantity: 6, },
-                    { name: 'Håndklær',         quantity: 6, },
-                    { name: 'Mineralvann',      quantity: 6, },
-                    { name: 'Aroma',            quantity: 1, },
-                    { name: 'Badekåpe',         quantity: 6, },
+                    { name: 'Snorkel', quantity: 3, },
+                    { name: 'Håndklær', quantity: 6, },
+                    { name: 'Mineralvann', quantity: 6, },
+                    { name: 'Aroma essens', quantity: 1, },
+                    { name: 'Solkrem', quantity: 1, },
                 ],
             },
-            {
-                id: 1,
-                name: 'Jentekveld (4 stk)',
-                price: {
-                    weekdayPrice: 3454,
-                    weekendPrice: 5184,
-                },
-                hours: 4,
-                comforts: [
-                    { name: 'Vin',              quantity: 3, },
-                    { name: 'Shampo og Balsam', quantity: 4, },
-                    { name: 'Håndklær',         quantity: 4, },
-                    { name: 'Mineralvann',      quantity: 4, },
-                    { name: 'Aroma',            quantity: 1, },
-                    { name: 'Badekåpe',         quantity: 4, },
-                ],
-            },
+          
             {
                 id: 2,
                 name: 'Familie pakke (4 stk)',
@@ -133,32 +124,16 @@ const model = {
                     weekdayPrice: 1904,
                     weekendPrice: 2304,
                 },
-                hours: 1,
+                hours: 3,
                 comforts: [
-                    { name: 'Shampo og Balsam', quantity: 4, },
-                    { name: 'Håndklær',         quantity: 4, },
-                    { name: 'Mineralvann',      quantity: 4, },
-                    { name: 'Aroma',            quantity: 1, },
-                    { name: 'Badekåpe',         quantity: 4, },
+                    { name: 'Badebukse', quantity: 4, },
+                    { name: 'Håndklær', quantity: 4, },
+                    { name: 'Mineralvann', quantity: 4, },
+                    { name: 'Aroma essens', quantity: 1, },
+                    { name: 'Solkrem', quantity: 4, },
                 ],
             },
-            {
-                id: 3,
-                name: 'Familie pakke (5 stk)',
-                price: {
-                    weekdayPrice: 2464,
-                    weekendPrice: 2864,
-                },
-                hours: 1,
-                comforts: [
-                    { name: 'Shampo og Balsam', quantity: 5, },
-                    { name: 'Håndklær',         quantity: 5, },
-                    { name: 'Mineralvann',      quantity: 5, },
-                    { name: 'Aroma',            quantity: 1, },
-                    { name: 'Badekåpe',         quantity: 5, },
-                ],
-
-            },
+        
             {
                 id: 4,
                 name: 'Standard pakke (2 stk)',
@@ -168,12 +143,12 @@ const model = {
                 },
                 hours: 2,
                 comforts: [
-                    { name: 'Vin',              quantity: 1, },
-                    { name: 'Shampo og Balsam', quantity: 2, },
-                    { name: 'Håndklær',         quantity: 2, },
-                    { name: 'Mineralvann',      quantity: 2, },
-                    { name: 'Aroma',            quantity: 1, },
-                    { name: 'Badekåpe',         quantity: 2, },
+                    { name: 'Snorkel', quantity: 1, },
+                    { name: 'Badebukse', quantity: 2, },
+                    { name: 'Håndklær', quantity: 2, },
+                    { name: 'Mineralvann', quantity: 2, },
+                    { name: 'Aroma essens', quantity: 1, },
+                    { name: 'Solkrem', quantity: 2, },
                 ],
 
             },
@@ -182,18 +157,18 @@ const model = {
         comforts: [
             {
                 id: 0,
-                name: 'Vin',
-                price: 200,
+                name: 'Snorkel',
+                price: 100,
             },
             {
                 id: 1,
-                name: 'Shampo og Balsam',
-                price: 100,
+                name: 'Badebukse',
+                price: 300,
             },
             {
                 id: 2,
                 name: 'Håndkler',
-                price: 100,
+                price: 150,
             },
             {
                 id: 3,
@@ -202,12 +177,12 @@ const model = {
             },
             {
                 id: 4,
-                name: 'Aroma',
-                price: 80,
+                name: 'Aroma essens',
+                price: 120,
             },
             {
                 id: 5,
-                name: 'Badekåpe',
+                name: 'Solkrem',
                 price: 200,
             },
         ],
@@ -217,31 +192,31 @@ const model = {
                 orderId: 0,
                 fleetId: 0,
                 chosenPackage: null,
-                chosenComforts: [1],
+                chosenComforts: [1, 0, 0],
                 chosenDate: new Date("2023-03-13"),// string av booket dato
                 chosenHours: [9, 10, 11, 12, 13, 14, 15, 16],
-                customer: 'test',
-                totalPrice: 0,
+                customer: 'Ola Normann',
+                totalPrice: 3599,
             },
             {
                 orderId: 1,
                 fleetId: 0,
                 chosenPackage: null,
-                chosenComforts: [1],
-                chosenDate:  new Date("2023-03-14"),// string av booket dato
+                chosenComforts: [1, 3, 3, 3],
+                chosenDate: new Date("2023-03-14"),// string av booket dato
                 chosenHours: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-                customer: 'test',
-                totalPrice: 0,
+                customer: 'Petter Nesbo',
+                totalPrice: 6599,
             },
             {
                 orderId: 2,
                 fleetId: 0,
                 chosenPackage: null,
-                chosenComforts: [1],
+                chosenComforts: [1, 4, 4, 4],
                 chosenDate: new Date("2023-03-15"),// string av booket dato
                 chosenHours: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-                customer: 'test',
-                totalPrice: 0,
+                customer: 'Tina Tveiten',
+                totalPrice: 7500,
             },
         ],
         fleets: [
@@ -249,13 +224,13 @@ const model = {
                 id: 0,
                 name: 'Skarven',
                 img: `<img src="img/fleetskarvenBooking.jpeg" alt="flåte1" width="288" height="162">`,
-                border: 'white',
+                border: '#efe2cd',
             },
             {
                 id: 1,
                 name: 'Måken',
                 img: `<img src="img/fleetmakenBooking.jpeg" alt="flåte2" width="288" height="162">`,
-                border: 'white',
+                border: '#efe2cd',
             },
         ],
 
@@ -298,7 +273,7 @@ const model = {
                 Forbedre søvnkvaliteten: Trening kan også hjelpe med å forbedre søvnkvaliteten ved å redusere stressnivået og utmattelse i kroppen. Dette kan hjelpe deg med å sovne raskere og sove dypere gjennom natten, som kan forbedre humøret og energinivået ditt i løpet av dagen.`,
                 postPicture: 'img/treningMental.jpg',
             },
-         
+
         ],
 
         blogPictures: [
@@ -326,27 +301,27 @@ const model = {
         frontPagePictures: [
             {
                 imageLink: 'img/fleetskarvenFront.jpeg',
-                pictureTitle: 'Picture1',
+                pictureTitle: 'Forside bilde 1',
             },
             {
                 imageLink: 'img/fleetmakenFront.jpeg',
-                pictureTitle: 'Picture2',
+                pictureTitle: 'Forside bilde 2',
             },
             {
                 imageLink: 'img/larvikinnlop2560x1440.jpeg',
-                pictureTitle: 'Picture3',
+                pictureTitle: 'Forside bilde 3',
             }
-            
+
         ],
 
         daysInMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], //funker det å ha denne her?
         hoursInDay: 24,
 
         prices: {
-            weekdayPriceHour: 500,
-            weekdayPriceDay: 3000,
-            weekendPriceHour: 1000,
-            weekendPriceDay: 5000,
+            weekdayPriceHour: 200,
+            weekdayPriceDay: 1800,
+            weekendPriceHour: 300,
+            weekendPriceDay: 2600,
         },
     },
 }
