@@ -1,16 +1,17 @@
 function checkOrder() {
     /* fleet dato og timer */
-    if (model.inputs.bookingPage.selectedHours.length < 1) { alert('bestilling uferdig') }
+    if (model.inputs.bookingPage.selectedHours.length < 1) { alert('Hei du må velge dato og tid for å fullføre en bestilling') }
     else { confirmationModalContent() }
 }
 
 function confirmationModalContent() {
     let html = '';
     html += /*HTML*/`
-        <table>
-            <tr><td>Valgt flåte: </td><td>${fleetNameChosen()}</td></tr>
+        <table class="comforts-modal-table">
+            <tr><th>Valgt flåte: </th><th colspan="2">${fleetNameChosen()}</th></tr>
             <tr style="border-bottom: 2px solid black;"></tr>
-            <tr><td>Vare</td><td>Antall</td><td>Sum</td></tr>
+            <tr><td>Tid valgt:</td><td>${getBookingTimeAdmin(model.inputs.bookingPage.selectedHours)}</td></tr>
+            <tr><td>Vare:</td><td>Antall</td><td>Sum</td></tr>
             <tr style="border-bottom: 1px solid black;"></tr>
             ${packageIsChosen()}
             ${hoursComfortsSelected()}
@@ -78,7 +79,6 @@ function getListOfComforts() {
             <td> ${comfort.count} </td>
             <td>${getComfortById(comfort.id).price * comfort.count}</td>
         </tr>
-        
         `;
     }
     return html;
@@ -87,10 +87,8 @@ function getListOfComforts() {
 function getHoursNoPackage() {
     let html = '';
     if (model.inputs.bookingPage.packageChoice == null) {
-        html += /* html */`<tr><td>Timer Valgt:</td><td>${model.inputs.bookingPage.selectedHours.length}</td><td>${sumHoursSelected()}</td></tr>`;
+        html += /* html */`<tr><td>Timer valgt:</td><td>${model.inputs.bookingPage.selectedHours.length}</td><td>${sumHoursSelected()}</td></tr>`;
     }
-
-
     return html;
 }
 
@@ -102,15 +100,13 @@ function hoursComfortsSelected() {
     `;
     if (model.inputs.bookingPage.packageChoice == null) {
         html += /* html */`
-        <tr><td>Comforts:</td><td></td><td></td></tr>
+        <tr><td>Ekstra produkter:</td><td></td><td></td></tr>
         <tr style="border-bottom: 1px solid black;"></tr>
         `;
     }
     html += `
     ${getListOfComforts()}
     `;
-
-
     return html;
 }
 
@@ -123,7 +119,7 @@ function packageIsChosen() {
     `;
     if (model.inputs.bookingPage.packageChoice !== null && model.inputs.bookingPage.comfortChoices.length > 0) {
         html += /* html */`
-        <tr><td>Ekstra Comforts:</td><td></td><td></td></tr>
+        <tr><td>Ekstra produkter:</td><td></td><td></td></tr>
         <tr style="border-bottom: 1px solid black;"></tr>
         `;
     }
@@ -131,28 +127,4 @@ function packageIsChosen() {
 
     return html;
 }
-/* sumHoursSelected() */
 
-/*  forslag til sumeringen inputs for booking siden
-
-vare                antal   sum
-fleetname:
-Jentekveld (4 stk):   1   1504        
-Timer:                4
-comforts: 
-Vin                   3
-shampo og balsam      4
-håndklær              4
-mineralvann           4
-aroma                 1
-Badekåpe              4
-
-timer:                2    1000
-comforts:
-vin                   2     400
-shogbalsm             1     100  
-minevann              2     100
--------------------
-total sum                  4104
-
-*/

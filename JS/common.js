@@ -50,15 +50,15 @@ function sendToWebPage(webPage) { // Linker ikonene på navBarBottom til SoMe si
 }
 
 function checkIfPostHasImg(index) { // Sjekker om blogposten inneholder et bilde, hvis den ikke har det så sender den ikke med IMG HTML
-    let temp;
+    let HTML;
     if (model.data.blogPosts[index].postPicture == undefined) { return '' }
     else {
-        temp = /*HTML*/`  
+        HTML = /*HTML*/`  
             
                 <img class="standard-img" src="${model.data.blogPosts[index].postPicture}">
             
         `;
-        return temp
+        return HTML
     }
 }
 

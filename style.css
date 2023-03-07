@@ -13,9 +13,7 @@ button{
 input{
   font-family: 'Arvo', serif;
 }
-textarea{
-  font-family: 'Arvo', serif;
-}
+
 
 .blog-wrapper{
   padding-bottom: 50px;
@@ -24,6 +22,11 @@ textarea{
 .standard-img{
   height: 300px;
   width: 400px;
+  background-color: #add1ab;
+  border-radius: 35px;
+  border-style: solid;
+  border-width: 20px;
+  border-color: #a6cea4;
 }
 
 /* Login Styling*/
@@ -42,7 +45,7 @@ textarea{
   width: 250px;
   height: 200px;
   justify-items: stretch;
-  background-color: rgb(173, 209, 171);
+  background-color: #add1ab;
   border-radius: 35px;
   border-style: solid;
   border-width: 20px;
@@ -97,14 +100,14 @@ textarea{
   width: 60px;
   background-color: transparent;
   border-color: transparent;
-  font-size: 25px;
+  font-size: 35px;
 }
 .frontpage-right-button{
   justify-self: start;
   width: 60px;
   background-color: transparent;
   border-color: transparent;
-  font-size: 25px;
+  font-size: 35px;
 }
 .front-page-images {
   object-fit: cover;
@@ -195,10 +198,36 @@ textarea{
   height: 200px;
   width: 250px;
   border-radius: 10%;
-  
 }
-
 /* Blogpage Styling*/
+
+/*Modal Content Styling*/
+.blog-postcontent-sak{
+ display: grid;
+ grid-template-columns: 1fr;
+justify-items: center;
+}
+.editor-modal-content{
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+.input-modal-content-textarea{
+  margin: 15px;
+  font-family: 'Arvo', serif;
+  font-size: 20px;
+  height: 300px;
+  width: 815px;
+  border-color: #add1ab;
+  border-radius: 8px;
+}
+.input-modal-content-text{
+  font-family: 'Arvo', serif;
+  font-size: 20px;
+  border-color: #add1ab;
+  border-radius: 8px;
+}
+/*Modal Content Styling*/
 
 /* NavBar Top */
 .navbar-top {
@@ -337,13 +366,19 @@ textarea{
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #c7d4bc;;
   margin: 5% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 85%; /* Could be more or less, depending on screen size */
+  width: 50%; /* Could be more or less, depending on screen size */
   height: 70%;
   overflow-y: auto; /* Scroll enabled */
+
+  border-radius: 35px;
+  border-style: solid;
+  border-width: 20px;
+  border-color: #a6cea4;
+  padding: 20px;
 }
 
 .close {
@@ -508,6 +543,7 @@ margin: 5px;
   max-height: 50px;
   padding: 5px;
   margin: 5px;
+  font-size: 40px;
 }
 .booking-buttons{
   display: grid;
@@ -632,38 +668,37 @@ td {
   background-color: lightcoral;
 }
 
-.comforts-table {
-  width: 30%;
-  border: #000;
-}
-
-#modal-package{
-  background-color: #999;
-}
-
-#package-table-name-price, tr, td{
+/*.package-table-name-price, tr, td{
   border: none;
   text-align: center;
   font-weight: bold;
+}*/
+
+table.package-table-name-price th{
+  border: 1px solid;
+  border-collapse: collapse;
+  width: 100%; 
+  margin-top: 100px;
 }
 
-#package-table-comforts, tr, td{
+
+.package-table-comforts, tr, td{
   border: none;
   text-align: center;
   
 }
 
-#ytretest{
-  background-color: #eee;
+.outer-modal-content{
   border: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  background-color: rgb(199, 212, 188);
   
 }
 
-#indretest{
-  background-color: #aaa;
+.inner-modal-content{
+  background-color: rgb(199, 212, 188);
   border: none;
   margin-bottom: 20px;
   position: relative;
@@ -695,10 +730,7 @@ td {
 table.admin-booking-table{
   border: 1px solid;
   border-collapse: collapse;
-  width: 100%;
-  margin: 20px;
-  padding: 20px;
-   
+  width: 100%;  
 }
 
 table.admin-booking-table td{
@@ -711,7 +743,6 @@ table.admin-booking-table td{
 
 div.admin-booking-page{
   display: grid;
-  
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
 }
@@ -721,13 +752,34 @@ div.admin-booking-page{
 
 
 /*til admin-booking*/
+.admin-booking-page{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-top: 60px;
+}
+.admin-booking-title{
+  grid-column: 1 / span 2;
+  justify-self: center;
+}
+.admin-booking-spanning-content{
+  grid-column: 1 / span 2;
+  
+}
 .green-button{
   background-color: green;
 }
 .admin-month{
-  margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: stretch;
+  height: 460px;
+  background-color: rgb(173, 209, 171);
+  border-radius: 35px;
+  border-style: solid;
+  border-width: 20px;
+  border-color: rgb(199, 212, 188);
   padding: 20px;
-
+  margin-top: 60px;
 }
 .booking-list{
   background-color: rgb(173, 209, 171);
@@ -737,6 +789,8 @@ div.admin-booking-page{
   border-color: rgb(199, 212, 188);
   margin: 20px;
   padding: 20px;
+  height: 550px;
+  
 }
 
 .single-booking-list{
@@ -747,15 +801,68 @@ div.admin-booking-page{
   border-color: rgb(199, 212, 188);
   margin: 20px;
   padding: 20px;
+  
 }
-
-/*tester layout på knapper*/
-.booking-month-button-div{
-  display: flex;
-  margin: 20px;
-  padding: 20px;
+.admin-booking-row-hjelp{
+  justify-content: center;
+  width: 270px;
+  height: 30px;
 }
 
 .booking-month-button{
   width:100%;
+}
+/**/
+
+.comforts-modal-table{
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid;
+  
+}
+
+.comforts-modal-table th td{
+  border: 1px solid;
+  
+}
+
+table.comforts-table{
+  border: 1px solid;
+  border-collapse: collapse;
+  width: 100%; 
+  margin-top: 100px;
+}
+
+/* Scrollbar Styling*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:transparent;
+  border-color: transparent;
+  border-width: 2px;
+  border-radius: 50px;
+  height:20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(199, 212, 188);
+}
+
+
+
+
+/*pakke-velger knapp*/
+.choose-package-button{
+	width: 100%;
 }

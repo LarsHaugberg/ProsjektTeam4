@@ -1,9 +1,11 @@
 function openSelectedBlogPostModal(index) { // Åpner blogposten når man klikker på header i posten
     model.app.modalContent = /*HTML*/
     `
-        <h1>${model.data.blogPosts[index].postTitle}</h1>
-        ${checkIfPostHasImg(index)}
-        <div>${model.data.blogPosts[index].postText}<div>
+        <div class="blog-postcontent-sak">
+            <h1>${model.data.blogPosts[index].postTitle}</h1>
+            <div class="blog-postcontent-img-div">${checkIfPostHasImg(index)}</div>
+            <div>${model.data.blogPosts[index].postText}<div>
+        </div>
     `;
     openModal()
 }
@@ -16,23 +18,26 @@ function openEditorModal() { // Åpner en ny editor modal & oppdaterer content
 function updateEditorModalContent() { // Oppdaterer modal view på editor modal
     model.app.modalContent = /*HTML*/
     `
-        <input 
-            onchange="model.inputs.blogPage.titlePost = this.value" 
-            value="${model.inputs.blogPage.titlePost}" 
-            placeholder="Tittel blogpost"> 
-        <br>
-        <textarea class="textarea"
+    <div class="editor-modal-content">
+        <h3 >Skriv nytt blogginnlegg: </h3>
+        <h4 style="margin: 2px, font-size: 30px;">Velg tittel: </h4>
+            <input class="input-modal-content-text"
+                onchange="model.inputs.blogPage.titlePost = this.value" 
+                value="${model.inputs.blogPage.titlePost}" 
+                placeholder="Tittel blogpost">
+         
+        
+        <div class="editor-picture-container">
+            <h4>Velg et av bildene for og få det med i blogginnlegget:</h4>
+            ${listEditorPictures()}
+        </div>
+        
+        <textarea class="input-modal-content-textarea"
             onchange="model.inputs.blogPage.currentPost = this.value" 
             placeholder="Skriv blogginnlegget" 
-            cols="70" 
-            rows="24"
         >${model.inputs.blogPage.currentPost}</textarea> 
-        <br>
-        <h5>Velg et av bildene for og få det med i blogginnlegget</h5>
-        <div class="editor-picture-container">${listEditorPictures()}</div>
-            <br>
-            <button type="submit" onclick="generateNewBlogPost()">Lag post</button>
-        </div>
+        <button type="submit" onclick="generateNewBlogPost()">Lag post</button>
+    </div>
     `;
     updateView()
 }
@@ -60,7 +65,7 @@ function generateNewBlogPost() {    // Og resetter inputene
     model.inputs.blogPage.titlePost = '';
     model.inputs.blogPage.currentPost = '';
     for (let i = 0; i < model.data.blogPictures.length; i++) {
-        model.data.blogPictures[i].editorBorder = 'white'
+        model.data.blogPictures[i].editorBorder = '#c7d4bc'
     }
     closeModal()
 }
@@ -68,22 +73,15 @@ function generateNewBlogPost() {    // Og resetter inputene
 function chooseEditorPicture(index) { // Setter svart ramme rundt valgt bilde i editorModalen
     model.app.editorPicture = index
         if (model.data.blogPictures[index].editorBorder == 'black') {
-             for (let i = 0; i < model.data.blogPictures.length; i++) {
-                 model.data.blogPictures[i].editorBorder = 'white'
-         }
+            for (let i = 0; i < model.data.blogPictures.length; i++) {
+                model.data.blogPictures[i].editorBorder = '#c7d4bc'
+            }
         updateEditorModalContent()
         } else {
             for (let i = 0; i < model.data.blogPictures.length; i++) {
-                model.data.blogPictures[i].editorBorder = 'white'
+                model.data.blogPictures[i].editorBorder = '#c7d4bc'
             }
             model.data.blogPictures[index].editorBorder = 'black'
         }
-        updateEditorModalContent()
+    updateEditorModalContent()
 }
-
-
-
-
-
-
-

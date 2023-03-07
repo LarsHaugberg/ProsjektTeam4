@@ -43,10 +43,10 @@ function inputListBooking(){
 	let html = '';
     html += /*HTML*/`
         <table>
-            <tr><td>Valgt flåte: </td><td>${fleetNameChosen()}</td></tr>
+            <tr><th>Valgt flåte: </th><th colspan="2">${fleetNameChosen()}</th></tr>
             <tr style="border-bottom: 2px solid black;"></tr>
 			<tr><td>Tid valgt:</td><td colspan="2">${selectedHours.length > 0 ? getBookingTimeAdmin(selectedHours): ' - '}</td></tr>
-            <tr><td>Vare</td><td>Antall</td><td>Sum</td></tr>
+            <tr><td>Vare:</td><td>Antall</td><td>Sum</td></tr>
             <tr style="border-bottom: 1px solid black;"></tr>
             ${packageIsChosen()}
             ${hoursComfortsSelected()}

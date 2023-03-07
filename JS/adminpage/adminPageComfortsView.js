@@ -38,12 +38,12 @@ function updateAdminPageComfortView() { // Viser viewet på administratorsiden f
         
         <div class="adminpage-comforts-box-row2"> 
             <h4 class="admin-box-subtitle-title">Legg til pakke:</h4>
-            <div>PakkeNavn:</div>
-            <input type="text" onchange="model.inputs.adminPageComfort.newPackageName = this.value" placeholder="PakkeNavn"/>
+            <div>Pakkenavn:</div>
+            <input type="text" onchange="model.inputs.adminPageComfort.newPackageName = this.value" placeholder="Pakkenavn"/>
             <div>Ukedag pris:</div>
             <input type="number" onchange="model.inputs.adminPageComfort.newPackageWeekendPrice = this.value" placeholder="Ukedag pris"/>
-            <div>Helgpris:</div>
-            <input type="number" onchange="model.inputs.adminPageComfort.newPackageWeekdayPrice = this.value" placeholder="Helgpris"/>
+            <div>Helg pris:</div>
+            <input type="number" onchange="model.inputs.adminPageComfort.newPackageWeekdayPrice = this.value" placeholder="Helg pris"/>
             <div>Timer:</div>
             <input type="number" onchange="model.inputs.adminPageComfort.newPackageHour = this.value" placeholder="Timer"/>
             <button class="admin-spann-button" onclick="addNewPackage()">Legg til pakke</button>
@@ -57,7 +57,7 @@ function comfortsExtraProductLoop() { // Lager HTML og lister igjennom comforts 
     let HTML = '';                    // og legger til knapper sletting 
     for (let i = 0; i < model.data.comforts.length; i++) {
         HTML += `
-        <li>${model.data.comforts[i].name} - ${model.data.comforts[i].price},- </li>
+        ${model.data.comforts[i].name}: ${model.data.comforts[i].price},- 
         <button onclick="removeComforts(${i})">Fjern produkt</button>
         `
     }
@@ -67,7 +67,7 @@ function comfortsExtraProductLoop() { // Lager HTML og lister igjennom comforts 
 function showPackageEditor() { // Returnerer HTML med innholdet i valgt pakke
     let HTML = /*HTML*/
         `
-        <div>PakkeNavn :  ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name}</div>
+        <div>Pakkenavn :  ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name}</div>
         <div class="admin-package-inputbox">
             <input class="admin-spann-button" 
             onchange="model.inputs.adminPageComfort.packageName = this.value"
@@ -81,7 +81,7 @@ function showPackageEditor() { // Returnerer HTML med innholdet i valgt pakke
             type="number"/>
             <button onclick="changePackageOptions('weekdayPrice')">Endre</button>
         </div>
-        <div>Helgepris : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].price.weekendPrice}</div> 
+        <div>Helge pris : ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].price.weekendPrice}</div> 
         <div class="admin-package-inputbox">
             <input class="admin-spann-button" 
             onchange="model.inputs.adminPageComfort.weekendPrice = this.value" 
@@ -105,7 +105,7 @@ function loopPackageComforts() { // Returnerer HTML for ekstra produkter i vist 
         HTML += /*HTML*/
             ` 
         <div>${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts[i].name} : 
-        antall: ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts[i].quantity}</div>
+         ${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].comforts[i].quantity} Stk</div>
         <div class="admin-package-inputbox">   
             <button onclick="addSubtractQuantity('▲',${i})">▲</button> 
             <button onclick="addSubtractQuantity('▼',${i})">▼</button>

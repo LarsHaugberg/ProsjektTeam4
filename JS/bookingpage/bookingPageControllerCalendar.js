@@ -1,6 +1,6 @@
 function selectDate(date) {
     if (model.inputs.bookingPage.selectedDate.getDate() != date) {
-        emptySelectedHours(); //emptySelection();
+        emptySelectedHours(); 
     }
     model.inputs.bookingPage.isDateSelected = true;
     model.inputs.bookingPage.selectedDate.setDate(date);
@@ -22,7 +22,6 @@ function getPriceHour() {
 function sumHoursSelected() {
     let day = model.inputs.bookingPage.selectedDate.getDay();
     let priceSum = 0;
-
     for (let hour of model.inputs.bookingPage.selectedHours) {
         hour;
         priceSum += getPriceHour();

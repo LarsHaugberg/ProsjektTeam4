@@ -9,6 +9,10 @@ function addComfortsInComfortsArray() { // Legge til comforts objekter
     let price = model.inputs.adminPageComfort.price
     if (price == 0 || name == '') { alert('Fyll inn feltene') }
     else model.data.comforts.push({ id: id, name: name, price: price })
+    {
+        model.inputs.adminPageComfort.product = "";
+        model.inputs.adminPageComfort.price = 0;
+    }
     updateView()
 }
 
@@ -21,10 +25,15 @@ function loopComfortsArray() { // Returnerer ID til  addComfortsInComfortsArray(
 }
 
 function comittPriceChanges() { // Sjekker hvilke priser som er endra også kaller funksjonen for å endre prisene i modellen
+    if (model.inputs.adminPageComfort.weekdayPriceHour === 0 &&
+        model.inputs.adminPageComfort.weekdayPriceDay === 0 &&
+        model.inputs.adminPageComfort.weekendPriceHour === 0 &&
+        model.inputs.adminPageComfort.weekendPriceDay === 0) { alert('Fyll inn minst ett felt') }
+
     if (model.inputs.adminPageComfort.weekdayPriceHour != 0) { setPrice('weekdayHour') }
     if (model.inputs.adminPageComfort.weekdayPriceDay != 0) { setPrice('weekdayDay') }
     if (model.inputs.adminPageComfort.weekendPriceHour != 0) { setPrice('weekendHour') }
-    if (model.inputs.adminPageComfort.weekendPriceDay != 0) { setPrice('weekendDay') }
+    if (model.inputs.adminPageComfort.weekendPriceDay != 0) { setPrice('weekendDay') };
     updateView()
 }
 
@@ -60,12 +69,12 @@ function changePackageOptions(toDo) { // Endrer pakkenavn, ukedag pris eller hel
         packagePrice.weekendPrice = inputPackageOptions.weekendPrice;
         inputPackageOptions.weekendPrice = 0;
     }
-    
+
     if (toDo == 'weekdayPrice' && inputPackageOptions.weekdayPrice != 0) {
         packagePrice.weekdayPrice = inputPackageOptions.weekdayPrice;
         inputPackageOptions.weekdayPrice = 0;
     }
-    
+
     if (toDo == 'name' && inputPackageOptions.packageName != '') {
         model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name = inputPackageOptions.packageName;
         inputPackageOptions.packageName = '';
@@ -107,6 +116,7 @@ function addItemToPackage() {   // Legger til nytt produkt til pakken
         alert("Legg til navn på vare")
     }
     else { package.comforts.push({ name: packageName.packageProduct, quantity: 1 }) }
+    model.inputs.adminPageComfort.packageProduct = "";
     updateView()
 }
 

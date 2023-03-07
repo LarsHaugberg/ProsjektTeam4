@@ -311,11 +311,23 @@ const model = {
         blogPictures: [
             {
                 imageLink: 'img/blogPicture1.jpg',
-                editorBorder: 'white',
+                editorBorder: '#c7d4bc',
             },
             {
-                imageLink: 'img/blogPicture2.jpg',
-                editorBorder: 'white',
+                imageLink: 'img/blogPicture3.jpg',
+                editorBorder: '#c7d4bc',
+            },
+            {
+                imageLink: 'img/mentalhealth.jpg',
+                editorBorder: '#c7d4bc',
+            },
+            {
+                imageLink: 'img/treningMental.jpg',
+                editorBorder: '#c7d4bc',
+            },
+            {
+                imageLink: 'img/soving.jpg',
+                editorBorder: '#c7d4bc',
             },
         ],
         frontPagePictures: [

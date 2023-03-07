@@ -1,10 +1,3 @@
-// function showCalendar() {
-//     let selectedDate = model.inputs.bookingPage.selectedDate.getDate();
-//     let HTML = getMonthAsTable();
-//     HTML += /*HTML*/`<br /> dato valgt: ${(model.inputs.bookingPage.fleetChoice || model.inputs.bookingPage.fleetChoice === 0) ? selectedDate : ''} <br />`;
-//     HTML += getTimePicker();
-//     return HTML;
-// }
 function showDate() {
     let selectedDate = model.inputs.bookingPage.selectedDate.getDate();
     let HTML = "";
@@ -66,17 +59,19 @@ function getTimePicker() {
     let hour = 0;
 
     for (let h = 0; h < rows; h++) {
-        HTML += `<tr>`;
-
-        for (let n = 0; n < columns; n++) {
-            HTML += /*HTML*/`<td>
-            <button class="${getClassesForHourButton(hour)}" onclick="selectHour(${hour})">
-                ${(hour < 10? "0" + hour: hour) + ':00'} <br> ${hour < 7 ? "" : getPriceHour()}
-            </button>                               
-            </td>`;
-            hour++;
-        }
-        HTML += "</tr>";
+        HTML += `
+        <tr>`;
+            for (let n = 0; n < columns; n++) {
+                HTML += /*HTML*/`
+                <td>
+                    <button class="${getClassesForHourButton(hour)}" onclick="selectHour(${hour})">
+                        ${(hour < 10? "0" + hour: hour) + ':00'} <br> ${hour < 7 ? "" : getPriceHour() + ',-'}
+                    </button>                               
+                </td>`;
+                hour++;
+            }
+            HTML += `
+        </tr>`;
     }
     HTML += `</table>`;
     if (model.inputs.bookingPage.isDateSelected) {

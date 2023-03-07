@@ -1,9 +1,9 @@
 function comfortsModalContent() {
     let html = '';
     html += /*HTML*/`
-        <table>
+        
         ${getInputComfortChoicesM()}
-        </table>
+        
         `;
     model.app.modalContent = html;
     openModal();
@@ -20,20 +20,24 @@ function getInputComfortChoicesM() {
 		}
         comfortList.push({ id: dataComfort.id, count: comfortCount });
 	}
-	let html = '<div>';
-	html += `<table class="comforts-table">`;
-	html += /*html*/`<tr><td>Vare</td><td>Pr stk</td><td>Antall	</td><td>Pris totalt</td></tr>`;
-
-	for (let comfort of comfortList) {
-		html += /*html*/`<tr><td>${getComfortById(comfort.id).name}</td><td>${getComfortById(comfort.id).price}</td><td> ${comfort.count} </td>
-        <td>${getComfortById(comfort.id).price * comfort.count}</td>
-		<td><button onclick="subtractComfort(${comfort.id})">-</button>
-		<button onclick="addComfort(${comfort.id})">+</button>
-		<button onclick="deleteComfortChoicesByComfortId(${comfort.id})">x</button></td>
-		</tr>`;
-	}
-	html += /*html*/`</table>
-    <button onclick="comfortModalClose()">Bekreft</button>
+	let html = '';
+	html += /*html*/ `
+	<div>
+	<table class="comforts-table"> 
+		<tr><th>Vare</th><th>Pr stk</th><th>Antall	</th><th>Pris totalt</th><th>Endre produkter</th></tr>
+            <tr style="border-bottom: 2px solid black;"></tr>`;
+		for (let comfort of comfortList) {
+			html += /*html*/`<tr><td>${getComfortById(comfort.id).name}</td><td>${getComfortById(comfort.id).price}</td><td> ${comfort.count} </td>
+			<td>${getComfortById(comfort.id).price * comfort.count}</td>
+			<td>
+				<button onclick="addComfort(${comfort.id})">▲</button>
+				<button onclick="subtractComfort(${comfort.id})">▼</button>
+			<button onclick="deleteComfortChoicesByComfortId(${comfort.id})">Fjern</button></td>
+			</tr>`;
+		}
+	html += /*html*/`
+	</table>
+    	<button onclick="comfortModalClose()">Bekreft</button>
     </div>
     `;
 	return html;

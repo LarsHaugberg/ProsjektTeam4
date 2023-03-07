@@ -56,9 +56,11 @@ function getBlogPostModal() { // Legger modal i HTML så den blir åpnet når vi
             <div class="modal-content">
                 <span onclick="closeModal()" class="close">&times;</span>
                  <p>
-                    <h1>${model.data.blogPosts[index].postTitle}</h1>
-                        ${checkIfPostHasImg(index)}
-                    <div>${model.data.blogPosts[index].postText}<div>
+                    <div class="blog-postcontent-sak">
+                        <h1>${model.data.blogPosts[index].postTitle}</h1>
+                            ${checkIfPostHasImg(index)}
+                        <div>${model.data.blogPosts[index].postText}<div>
+                    </div>    
                 </p> 
             </div>
         </div>
@@ -86,11 +88,11 @@ function getFrontPageTable() {
         `<div class="front-page-tables-div">
         </div class="ordinary-prices-div">
             <table class="front-page-table">
-            <tr><th colspan="2">Ordinære priser:</th></tr>
-            <tr><td>Ukedagspris pr time:</td><td>${model.data.prices.weekdayPriceHour}</td></tr>
-            <tr><td>Helgepris pr time:</td><td>${model.data.prices.weekendPriceHour}</td></tr>
-            <tr><td>Ukedagspris pr dag:</td><td>${model.data.prices.weekdayPriceDay}</td></tr>
-            <tr><td>Helgepris pr dag:</td><td>${model.data.prices.weekendPriceDay}</td></tr>
+            <tr><th colspan="2">Booking priser:</th></tr>
+            <tr><td>Timespris ukedag:</td><td>${model.data.prices.weekdayPriceHour}</td></tr>
+            <tr><td>Timespris helg:</td><td>${model.data.prices.weekendPriceHour}</td></tr>
+            <tr><td>Heldagspris uke:</td><td>${model.data.prices.weekdayPriceDay}</td></tr>
+            <tr><td>Heldagspris helg:</td><td>${model.data.prices.weekendPriceDay}</td></tr>
             </table>
         </div>`;
     return html;

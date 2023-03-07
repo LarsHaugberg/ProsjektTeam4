@@ -116,6 +116,7 @@ function addBooking() {
     //hindrer at man kan bestille uten timer.
     if (model.inputs.bookingPage.selectedHours.length < 1) { return; }
     model.data.bookings.push(newBooking);
+    alert("Booking gjennomført")
     emptySelection();
     closeModal();
     updateView();
