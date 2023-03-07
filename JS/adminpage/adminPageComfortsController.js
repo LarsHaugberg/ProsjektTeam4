@@ -28,12 +28,21 @@ function comittPriceChanges() { // Sjekker hvilke priser som er endra også kall
     if (model.inputs.adminPageComfort.weekdayPriceHour === 0 &&
         model.inputs.adminPageComfort.weekdayPriceDay === 0 &&
         model.inputs.adminPageComfort.weekendPriceHour === 0 &&
+<<<<<<< HEAD
         model.inputs.adminPageComfort.weekendPriceDay === 0) { alert('Fyll inn minst ett felt') }
 
     if (model.inputs.adminPageComfort.weekdayPriceHour != 0) { setPrice('weekdayHour') }
     if (model.inputs.adminPageComfort.weekdayPriceDay != 0) { setPrice('weekdayDay') }
     if (model.inputs.adminPageComfort.weekendPriceHour != 0) { setPrice('weekendHour') }
     if (model.inputs.adminPageComfort.weekendPriceDay != 0) { setPrice('weekendDay') };
+=======
+        model.inputs.adminPageComfort.weekendPriceDay === 0) { alert('Fyll inn feltene') }  
+         
+        if (model.inputs.adminPageComfort.weekdayPriceHour != 0) { setPrice('weekdayHour') }
+        if (model.inputs.adminPageComfort.weekdayPriceDay != 0) { setPrice('weekdayDay') }
+        if (model.inputs.adminPageComfort.weekendPriceHour != 0) { setPrice('weekendHour') }
+        if (model.inputs.adminPageComfort.weekendPriceDay != 0) { setPrice('weekendDay') };
+>>>>>>> dd9d123e2d588848dd6dda4ae4fdd76d4c456a28
     updateView()
 }
 
@@ -127,10 +136,10 @@ function addNewPackage() { // Legger til ny pakke
     let newWeekdayPrice = input.newPackageWeekdayPrice
     let newWeekendPrice = input.newPackageWeekendPrice
     let newId = loopPackageArray()
-    if (input.newPackageName != ''
-        && input.newPackageHour != 0
-        && input.newPackageWeekdayPrice != 0
-        && input.newPackageWeekendPrice != 0) {
+    if (input.newPackageName != '' &&
+        input.newPackageHour != 0 &&
+        input.newPackageWeekdayPrice != 0 &&
+        input.newPackageWeekendPrice != 0) {
         model.data.packageOptions.push(
             {
                 id: newId,
@@ -139,7 +148,7 @@ function addNewPackage() { // Legger til ny pakke
                 hours: newHours,
                 comforts: []
             })
-    } else return alert("Du må fylle ut alle feltene!");
+    } else return alert('Fyll inn feltene');
     updateView()
 }
 
