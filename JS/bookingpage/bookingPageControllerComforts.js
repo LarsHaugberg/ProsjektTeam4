@@ -1,10 +1,8 @@
 function comfortsModalContent() {
     let html = '';
     html += /*HTML*/`
-        
         ${getInputComfortChoicesM()}
-        
-        `;
+    `;
     model.app.modalContent = html;
     openModal();
 }
@@ -35,7 +33,7 @@ function getInputComfortChoicesM() {
 			<button onclick="deleteComfortChoicesByComfortId(${comfort.id})">Fjern</button></td>
 			</tr>`;
 		}
-	html += /*html*/`
+		html += /*html*/`
 	</table>
     	<button onclick="comfortModalClose()">Bekreft</button>
     </div>

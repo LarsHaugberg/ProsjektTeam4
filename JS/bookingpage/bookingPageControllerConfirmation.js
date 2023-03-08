@@ -95,7 +95,6 @@ function getHoursNoPackage() {
 function hoursComfortsSelected() {
     let html = '';
     html += /* html */`
-    
     ${getHoursNoPackage()}
     `;
     if (model.inputs.bookingPage.packageChoice == null) {
@@ -123,8 +122,6 @@ function packageIsChosen() {
         <tr style="border-bottom: 1px solid black;"></tr>
         `;
     }
-
-
     return html;
 }
 

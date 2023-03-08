@@ -100,14 +100,18 @@ input{
   width: 60px;
   background-color: transparent;
   border-color: transparent;
-  font-size: 35px;
+  margin-right: 25%;
+  font-size: 100px;
+  color: rgb(173, 209, 171);
 }
 .frontpage-right-button{
   justify-self: start;
   width: 60px;
   background-color: transparent;
   border-color: transparent;
-  font-size: 35px;
+  margin-left: 15%;
+  font-size: 100px;
+  color: rgb(173, 209, 171);
 }
 .front-page-images {
   object-fit: cover;
