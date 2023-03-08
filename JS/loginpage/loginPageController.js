@@ -9,6 +9,7 @@ for (let i = 0; i < model.data.users.length; i++) {
             model.inputs.loginPage.userName = ''
             model.inputs.loginPage.password = ''
             attempt = 'Sucess'
+            switchPage('frontPage')
             updateView()
         } 
     } 

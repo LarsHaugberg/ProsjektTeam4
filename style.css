@@ -725,7 +725,9 @@ table.package-table-name-price th{
  
   
 }
-
+.booking-table{
+  margin-bottom: 15px;
+}
 
 table.admin-booking-table{
   border: 1px solid;
