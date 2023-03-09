@@ -115,7 +115,7 @@ function loopPackageComforts() { // Returnerer HTML for ekstra produkter i vist 
     return HTML
 }
 
-// ${model.inputs.adminPageComfort.selectPackageDropdown == null ? 'Velg pakke' : `${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name}`}
+
 function packageOptionsSelector() { // Returnerer valgene i dropdown menyen
     let HTML = `<option>${model.data.packageOptions[model.inputs.adminPageComfort.selectPackage].name}</option>`;
     for (let i = 0; i < model.data.packageOptions.length; i++) {

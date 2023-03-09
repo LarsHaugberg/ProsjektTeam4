@@ -88,7 +88,7 @@ function adminPageRemoveComfortFromPackage(index) { // Sletter objekter fra pack
     updateView()
 }
 
-function addSubtractHour(toDo) { // Endrer 
+function addSubtractHour(toDo) { // Endrer antal timer i en pakke basert på parameter
     let hour = model.data.packageOptions[model.inputs.adminPageComfort.selectPackage]
     if (toDo == '▼' && hour.hours > 0) { hour.hours-- }
     else { hour.hours++ }

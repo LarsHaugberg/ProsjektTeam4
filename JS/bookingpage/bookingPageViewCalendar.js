@@ -1,13 +1,13 @@
-function showDate() {
+function showDate() { //viser valgt dato
     let selectedDate = model.inputs.bookingPage.selectedDate.getDate();
     let HTML = "";
     HTML += /*HTML*/`<br /> dato valgt: ${(model.inputs.bookingPage.fleetChoice || model.inputs.bookingPage.fleetChoice === 0) ? selectedDate : ''} <br />`;
     return HTML;
 }
 
-function getMonthAsTable() {
+function getMonthAsTable() {  //tegner opp en kalender basert på hvilken måned som er valgt i kalenderen
     if (model.inputs.bookingPage.fleetChoice === null) return '';
-    model.inputs.bookingPage.isDateSelected = true;                 //tester denne linjen
+    model.inputs.bookingPage.isDateSelected = true;                 
     let day = new Date();
     let currentMonth = model.inputs.bookingPage.selectedDate.getMonth();
     let currentYear = model.inputs.bookingPage.selectedDate.getFullYear();
@@ -32,7 +32,7 @@ function getMonthAsTable() {
                 if (b == startPostition && a == 1) {
                     started = true;
                 }
-                if (started && date <= daysInSelectedMonth) {   // ----
+                if (started && date <= daysInSelectedMonth) {   
                     day.setDate(day.getDate() + 1);
                     HTML += /*HTML*/`<td>                           
                     <button class="${getClassesForDateButton(date)}" onclick="selectDate(${day.getDate()})">
@@ -52,7 +52,7 @@ function getMonthAsTable() {
     return HTML;
 }
 
-function getTimePicker() {
+function getTimePicker() { //returnerer html for times-velger
     let rows = 4;
     let columns = 6;
     let HTML = `<table>`;
@@ -81,7 +81,7 @@ function getTimePicker() {
     }
 }
 
-function getSelectedMonthName(){
+function getSelectedMonthName(){ //returnerer måneds-navn basert på hvilken måned som er valgt i inputs
     let selectedMonth = model.inputs.bookingPage.selectedDate.getMonth();
     if(selectedMonth == 0) return 'Januar';
     if(selectedMonth == 1) return 'Februar';
@@ -98,7 +98,7 @@ function getSelectedMonthName(){
 
 }
 
-function getDayName(dayIndex){ 
+function getDayName(dayIndex){ //returnerer navn på dag basert på dag-indeks som parameter
     if(dayIndex == 0) return 'Man';
     if(dayIndex == 1) return 'Tirs';
     if(dayIndex == 2) return 'Ons';

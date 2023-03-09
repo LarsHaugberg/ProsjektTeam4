@@ -1,4 +1,4 @@
-function getClassesForHourButton(hour) {
+function getClassesForHourButton(hour) { //returnerer css-klasser den enkelte times-knapp skal være medlem av for å gi knappen farge
     const bookings = model.data.bookings;
     let fleet = model.inputs.bookingPage.fleetChoice;
     let fullYear = model.inputs.bookingPage.selectedDate.getFullYear();
@@ -33,7 +33,7 @@ function getClassesForHourButton(hour) {
     return "hour-button";
 }
 
-function getClassesForDateButton(date) {
+function getClassesForDateButton(date) { //returnerer css-klasser for dato-knapp i kalender for å gi knappen farge avhengig om dagen er booket på eller ikke
 	let todayDate = new Date().getTime();
 	let selectedDate = model.inputs.bookingPage.selectedDate;
 	

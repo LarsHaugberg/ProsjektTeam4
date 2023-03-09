@@ -8,14 +8,12 @@ function generateNewUsers() {  //Generer ny bruker basert på verdiene i input f
     let missingInfo = false
     for (const key in model.inputs.newUserPage) {
         if (!model.inputs.newUserPage[key]) {
-            console.log(`The property "${key}" does not have a value.`);
             missingInfo = true
         } else {
-            console.log(`The property "${key}" has a value of "${model.inputs.newUserPage[key]}".`);
         }
     } if (missingInfo === true) {
         alert('Feltene er ikke fylt inn')
-    } console.log(missingInfo)
+    } 
 
     if (missingInfo == false) {
         if (password === confirmedPassword && password != '') {

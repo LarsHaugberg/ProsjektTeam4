@@ -26,6 +26,7 @@ function updateFrontPageView() {
         `;
     return HTML;
 }
+// div med pakke priser som ikke ble med i ferdig produktet
 /*
  <div class="frontpage-packages-wrapper">
             <div class="frontpage-Packages">
@@ -33,7 +34,7 @@ function updateFrontPageView() {
             </div>
         </div>
 */
-// ${checkIfPostHasImg(index)}
+
 function listLatestBlogPosts() { // Oppdaterer forsiden med den siste blogposten i arrayet
     let index = model.data.blogPosts.length - 1
     let HTML = /*HTML*/
@@ -69,7 +70,7 @@ function getBlogPostModal() { // Legger modal i HTML så den blir åpnet når vi
     return HTML;
 }
 
-function getFrontPagePrices() {
+function getFrontPagePrices() { //lager html for pakke priser som ikke ble med i ferdig produktet
     let html = //html
         `<div class="package-prices-div"><table>
         <tr><th colspan="2">Pakkepriser</th></tr>`;
@@ -83,7 +84,7 @@ function getFrontPagePrices() {
     return html;
 }
 
-function getFrontPageTable() {
+function getFrontPageTable() { //lager html for uke og helg priser på forsiden under bilde til høyre
     let html = //html
         `<div class="front-page-tables-div">
         </div class="ordinary-prices-div">

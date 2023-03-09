@@ -1,4 +1,5 @@
-function updateAdminPageBookingView() { // Viser viewet på administratorsiden for bildebehandling
+
+function updateAdminPageBookingView() { // Viser viewet på administratorsiden for bookinger
     let HTML = /*HTML*/ `
     
     
@@ -18,7 +19,7 @@ function updateAdminPageBookingView() { // Viser viewet på administratorsiden f
     return HTML;
 }
 
-function getAdminMonthAsTable() {
+function getAdminMonthAsTable() { //returnerer html for en kalender på admin-booking-siden
 
     let day = new Date();
     let currentMonth = model.inputs.adminPageBooking.selectedDate.getMonth();
@@ -44,7 +45,7 @@ function getAdminMonthAsTable() {
                 if (b == startPostition && a == 1) {
                     started = true;
                 }
-                if (started && date <= daysInSelectedMonth) {   // ----
+                if (started && date <= daysInSelectedMonth) { 
                     day.setDate(day.getDate() + 1);
                     HTML += /*HTML*/`<td>                           
                     <button class="${getClassesForDateButtonAdmin(date)}" onclick="selectAdminDate(${day.getDate()})">
@@ -65,8 +66,7 @@ function getAdminMonthAsTable() {
     return HTML;
 }
 
-//burde bruke samme funksjon som i bookingPageViewCalendar, da med måned som parameter..
-function getSelectedMonthNameAdmin() {
+function getSelectedMonthNameAdmin() { // Returnerer navn på måned som er valgt i kalenderen
     let selectedMonth = model.inputs.adminPageBooking.selectedDate.getMonth();
     if (selectedMonth == 0) return 'Januar';
     if (selectedMonth == 1) return 'Februar';
@@ -82,7 +82,7 @@ function getSelectedMonthNameAdmin() {
     if (selectedMonth == 11) return 'Desember';
 }
 
-function getClassesForDateButtonAdmin(date) {
+function getClassesForDateButtonAdmin(date) { //returnerer css-klasser som den aktuelle dato-knappen skal være medlem av når denne tegnes opp
     let todayDate = new Date();
     let selectedDate = model.inputs.adminPageBooking.selectedDate;
     const bookings = model.data.bookings;
@@ -115,7 +115,7 @@ function getClassesForDateButtonAdmin(date) {
     return "date-button";
 }
 
-function getBookingList() {
+function getBookingList() { //returnerer html for liste over bookinger den dagen som er valgt i kalenderen
     let dateObj = model.inputs.adminPageBooking.selectedDate;
     let fullYear = dateObj.getFullYear();
     let month = dateObj.getMonth();
@@ -145,14 +145,14 @@ function getBookingList() {
     return html;
 }
 
-function getBookingTimeAdmin(bookingTime) {//bookingTime er et array med valgte timer
+function getBookingTimeAdmin(bookingTime) {//Returnerer html for antall timer som den aktuelle booking gjelder for. BookingTime er et array med valgte timer
     let startHour = bookingTime[0];
     let endHour = bookingTime[bookingTime.length - 1];
     let html = `${startHour}.00 - ${endHour + 1}.00`;
     return html;
 }
 
-function getSingleBookingList() {
+function getSingleBookingList() { //returnerer en tabell for den valgte booking i kontrollpanelet når det klikkes på knappen 'se mer'
     if (model.inputs.adminPageBooking.selectedBooking === null) return '';
     let booking = getBookingById(model.inputs.adminPageBooking.selectedBooking);
     let user = getUserByName(booking.customer);
@@ -169,7 +169,6 @@ function getSingleBookingList() {
         <table>`;
             if (booking.chosenPackage != null) {
                 let packageOption = booking.chosenPackage;
-                console.log(packageOption);
                 html += `<tr><th>Pakkenavn</th><th colspan="2">${packageOption.name}</th></tr>`;
                 html += `<tr><th colspan="2">Tilbehør:</th></tr>`;
                 for (let comfort of packageOption.comforts) {
@@ -193,7 +192,7 @@ function getSingleBookingList() {
 
 
 
-function getListOfComfortsAdmin(comfortChoices) {
+function getListOfComfortsAdmin(comfortChoices) { //returnerer html for innholdet i tabell som omfatter ekstra tilbehør i booking
     let comfortList = [];
     let html = "";
     for (let dataComfort of model.data.comforts) {
@@ -220,7 +219,7 @@ function getListOfComfortsAdmin(comfortChoices) {
 
 
 
-function getDayNameAdmin(dayIndex) {
+function getDayNameAdmin(dayIndex) { //returnerer navn på dag med dag-indeks som parameter
     if (dayIndex == 1) return 'Man';
     if (dayIndex == 2) return 'Tirs';
     if (dayIndex == 3) return 'Ons';

@@ -1,4 +1,4 @@
-function getComfortDropdown() {
+function getComfortDropdown() { //returnerer dropdown-meny for å velge tilbehør, men er ikke i bruk
 	let HTML = ""
 	HTML += /* html */ `<div><select onchange="selectComfort(this.value)"> 
     <option value=""><i>- comforts -</i></option>`;
@@ -11,34 +11,8 @@ function getComfortDropdown() {
 	return HTML;
 }
 
-function getInputChoices() {
-	let comfortList = [];
-	for (let dataComfort of model.data.comforts) {
-		let comfortCount = 0;
-		for (let comfortId of model.inputs.bookingPage.comfortChoices) {
-			if (dataComfort.id == comfortId) {
-				comfortCount++;
-			}
-		}
-		if (comfortCount > 0) {
-			comfortList.push({ id: dataComfort.id, count: comfortCount });
-		}
-	}
-	let html = '<div>';
-	html += `<table class="comforts-table">`;
-	html += /*html*/`
-	<tr><th>Vare</th><th>Pr stk</th><th>Antall</th><th>Pris totalt</th></tr>`;
 
-	for (let comfort of comfortList) {
-		html += /*html*/`<tr><td>${getComfortById(comfort.id).name}</td><td>${getComfortById(comfort.id).price}</td><td> ${comfort.count} </td>
-        <td>${getComfortById(comfort.id).price * comfort.count}</td><td></td></tr>`;
-	}
-	html += `</table></div>`;
-	html += /* html */`${sumHoursSelected()}<br>${sumComfortsSelected()}<br>${totalSum()}`;
-	return html;
-}
-
-function inputListBooking(){
+function inputListBooking(){ //returnerer tabell med oversikt over flåte, tid, pakker, evt tilbehø samt total pris for bookingen.
 	let selectedHours = model.inputs.bookingPage.selectedHours;
 	let html = '';
     html += /*HTML*/`

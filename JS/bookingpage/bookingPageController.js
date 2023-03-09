@@ -1,10 +1,10 @@
-function selectFleet(fleetId) {
+function selectFleet(fleetId) { //Setter valgt flåte i modellen basert på hvilken flåte man klikker på
     model.inputs.bookingPage.fleetChoice = fleetId;
     model.inputs.bookingPage.selectedHours = [];
     updateView();
 }
 
-function settBorder(index){
+function settBorder(index){ //Setter svart border rundt flåte-bilde
     for (let i = 0; i < model.data.fleets.length; i++) {
         model.data.fleets[i].border = "#efe2cd"
     }
@@ -12,21 +12,21 @@ function settBorder(index){
     updateView();
 }
 
-function goToNextMonth() {
+function goToNextMonth() { //Setter valgt måned til neste måned når man klikker på knapp 'neste måned'
     model.inputs.bookingPage.selectedHours = [];
     model.inputs.bookingPage.selectedDate.setMonth(model.inputs.bookingPage.selectedDate.getMonth() + 1);
     model.inputs.bookingPage.selectedDate.setDate(1);
     updateView();
 }
 
-function goToPrevMonth() {
+function goToPrevMonth() { //Setter valgt måned til forrige måned når man klikker på knapp 'forrige måned'
     model.inputs.bookingPage.selectedHours = [];
     model.inputs.bookingPage.selectedDate.setMonth(model.inputs.bookingPage.selectedDate.getMonth() - 1);
     model.inputs.bookingPage.selectedDate.setDate(1);
     updateView();
 }
 
-function sumComfortsSelected() {
+function sumComfortsSelected() { // Returnerer sum av priser på valgte ekstraprodukter
     let priceSum = 0;
     for (let comfortId of model.inputs.bookingPage.comfortChoices) {
         priceSum += Number(getComfortById(comfortId).price);
@@ -34,7 +34,7 @@ function sumComfortsSelected() {
     return priceSum;
 }
 
-function getComfortById(id) {
+function getComfortById(id) { // Returnerer referanse til tilbehør-objekt basert på id
     for (let comfort of model.data.comforts) {
         if (id == comfort.id)
             return comfort;
@@ -42,7 +42,7 @@ function getComfortById(id) {
     return null;
 }
 
-function totalSum() {
+function totalSum() { // Regner ut total sum for booking som er valgt basert på data i inputs på bopoking-siden
 	let totalPrice = 0;
 	if(model.inputs.bookingPage.packageChoice){
 		if(!isWeekend())
@@ -54,7 +54,7 @@ function totalSum() {
 }
 
 
-function getPackageById(id) {
+function getPackageById(id) { // Returnerer referanse til pakke-objekt basert på id
     for (let package of model.data.packageOptions) {
         if (id == package.id)
             return package;
@@ -62,25 +62,25 @@ function getPackageById(id) {
     return null;
 }
 
-//main controller 
-function emptySelection() {
+
+function emptySelection() { // Resetter valg av timer, pakkevalg samt ekstra tilbehør valgt
     model.inputs.bookingPage.selectedHours = [];
     model.inputs.bookingPage.packageChoice = null;
     model.inputs.bookingPage.comfortChoices = [];
     updateView();
 }
 
-function emptySelectedHours(){
+function emptySelectedHours(){ // Resetter valg av timer i inputs
     model.inputs.bookingPage.selectedHours = [];
     updateView();
 }
 
-function selectComfort(comfortId) {
+function selectComfort(comfortId) { //legger til en forekomst av et tilbehør i array for valgte tilbehør
     model.inputs.bookingPage.comfortChoices.push(comfortId);
     updateView();
 }
 
-function getIdToCompare(idToCompare){
+function getIdToCompare(idToCompare){ //returnere boolsk verdi for om en id finnes i boking-arrayet fra før eller ikke
     for (let i = 0; i < model.data.bookings.length; i++) {
         const booking = model.data.bookings[i];
         if (booking.orderId == idToCompare) {
@@ -90,7 +90,7 @@ function getIdToCompare(idToCompare){
     return false;
 }
 
-function getNewBookingId(){
+function getNewBookingId(){ //Finner laveste ikke allerede brukte id-nr på booking og returnerer dette
 	let i = 0;
 	while(true){
 		if(!getIdToCompare(i)){
@@ -99,8 +99,8 @@ function getNewBookingId(){
 		i++;
 	}
 }
-// sender av gåre bestiling
-function addBooking() {
+
+function addBooking() { // legger til en ny bestilling i data-objektet i modellen
     let newBooking = {};
     newBooking.orderId = getNewBookingId();
     newBooking.fleetId = Number(model.inputs.bookingPage.fleetChoice);
@@ -120,17 +120,17 @@ function addBooking() {
     emptySelection();
     closeModal();
     updateView();
-    console.log(newBooking);
+    
 }
 
-function addComfort(comfortId){
+function addComfort(comfortId){ //legger til forekomst av et tilbehør og oppdaterer modalen
     model.inputs.bookingPage.comfortChoices.push(comfortId);
     updateEditorModalContenComforts();
     updateView();
 
 }
 
-function subtractComfort(comfortId){
+function subtractComfort(comfortId){ //trekker fra en forekomst av et tilbehør fra input-delen av modellen samt oppdaterer modalen
     for(let i = model.inputs.bookingPage.comfortChoices.length -1; i >= 0 ; i--){
         if(model.inputs.bookingPage.comfortChoices[i] == comfortId){
             model.inputs.bookingPage.comfortChoices.splice(i, 1);
@@ -141,7 +141,7 @@ function subtractComfort(comfortId){
     updateView();
 }
 
-function deleteComfortChoicesByComfortId(comfortId){
+function deleteComfortChoicesByComfortId(comfortId){ //sletter alle forekomster av en type tilbehør i input-delen av modellen
 	for(let i = model.inputs.bookingPage.comfortChoices.length -1; i >= 0 ; i--){
 		let id = model.inputs.bookingPage.comfortChoices[i];
 		if(getComfortById(id).id == comfortId){
@@ -152,8 +152,7 @@ function deleteComfortChoicesByComfortId(comfortId){
     updateView();
 }
 
-function getFleetNameById(id) {
-    console.log('getFleetNameByID kjoerer: '+ id)
+function getFleetNameById(id) { //returnerer flåtenavn med id som parameter
     for (let fleet of model.data.fleets) {
         if (id == fleet.id){
             return fleet.name;

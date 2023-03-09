@@ -123,7 +123,7 @@ function upperNavBar() { // Tegner opp navBar øverst på siden // Skal vi skriv
     return HTML;
 }
 
-function showCurrentLoggedInUser() { // Viser frem hvilken user som er logget inn i Navbaren
+function showCurrentLoggedInUser() { // Viser frem hvilken bruker som er logget inn i Navbaren
     let HTML = ``
     if (model.app.currentUser == '') {
         HTML = 'Logg inn'

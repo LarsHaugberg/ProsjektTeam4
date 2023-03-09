@@ -1,4 +1,4 @@
-function selectDate(date) {
+function selectDate(date) { //setter valgt dato i input-delen av modellen basert på input fra kalender
     if (model.inputs.bookingPage.selectedDate.getDate() != date) {
         emptySelectedHours(); 
     }
@@ -7,13 +7,13 @@ function selectDate(date) {
     updateView();
 }
 
-function getPriceDay(day) {
+function getPriceDay(day) { //returnerer pris på dag med dasg-nummer som parameter
     if (day < 6 && day > 0) return Number(model.data.prices.weekdayPriceDay);
     else return Number(model.data.prices.weekendPriceDay);
 
 }
 
-function getPriceHour() {
+function getPriceHour() { //retunerer pris per tome basert på dag som er valgt i inputs i modellen
     let day = model.inputs.bookingPage.selectedDate.getDay();
     if (day < 6 && day > 0) return Number(model.data.prices.weekdayPriceHour);
     else return Number(model.data.prices.weekendPriceHour);
@@ -32,8 +32,8 @@ function sumHoursSelected() {
     else return priceSum;
 }
 
-function selectHour(hour) {
-    //denne if er foreløping ikke testet...
+function selectHour(hour) { //setter timer valgt i fra kalender til input-delen av modellen
+    
     if (model.inputs.bookingPage.packageChoice) {
         selectPackageHours(hour);
         return;
@@ -53,22 +53,22 @@ function selectHour(hour) {
         }
     }
     else {
-        if (model.inputs.bookingPage.selectedHours.length > 0) {//------------------test: fra 0 til 1. hadde ingen effekt...
-            for (let i = getHighestHourSelected(); i >= hour; i--) {//---------------------------fra >= til >hour tester
+        if (model.inputs.bookingPage.selectedHours.length > 0) {
+            for (let i = getHighestHourSelected(); i >= hour; i--) {
                 if (checkIfHourIsBooked(i)) continue;
                 unselectHour(i);
-                console.log('unselects: ' + i)
+                
             }
         }
         else unselectHour(hour);
     }
 
-    console.log('timer valgt: ' + model.inputs.bookingPage.selectedHours);
+    
     updateView();
 
 }
 
-function getHighestHourSelected() {
+function getHighestHourSelected() { //returnerer høyeste time valgt
     if (model.inputs.bookingPage.selectedHours.length > 0) {
         let max = model.inputs.bookingPage.selectedHours[0];
         for (let hour of model.inputs.bookingPage.selectedHours) {
@@ -76,30 +76,27 @@ function getHighestHourSelected() {
                 max = hour;
             }
         }
-        console.log('max: ' + max);
         return max;
     }
 }
 
-function getHoursToAutoSelect(hour) {
+function getHoursToAutoSelect(hour) { //returnerer array med timer som skal auto-velges i times-velger
     let hours = [];
     if (hour > getHighestHourSelected()) {
         for (let i = getHighestHourSelected() + 1; i <= hour; i++) {
-            if (checkIfHourIsBooked(i)) break;//legge til en else under i stedet for if?
+            if (checkIfHourIsBooked(i)) break;
             if (!checkIfHourIsBooked(i)) {
                 hours.push(i);
             }
         }
-        console.log('hoursToAutoSelect: ' + hours);
         return hours;
     }
-    console.log('error2??');
     return;
 
 
 }
 
-function checkIfHourIsBooked(hour) {
+function checkIfHourIsBooked(hour) { //sjekker om time som skal velges allerede er booket. returnerer boolsk verdi
     const bookings = model.data.bookings;
     let fleet = model.inputs.bookingPage.fleetChoice;
     let fullYear = model.inputs.bookingPage.selectedDate.getFullYear();
@@ -124,13 +121,13 @@ function checkIfHourIsBooked(hour) {
     return false;
 }
 
-function unselectHour(hour) {
+function unselectHour(hour) { //av-velger valgt time i times-velger 
     let indexToDelete = findHourIndexInSelected(hour);
     model.inputs.bookingPage.selectedHours.splice(indexToDelete, 1);
     updateView();
 }
 
-function findHourIndexInSelected(hour) {
+function findHourIndexInSelected(hour) { //finner time-indeks til en valgt time. time er parameter og det returneres en indeks
     for (let i = 0; i < model.inputs.bookingPage.selectedHours.length; i++) {
         if (hour == model.inputs.bookingPage.selectedHours[i]) {
             return i;
@@ -139,7 +136,7 @@ function findHourIndexInSelected(hour) {
     return null;
 }
 
-function checkIfHourIsSelected(hour) {
+function checkIfHourIsSelected(hour) { //sjekker hvis en time er allerede valgt. retunerer boolsk verdi
     for (let selectedHour of model.inputs.bookingPage.selectedHours) {
         if (hour === selectedHour) {
             return true;
@@ -149,25 +146,24 @@ function checkIfHourIsSelected(hour) {
 }
 
 
-function selectPackageHours(hour) {
+function selectPackageHours(hour) { //velger timer som skal velges tilhørende en pakke. Auto-utfyller for antallet timer fra pakken fra med første time fra time man klikker på
     if (checkIfHourIsSelected(hour)) {
         model.inputs.bookingPage.selectedHours = [];
         updateView();
         return;
     }
     if (model.inputs.bookingPage.selectedHours.length > 0) {
-        console.log('fungerer denne if-en??');
+
         model.inputs.bookingPage.selectedHours = [];
 
 
     }
-    //getPackageById(model.inputs.bookingPage.packageChoice).hours;
+    
     let hoursToSelect = model.inputs.bookingPage.packageChoice.hours;
     for (let i = 0; i < hoursToSelect; i++) {
         let packageHour = hour + i;
         if (checkIfHourIsBooked(packageHour) || packageHour > 23) {
-            //model.app.msg = "Velg et annet tidspunkt";
-            console.log('velg et annet tidspunkt!');
+            
             model.inputs.bookingPage.selectedHours = [];
             updateView();
             return;

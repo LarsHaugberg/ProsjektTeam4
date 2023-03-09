@@ -1,4 +1,4 @@
-function updateBookingPageView() {
+function updateBookingPageView() { //oppdaterer view for booking-side
     let HTML = /*HTML*/`
     <div class="booking-wrapper"> 
     <div class="booking-container">
@@ -10,7 +10,7 @@ function updateBookingPageView() {
     return HTML;
 }
 
-function getBookingPage() {
+function getBookingPage() { //hoved-funksjon for booking-siden
     let HTML = '';
     HTML += /*HTML*/`
     <div class="col-1">
@@ -53,7 +53,7 @@ function isSelected(fleetId) {
     else return '';
 }
 
-function fleetNameChosen(){
+function fleetNameChosen(){ //returnerer flåte-navn basert på hvilken flåte som er valgt i inputs
    if (model.inputs.bookingPage.fleetChoice === 1){
     return getFleetNameById(1);
    } 

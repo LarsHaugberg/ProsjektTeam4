@@ -1,4 +1,4 @@
-function comfortsModalContent() {
+function comfortsModalContent() { //hoved-view for tilbehør-modalen
     let html = '';
     html += /*HTML*/`
         ${getInputComfortChoicesM()}
@@ -7,7 +7,7 @@ function comfortsModalContent() {
     openModal();
 }
 
-function getInputComfortChoicesM() {
+function getInputComfortChoicesM() { //returnerer html for modal for tilbehør
 	let comfortList = [];
 	for (let dataComfort of model.data.comforts) {
 		let comfortCount = 0;
@@ -40,17 +40,17 @@ function getInputComfortChoicesM() {
     `;
 	return html;
 }
-// html += /* html */`${sumHoursSelected()}<br>${sumComfortsSelected()}<br>${totalSum()}`; 
 
 
-function updateEditorModalContenComforts() {
+
+function updateEditorModalContenComforts() { //oppdaterer modal-innholdet
     model.app.modalContent = /*HTML*/
     `${getInputComfortChoicesM()}
     `;
     updateView()
 }
 
-function comfortModalClose(){
+function comfortModalClose(){ //lukker modal for tilbehør
 
     closeModal()
 }

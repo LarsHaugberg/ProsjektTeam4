@@ -1,11 +1,8 @@
-
-
-
-function packageModalContent() { 
+function packageModalContent() { //setter modal til å liste opp valg for pakker
 	let html = '<br><div class="outer-modal-content">';
 	for(let packageOption of model.data.packageOptions){
-		html += /*HTML*/`<div class="inner-modal-content">
-		
+		html += /* HTML */`
+		<div class="inner-modal-content">
 		<table id="package-table-name-price">
 			<tr><th>Pakke:</th><th>${packageOption.name}</th></tr>
 			<tr><td>Antall Timer:</td><td>${packageOption.hours}</td></tr>
@@ -22,38 +19,28 @@ function packageModalContent() {
     openModal();
 }
 
-
-
-
-
-
-function addPackageToInputs(id){
-    //model.inputs.bookingPage.packageChoice = id;
+function addPackageToInputs(id){ //legger til pakke valgt til inputs
     model.inputs.bookingPage.selectedHours = [];
     let packageToCopy = getPackageById(id);
     model.inputs.bookingPage.packageChoice = JSON.parse(JSON.stringify(packageToCopy));
     closeModal();
-    console.log(id);
 }
 
-function removePackageChoice(){
+function removePackageChoice(){ //fjerner en valgt pakke fra inputs
     model.inputs.bookingPage.packageChoice = null;
     closeModal();
 }
 
-
-
-
-function btnChoosePackage(id){
+function btnChoosePackage(id){ //returnerer html-knapp for om man skal fjerne eller legge til pakke i pakke-modalen
     let html = '';
 	if(model.inputs.bookingPage.packageChoice){
 		if (model.inputs.bookingPage.packageChoice.id == id) {
-			html = /* html */`<button class="choose-package-button" onclick="removePackageChoice()">Fjern</button>`;
+			html = /* HTML */`<button class="choose-package-button" onclick="removePackageChoice()">Fjern</button>`;
 		} else {
-			html = /* html */`<button class="choose-package-button" onclick="addPackageToInputs(${id})">Velg</button>`;
+			html = /* HTML */`<button class="choose-package-button" onclick="addPackageToInputs(${id})">Velg</button>`;
 		}
 	} else {
-		html = /* html */`<button class="choose-package-button" onclick="addPackageToInputs(${id})">Velg</button>`;
+		html = /* HTML */`<button class="choose-package-button" onclick="addPackageToInputs(${id})">Velg</button>`;
 	}
     return html;
 }
